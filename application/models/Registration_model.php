@@ -35,5 +35,25 @@ class Registration_model extends CI_Model {
         }else{
             return $reg['status']='BAD';
         }
-    }
+	}
+	
+	public function LoginRbModal($LoginData){
+		$result_array=array(
+			"status"=>array(),
+			"data"=>array()
+		);
+		$this->db->select("*");
+		$this->db->from("registration");
+		$this->db->where($LoginData);
+		$rbid=$this->db->get();
+		if(sizeof($rbid->result_array())>0){
+			$result_array['status'] = 'OK';
+			$result_array['data'] = $rbid->result_array();
+			return $result_array;
+		}else{
+			$result_array['status'] = 'BAD';
+			$result_array['data'] = '';
+			return $result_array;
+		}
+	}
 }
