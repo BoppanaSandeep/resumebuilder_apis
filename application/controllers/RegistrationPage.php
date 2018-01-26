@@ -8,7 +8,8 @@ class RegistrationPage extends CI_Controller {
 	{
 			parent::__construct();
 			$this->load->model('registration_model');
-			$this->load->helper('url_helper');
+			$this->load->helper('url');
+			$this->load->library('session');
 	}
 
 	public function postRegister()
@@ -53,10 +54,47 @@ class RegistrationPage extends CI_Controller {
 				"status"=>1
 			);
 			$data=$this->registration_model->LoginRbModal($rblogin);
+			
+			$sessiondata=array(
+				"reg_id"=>$data['data'][0]['reg_id'],
+				"rb_id"=>$data['data'][0]['rb_id'],
+				"name"=>$data['data'][0]['name_first'].' '.$data['data'][0]['name_last'],
+				"email"=>$data['data'][0]['email'],
+				"phonenumber"=>$data['data'][0]['phonenumber'],
+				"joined_on"=>$data['data'][0]['joined_on'],
+				"logged_in"=>"true"
+			);
 			if($data['status'] == 'OK'){
-				echo json_encode(array('status' => 200,'message' => 'OK', 'info' => $data['data']));
+				echo json_encode(array('status' => 200,'message' => 'OK', 'info' => $sessiondata));
 			}else{
 				echo json_encode(array('status' => 400,'message' => 'Bad Request'));
+			}
+		}
+	}
+
+	public function Reload($rb_id=''){
+		$method= $_SERVER['REQUEST_METHOD'];
+		if($method !='GET'){
+			echo json_encode(array('status' => 400,'message' => 'Bad Request'));
+		}else{
+			$data = $this->registration_model->loginStatus($rb_id);
+			if($data['status']=='OK'){
+				$sessiondata=array(
+					"reg_id"=>$data['data'][0]['reg_id'],
+					"rb_id"=>$data['data'][0]['rb_id'],
+					"name"=>$data['data'][0]['name_first'].' '.$data['data'][0]['name_last'],
+					"email"=>$data['data'][0]['email'],
+					"phonenumber"=>$data['data'][0]['phonenumber'],
+					"joined_on"=>$data['data'][0]['joined_on'],
+					"logged_in"=>"true"
+				);
+				if($data['data'][0]['rb_id'] == $rb_id){
+					echo json_encode(array('status' => 200, 'message' => 'OK', 'info' => $sessiondata ));
+				}else{
+					echo json_encode(array('status' => 200,'message' => 'Logged Out', 'login_status' => 'false'));
+				}
+			}else{
+				echo json_encode(array('status' => 200,'message' => 'Logged Out', 'login_status' => 'false'));
 			}
 		}
 	}
