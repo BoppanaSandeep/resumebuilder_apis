@@ -54,20 +54,19 @@ class RegistrationPage extends CI_Controller {
 				"status"=>1
 			);
 			$data=$this->registration_model->LoginRbModal($rblogin);
-			
-			$sessiondata=array(
-				"reg_id"=>$data['data'][0]['reg_id'],
-				"rb_id"=>$data['data'][0]['rb_id'],
-				"name"=>$data['data'][0]['name_first'].' '.$data['data'][0]['name_last'],
-				"email"=>$data['data'][0]['email'],
-				"phonenumber"=>$data['data'][0]['phonenumber'],
-				"joined_on"=>$data['data'][0]['joined_on'],
-				"logged_in"=>"true"
-			);
 			if($data['status'] == 'OK'){
+				$sessiondata=array(
+					"reg_id"=>$data['data'][0]['reg_id'],
+					"rb_id"=>$data['data'][0]['rb_id'],
+					"name"=>$data['data'][0]['name_first'].' '.$data['data'][0]['name_last'],
+					"email"=>$data['data'][0]['email'],
+					"phonenumber"=>$data['data'][0]['phonenumber'],
+					"joined_on"=>$data['data'][0]['joined_on'],
+					"logged_in"=>"true"
+				);
 				echo json_encode(array('status' => 200,'message' => 'OK', 'info' => $sessiondata));
 			}else{
-				echo json_encode(array('status' => 400,'message' => 'Bad Request'));
+				echo json_encode(array('status' => 200,'message' => 'Bad Request'));
 			}
 		}
 	}
