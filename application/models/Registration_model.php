@@ -69,4 +69,19 @@ class Registration_model extends CI_Model {
 			return $result_array;
 		}
 	}
+
+	public function emailStatus($email){
+		$this->db->select('rb_id, email, password');
+		$loginStatus = $this->db->get_where('registration', $email);
+		if(sizeof($loginStatus->result_array())>0){
+			$result_array['status'] = 'OK';
+			$result_array['data'] = $loginStatus->result_array();
+			return $result_array;
+		}else{
+			$result_array['status'] = 'BAD';
+			$result_array['data'] = '';
+			return $result_array;
+		}
+	}
+
 }
