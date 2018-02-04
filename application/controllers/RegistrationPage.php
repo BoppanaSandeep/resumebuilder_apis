@@ -1,7 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-type, Accept-Encoding");
+header("Access-Control-Allow-Headers: *");
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class RegistrationPage extends CI_Controller
 {
@@ -9,6 +13,7 @@ class RegistrationPage extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        require APPPATH . 'third_party/phpmail/vendor/autoload.php';//Load composer's autoloader
         $this->load->model('registration_model');
         $this->load->helper('url');
         $this->load->library('email');
@@ -120,12 +125,12 @@ class RegistrationPage extends CI_Controller
                     "password" => $data['data'][0]['password'],
                 );
                 if ($data['data'][0]['email'] == base64_decode($input['email'])) {
-                    //$res = $this->email($userdata);
-                   // if ($res['status'] = 'OK') {
+                    $res = $this->email($userdata);
+                    if ($res['status'] = 'OK') {
                         echo json_encode(array('status' => 200, 'message' => 'OK', 'email' => $input['email']));
-                   // } else {
-                     //   echo json_encode(array('status' => 200, 'message' => $res['msg']));
-                   // }
+                   } else {
+                       echo json_encode(array('status' => 200, 'message' => $res['msg']));
+                   }
                 } else {
                     echo json_encode(array('status' => 200, 'message' => 'Email not exists.'));
                 }
@@ -135,45 +140,68 @@ class RegistrationPage extends CI_Controller
         }
     }
 
-    public function email($userdata) 
+    public function email($userdata) //$userdata
 
     {	
-		// $userdata = array(
+        // $userdata = array( //For testing
         //     "rb_id" => 'rb_id',
-        //     "email" => 'email',
+        //     "email" => 'boppanasandeep57@gmail.com',
         //     "password" => 'password',
         // );
         $to = $userdata['email'];
         $subject = 'Resume Builder Password Request.';
-        $message = "<table><thead><tr><th>Resume Builder Password Request.</th></tr></thead><tbody><tr><td>RB ID: " . $userdata['rb_id'] . "</td></tr><tr><td>Email ID: " . $userdata['email'] . "</td></tr><tr><td>Your Password: <span style='color:green;' >" . $userdata['password'] . "</span></td></tr></tbody></table>";
-        $headers = 'From: Resume Builder <info@rb.com>' . "\r\n";
+        $message = "<table><thead><tr><th>Resume Builder Password Request.<br></th></tr></thead><tbody><tr><td>RB ID: " . $userdata['rb_id'] . "</td></tr><tr><td>Email ID: " . $userdata['email'] . "</td></tr><tr><td> Password: <span style='color:green;' >" . $userdata['password'] . "</span></td></tr></tbody></table>";
+        $mail = new PHPMailer(true);                                // Passing `true` enables exceptions
+        try {
+            //Server settings
+            //$mail->SMTPDebug = 2;                                   // Enable verbose debug output
+            $mail->isSMTP();                                        // Set mailer to use SMTP
+            $mail->SMTPSecure = 'ssl';                              // Enable TLS encryption, `ssl` also accepted
+            $mail->Host = 'ssl://smtp.gmail.com:465';               // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true;                                 // Enable SMTP authentication
+            $mail->Username = 'boppanasandeep7@gmail.com';          // SMTP username
+            $mail->Password = '9000056250';                         // SMTP password
+            $mail->Port = 465;                                      // TCP port to connect to
+            $mail->SMTPOptions = array(
+                    'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                    )
+                );
 
-        $config = array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.gmail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'xxxxx@gmail.com', // change it to yours
-            'smtp_pass' => 'xxxxx', // change it to yours
-            'mailtype' => 'html',
-            'charset' => 'utf-8',
-			'wordwrap' => true,
-        );
-		
-        $this->email->initialize($config);
-        $this->email->set_newline("\r\n");
-        $this->email->from($headers);
-        $this->email->to($to);
-        $this->email->subject($subject);
-        $this->email->message($message);
+            //Recipients
+            $mail->setFrom($mail->Username, $mail->Username);
+            $mail->addAddress($to, $to);                            // Add a recipient
+            //$mail->addAddress('ellen@example.com');               // Name is optional
+            //$mail->addReplyTo('info@example.com', 'Information');
+            //$mail->addCC('cc@example.com');
+            //$mail->addBCC('bcc@example.com');
 
-        if ($this->email->send()) {
-            $data['status'] = 'OK';
-            echo $data['msg'] = "Mail Sent.";
-            return $data;
-        } else {
-            //show_error($this->email->print_debugger());
+            //Attachments
+            //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+            //Content
+            $mail->isHTML(true);                                    // Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+            //$mail->AltBody = '<b>This is the body in plain text for non-HTML mail clients</b>';
+
+            if ($mail->send()) {
+                $data['status'] = 'OK';
+                $data['msg'] = "Mail Sent.";
+                return $data;
+            } else {
+                //echo 'Mailer Error: ' . $mail->ErrorInfo;
+                $data['status'] = 'Failed';
+                $data['msg'] = "Error in sending mail, Please try again later.";
+                return $data;
+            }
+        } catch (Exception $e) {
             $data['status'] = 'Failed';
-            echo $data['msg'] = "Error in sending mail, Please try again later.";
+            $data['msg'] = "Error in sending mail, Please try again later.";
+            //echo 'Mailer Error: ' . $mail->ErrorInfo;
             return $data;
         }
     }
