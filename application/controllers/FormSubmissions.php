@@ -18,6 +18,8 @@ class FormSubmissions extends CI_Controller
         $this->load->library('email');
     }
 
+    #region Form submissions of Experience, Education and Fetching Details
+    //Form submissions of Experience and Education
     public function Expedu()
     {
         $method = $_SERVER['REQUEST_METHOD'];
@@ -58,6 +60,24 @@ class FormSubmissions extends CI_Controller
         }
     }
 
+    //Fetching Experience and Education Details
+    public function ExpeduData($rb_id = '')
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method != 'GET') {
+            echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
+        } else {
+            $data = $this->formSubmissions_model->expedu_data($rb_id);
+            if ($data['status'] == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK', 'info' => $data['data']));
+            } else {
+                echo json_encode(array('status' => 200, 'message' => 'OK', 'info' => $data['data']));
+            }
+        }
+    }
+
+    #region Skills Form Submissions and Fetching Data
+    //Skills Form Submissions
     public function Skills()
     {
         $method = $_SERVER['REQUEST_METHOD'];
@@ -83,6 +103,7 @@ class FormSubmissions extends CI_Controller
         }
     }
 
+    //Fetching Skills Details
     public function SkillsData($rb_id = '')
     {
         $method = $_SERVER['REQUEST_METHOD'];
@@ -97,5 +118,6 @@ class FormSubmissions extends CI_Controller
             }
         }
     }
+    #endregion
 
 }
