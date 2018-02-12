@@ -18,6 +18,46 @@ class FormSubmissions extends CI_Controller
         $this->load->library('email');
     }
 
+    public function Expedu()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method != 'POST') {
+            echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
+        } else {
+            $expedu_form = json_decode(file_get_contents('php://input'), true);
+            //print_r($expedu_form); //exit();
+            $data = '';
+            if (is_array($expedu_form['expedu']['experience']) && sizeof($expedu_form['expedu']['experience']) > 0) {
+                foreach ($expedu_form['expedu']['experience'] as $expkey => $exp) {
+                    $res = array(
+                        "reg_id" => $expedu_form['user_id'],
+                        "exp_company" => trim($exp['company']) != '' ? trim($exp['company']) : 'Not Entered',
+                        "exp_working_from" => trim($exp['startyear']),
+                        "exp_last_work_date" => trim($exp['current']) == 1 ? '' : trim($exp['endyear']),
+                        "exp_currently_working" => trim($exp['current']) == 1 ? trim($exp['current']) : 2,
+                    );
+                    $data = $this->formSubmissions_model->exp_insert($res);
+                }
+            }
+            if (is_array($expedu_form['expedu']['education']) && sizeof($expedu_form['expedu']['education']) > 0) {
+                foreach ($expedu_form['expedu']['education'] as $edukey => $edu) {
+                    $res = array(
+                        "reg_id" => $expedu_form['user_id'],
+                        "edu_university_clg_sch" => trim($edu['university']) != '' ? trim($edu['university']) : 'Not Entered',
+                        "edu_passoutyear" => trim($edu['passoutyear']),
+                        "edu_percentage" => trim($edu['percentage'])
+                    );
+                    $data = $this->formSubmissions_model->edu_insert($res);
+                }
+            }
+            if ($data == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK'));
+            } else {
+                echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
+            }
+        }
+    }
+
     public function Skills()
     {
         $method = $_SERVER['REQUEST_METHOD'];

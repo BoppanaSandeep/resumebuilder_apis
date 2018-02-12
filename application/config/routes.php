@@ -62,6 +62,9 @@ $route['rb/forgot_pwd'] = 'registrationPage/forgotPwd';
 $route['rb/skills'] = 'formSubmissions/Skills';
 $route['rb/skills_data/(:any)'] = 'formSubmissions/SkillsData/$1';
 
+$route['rb/expedu'] = 'formSubmissions/Expedu';
+$route['rb/expedu_data/(:any)'] = 'formSubmissions/ExpeduData/$1';
+
 #endregion
 
 $route['404_override'] = '';

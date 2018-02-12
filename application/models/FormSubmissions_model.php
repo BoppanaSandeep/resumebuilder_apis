@@ -7,6 +7,24 @@ class FormSubmissions_model extends CI_Model
         $this->load->database();
     }
 
+    public function exp_insert($data){
+        $res = $this->db->insert("experience", $data);
+        if ($res) {
+            return $reg['status'] = 'OK';
+        } else {
+            return $reg['status'] = 'BAD';
+        }
+    }
+
+    public function edu_insert($data){
+        $res = $this->db->insert("education", $data);
+        if ($res) {
+            return $reg['status'] = 'OK';
+        } else {
+            return $reg['status'] = 'BAD';
+        }
+    }
+
     public function skills_insert($data)
     {
         $res = $this->db->insert("skills", $data);
