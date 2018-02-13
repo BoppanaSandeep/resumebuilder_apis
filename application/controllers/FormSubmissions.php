@@ -2,8 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
-// Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
+date_default_timezone_set('Asia/Calcutta');
 
 class FormSubmissions extends CI_Controller
 {
@@ -11,7 +10,6 @@ class FormSubmissions extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //require APPPATH . 'third_party/phpmail/vendor/autoload.php'; //Load composer's autoloader
         //$this->load->model('registration_model');
         $this->load->model('formSubmissions_model');
         $this->load->helper('url');
@@ -29,27 +27,31 @@ class FormSubmissions extends CI_Controller
             $expedu_form = json_decode(file_get_contents('php://input'), true);
             //print_r($expedu_form); //exit();
             $data = '';
-            if (is_array($expedu_form['expedu']['experience']) && sizeof($expedu_form['expedu']['experience']) > 0) {
-                foreach ($expedu_form['expedu']['experience'] as $expkey => $exp) {
-                    $res = array(
-                        "reg_id" => $expedu_form['user_id'],
-                        "exp_company" => trim($exp['company']) != '' ? trim($exp['company']) : 'Not Entered',
-                        "exp_working_from" => trim($exp['startyear']),
-                        "exp_last_work_date" => trim($exp['current']) == 1 ? '' : trim($exp['endyear']),
-                        "exp_currently_working" => trim($exp['current']) == 1 ? trim($exp['current']) : 2,
-                    );
-                    $data = $this->formSubmissions_model->exp_insert($res);
+            if (array_key_exists("experience", $expedu_form['expedu'])) {
+                if (is_array($expedu_form['expedu']['experience']) && sizeof($expedu_form['expedu']['experience']) > 0) {
+                    foreach ($expedu_form['expedu']['experience'] as $expkey => $exp) {
+                        $res = array(
+                            "reg_id" => $expedu_form['user_id'],
+                            "exp_company" => trim($exp['company']) != '' ? trim($exp['company']) : 'Not Entered',
+                            "exp_working_from" => trim($exp['startyear']),
+                            "exp_last_work_date" => trim($exp['current']) == 1 ? '' : trim($exp['endyear']),
+                            "exp_currently_working" => trim($exp['current']) == 1 ? trim($exp['current']) : 2,
+                        );
+                        $data = $this->formSubmissions_model->exp_insert($res);
+                    }
                 }
             }
-            if (is_array($expedu_form['expedu']['education']) && sizeof($expedu_form['expedu']['education']) > 0) {
-                foreach ($expedu_form['expedu']['education'] as $edukey => $edu) {
-                    $res = array(
-                        "reg_id" => $expedu_form['user_id'],
-                        "edu_university_clg_sch" => trim($edu['university']) != '' ? trim($edu['university']) : 'Not Entered',
-                        "edu_passoutyear" => trim($edu['passoutyear']),
-                        "edu_percentage" => trim($edu['percentage'])
-                    );
-                    $data = $this->formSubmissions_model->edu_insert($res);
+            if (array_key_exists("education", $expedu_form['expedu'])) {
+                if (is_array($expedu_form['expedu']['education']) && sizeof($expedu_form['expedu']['education']) > 0) {
+                    foreach ($expedu_form['expedu']['education'] as $edukey => $edu) {
+                        $res = array(
+                            "reg_id" => $expedu_form['user_id'],
+                            "edu_university_clg_sch" => trim($edu['university']) != '' ? trim($edu['university']) : 'Not Entered',
+                            "edu_passoutyear" => trim($edu['passoutyear']),
+                            "edu_percentage" => trim($edu['percentage']),
+                        );
+                        $data = $this->formSubmissions_model->edu_insert($res);
+                    }
                 }
             }
             if ($data == 'OK') {

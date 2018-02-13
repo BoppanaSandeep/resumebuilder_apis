@@ -45,6 +45,7 @@ class FormSubmissions_model extends CI_Model
         $this->db->where('rg.rb_id =', $rb_id);
         $this->db->where('rg.status =', 1);
         $this->db->where('exp.exp_status =', 1);
+        $this->db->order_by("exp.exp_currently_working", "ASC");
         $expdata = $this->db->get();
 
         $this->db->select('rg.rb_id, edu.edu_university_clg_sch, edu.edu_passoutyear, edu.edu_percentage');
@@ -53,6 +54,7 @@ class FormSubmissions_model extends CI_Model
         $this->db->where('rg.rb_id =', $rb_id);
         $this->db->where('rg.status =', 1);
         $this->db->where('edu.edu_status =', 1);
+        $this->db->order_by("edu.edu_passoutyear", "DESC");
         $edudata = $this->db->get();
 
         if (sizeof($expdata->result_array()) > 0 || sizeof($edudata->result_array()) > 0) {
@@ -63,7 +65,7 @@ class FormSubmissions_model extends CI_Model
                 $result_array['data']['experience'] = 'Not Updated';
             }
 
-            if (sizeof($expdata->result_array()) > 0) {
+            if (sizeof($edudata->result_array()) > 0) {
                 $result_array['data']['education'] = $edudata->result_array();
             } else {
                 $result_array['data']['education'] = 'Not Updated';

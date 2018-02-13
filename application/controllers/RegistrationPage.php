@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
+date_default_timezone_set('Asia/Calcutta');
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
