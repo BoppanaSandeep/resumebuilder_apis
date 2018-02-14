@@ -57,6 +57,11 @@ $route['rb/login_status/(:any)'] = 'registrationPage/Reload/$1';
 $route['rb/forgot_pwd'] = 'registrationPage/forgotPwd';
 #endregion
 
+#region Form Options Fetching
+//IT Skills
+    $route['rb/itskilloptions/(:any)'] = 'formOptionsFetching/ItSkillOptions/$1';
+#endregion
+
 #region Form Submissions
 //Skills
     $route['rb/skills'] = 'formSubmissions/Skills';

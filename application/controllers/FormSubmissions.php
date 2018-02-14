@@ -93,6 +93,7 @@ class FormSubmissions extends CI_Controller
                     $res = array(
                         "reg_id" => $skills_form['user_id'],
                         "skill_name" => $skills['fskills'],
+                        "skill_rating" => $skills['rating']
                     );
                     $data = $this->formSubmissions_model->skills_insert($res);
                 }
