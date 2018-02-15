@@ -36,6 +36,8 @@ class FormSubmissions extends CI_Controller
                             "exp_working_from" => trim($exp['startyear']),
                             "exp_last_work_date" => trim($exp['current']) == 1 ? '' : trim($exp['endyear']),
                             "exp_currently_working" => trim($exp['current']) == 1 ? trim($exp['current']) : 2,
+                            "exp_role" => trim($exp['role']),
+                            "exp_job_desc" => trim($exp['job_desc']),
                         );
                         $data = $this->formSubmissions_model->exp_insert($res);
                     }
@@ -122,5 +124,4 @@ class FormSubmissions extends CI_Controller
         }
     }
     #endregion
-
 }

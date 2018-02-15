@@ -74,6 +74,11 @@ $route['rb/forgot_pwd'] = 'registrationPage/forgotPwd';
 #region Delete Operations for Skills, Experience and Education
 //Delete Skills
     $route['rb/skill_delete_data'] = 'deleteOperations/DeleteSkills';
+//Experience
+    $route['rb/exp_delete_data'] = 'deleteOperations/DeleteExperience';
+//Experience
+    $route['rb/edu_delete_data'] = 'deleteOperations/DeleteEducation';
+
 #endregion
 
 $route['404_override'] = '';

@@ -39,7 +39,7 @@ class FormSubmissions_model extends CI_Model
 
     public function expedu_data($rb_id)
     {
-        $this->db->select('rg.rb_id, exp.exp_company, exp.exp_working_from, exp.exp_last_work_date, exp.exp_currently_working');
+        $this->db->select('rg.rb_id, exp.exp_id, exp.exp_company, exp.exp_working_from, exp.exp_last_work_date, exp.exp_currently_working, exp.exp_role, exp.exp_job_desc');
         $this->db->from('registration rg');
         $this->db->join('experience exp', 'exp.reg_id = rg.reg_id', 'left');
         $this->db->where('rg.rb_id =', $rb_id);
@@ -48,7 +48,7 @@ class FormSubmissions_model extends CI_Model
         $this->db->order_by("exp.exp_currently_working", "ASC");
         $expdata = $this->db->get();
 
-        $this->db->select('rg.rb_id, edu.edu_university_clg_sch, edu.edu_passoutyear, edu.edu_percentage');
+        $this->db->select('rg.rb_id, edu.edu_id, edu.edu_university_clg_sch, edu.edu_passoutyear, edu.edu_percentage');
         $this->db->from('registration rg');
         $this->db->join('education edu', 'edu.reg_id = rg.reg_id', 'left');
         $this->db->where('rg.rb_id =', $rb_id);

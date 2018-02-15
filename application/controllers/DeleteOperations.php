@@ -39,4 +39,53 @@ class DeleteOperations extends CI_Controller
             }
         }
     }
+
+    public function DeleteExperience()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method != 'POST') {
+            echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
+        } else {
+            $exp_delete = json_decode(file_get_contents('php://input'), true);
+            //print_r($skills_delete['user_id']);exit();
+            $data = '';
+            if (trim($exp_delete['rb_id']) != '' && trim($exp_delete['user_id']) != '' && trim($exp_delete['exp_id']) != '') {
+                $res = array(
+                    "reg_id" => $exp_delete['user_id'],
+                    "exp_id" => $exp_delete['exp_id'],
+                );
+                $data = $this->deleteOperations_model->delete_exp($res);
+            }
+            if ($data == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK'));
+            } else {
+                echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
+            }
+        }
+    }
+
+    public function DeleteEducation()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method != 'POST') {
+            echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
+        } else {
+            $edu_delete = json_decode(file_get_contents('php://input'), true);
+            //print_r($skills_delete['user_id']);exit();
+            $data = '';
+            if (trim($edu_delete['rb_id']) != '' && trim($edu_delete['user_id']) != '' && trim($edu_delete['edu_id']) != '') {
+                $res = array(
+                    "reg_id" => $edu_delete['user_id'],
+                    "edu_id" => $edu_delete['edu_id'],
+                );
+                $data = $this->deleteOperations_model->delete_edu($res);
+            }
+            if ($data == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK'));
+            } else {
+                echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
+            }
+        }
+    }
+
 }
