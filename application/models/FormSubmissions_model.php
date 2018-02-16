@@ -88,6 +88,7 @@ class FormSubmissions_model extends CI_Model
         $this->db->where('rg.rb_id =', $rb_id);
         $this->db->where('rg.status =', 1);
         $this->db->where('sk.skill_status =', 1);
+        $this->db->order_by("sk.skill_rating", "DESC");
         $skillsdata = $this->db->get();
         if (sizeof($skillsdata->result_array()) > 0) {
             $result_array['status'] = 'OK';
@@ -99,5 +100,4 @@ class FormSubmissions_model extends CI_Model
             return $result_array;
         }
     }
-
 }
