@@ -49,6 +49,7 @@ class FormSubmissions extends CI_Controller
                         $res = array(
                             "reg_id" => $expedu_form['user_id'],
                             "edu_university_clg_sch" => trim($edu['university']) != '' ? trim($edu['university']) : 'Not Entered',
+                            "edu_specialization" => trim($edu['specialization']) != '' ? trim($edu['specialization']) : 'Not Entered',
                             "edu_passoutyear" => trim($edu['passoutyear']),
                             "edu_percentage" => trim($edu['percentage']),
                         );
@@ -95,7 +96,7 @@ class FormSubmissions extends CI_Controller
                     $res = array(
                         "reg_id" => $skills_form['user_id'],
                         "skill_name" => $skills['fskills'],
-                        "skill_rating" => $skills['rating']
+                        "skill_rating" => $skills['rating'],
                     );
                     $data = $this->formSubmissions_model->skills_insert($res);
                 }

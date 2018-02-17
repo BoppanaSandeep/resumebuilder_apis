@@ -48,7 +48,7 @@ class FormSubmissions_model extends CI_Model
         $this->db->order_by("exp.exp_currently_working", "ASC");
         $expdata = $this->db->get();
 
-        $this->db->select('rg.rb_id, edu.edu_id, edu.edu_university_clg_sch, edu.edu_passoutyear, edu.edu_percentage');
+        $this->db->select('rg.rb_id, edu.edu_id, edu.edu_university_clg_sch, edu.edu_specialization, edu.edu_passoutyear, edu.edu_percentage');
         $this->db->from('registration rg');
         $this->db->join('education edu', 'edu.reg_id = rg.reg_id', 'left');
         $this->db->where('rg.rb_id =', $rb_id);
