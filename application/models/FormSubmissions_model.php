@@ -27,6 +27,19 @@ class FormSubmissions_model extends CI_Model
         }
     }
 
+    public function expedu_update($data, $user_id, $expedu_id, $table_name)
+    {
+        $expedu_field = $table_name == 'experience' ? 'exp_id' : 'edu_id';
+        $this->db->where($expedu_field, $expedu_id);
+        $this->db->where('reg_id', $user_id);
+        $res = $this->db->update($table_name, $data);
+        if ($res) {
+            return $reg['status'] = 'OK';
+        } else {
+            return $reg['status'] = 'BAD';
+        }
+    }
+
     public function skills_insert($data)
     {
         $res = $this->db->insert("skills", $data);

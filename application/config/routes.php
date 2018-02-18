@@ -59,25 +59,30 @@ $route['rb/forgot_pwd'] = 'registrationPage/forgotPwd';
 
 #region Form Options Fetching
 //IT Skills
-    $route['rb/itskilloptions/(:any)'] = 'formOptionsFetching/ItSkillOptions/$1';
+$route['rb/itskilloptions/(:any)'] = 'formOptionsFetching/ItSkillOptions/$1';
 #endregion
 
 #region Form Submissions
 //Skills
-    $route['rb/skills'] = 'formSubmissions/Skills';
-    $route['rb/skills_data/(:any)'] = 'formSubmissions/SkillsData/$1';
+$route['rb/skills'] = 'formSubmissions/Skills';
+$route['rb/skills_data/(:any)'] = 'formSubmissions/SkillsData/$1';
 //Experience and Education
-    $route['rb/expedu'] = 'formSubmissions/Expedu';
-    $route['rb/expedu_data/(:any)'] = 'formSubmissions/ExpeduData/$1';
+$route['rb/expedu'] = 'formSubmissions/Expedu';
+$route['rb/expedu_data/(:any)'] = 'formSubmissions/ExpeduData/$1';
+#endregion
+
+#region Form Edit
+//Experience and Education
+$route['rb/edit_expedu_data'] = 'formSubmissions/EditExpedu';
 #endregion
 
 #region Delete Operations for Skills, Experience and Education
 //Delete Skills
-    $route['rb/skill_delete_data'] = 'deleteOperations/DeleteSkills';
+$route['rb/skill_delete_data'] = 'deleteOperations/DeleteSkills';
 //Experience
-    $route['rb/exp_delete_data'] = 'deleteOperations/DeleteExperience';
+$route['rb/exp_delete_data'] = 'deleteOperations/DeleteExperience';
 //Experience
-    $route['rb/edu_delete_data'] = 'deleteOperations/DeleteEducation';
+$route['rb/edu_delete_data'] = 'deleteOperations/DeleteEducation';
 
 #endregion
 
