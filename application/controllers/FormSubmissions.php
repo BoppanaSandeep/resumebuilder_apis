@@ -83,6 +83,7 @@ class FormSubmissions extends CI_Controller
                     "exp_currently_working" => trim($expedu_form['expedu']['current']) == 1 ? trim($expedu_form['expedu']['current']) : 2,
                     "exp_role" => trim($expedu_form['expedu']['role']),
                     "exp_job_desc" => trim($expedu_form['expedu']['job_desc']),
+                    'exp_updated' => date('Y-m-d H:i:s'),
                 );
                 $data = $this->formSubmissions_model->expedu_update($res, $expedu_form['user_id'], $expedu_form['expedu_id'], $expedu_form['edit_to']);
             }
@@ -92,6 +93,7 @@ class FormSubmissions extends CI_Controller
                     "edu_specialization" => trim($expedu_form['expedu']['specialization']) != '' ? trim($expedu_form['expedu']['specialization']) : 'Not Entered',
                     "edu_passoutyear" => trim($expedu_form['expedu']['passoutyear']),
                     "edu_percentage" => trim($expedu_form['expedu']['percentage']),
+                    'edu_updated' => date('Y-m-d H:i:s'),
                 );
                 $data = $this->formSubmissions_model->expedu_update($res, $expedu_form['user_id'], $expedu_form['expedu_id'], $expedu_form['edit_to']);
             }
