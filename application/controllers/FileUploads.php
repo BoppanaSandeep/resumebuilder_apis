@@ -1,0 +1,55 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+date_default_timezone_set('Asia/Calcutta');
+
+class FileUploads extends CI_Controller
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+        //$this->load->model('registration_model');
+        //$this->load->model('formSubmissions_model');
+        $this->load->model('fileUploads_model');
+        $this->load->helper('url');
+    }
+
+    public function profileImageUpload()
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method != 'POST') {
+            echo json_encode(array('status' => 400, 'message' => $method));
+        } else {
+            $skills_delete = json_decode(file_get_contents('php://input'), true);
+            //print_r($skills_delete['user_id']);exit();
+            $data = '';
+            $succ = '';
+            $target_dir = "profile_imgs/";
+            $target_file = $target_dir . basename($_FILES["file"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            // Check if image file is a actual image or fake image
+            if (isset($_FILES["file"]["tmp_name"])) {
+                $check = getimagesize($_FILES["file"]["tmp_name"]);
+                if ($check !== false) {
+                    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                        $succ = "The file " . basename($_FILES["file"]["name"]) . " has been uploaded.";
+                        $data = 'OK';
+                    } else {
+                        $succ = "Sorry, there was an error uploading your file.";
+                    }
+                } else {
+                    $succ = "File is not an image.";
+                    $uploadOk = 0;
+                }
+            }
+            if ($data == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => $succ));
+            } else {
+                echo json_encode(array('status' => 400, 'message' => $succ));
+            }
+        }
+    }
+}

@@ -86,5 +86,10 @@ $route['rb/edu_delete_data'] = 'deleteOperations/DeleteEducation';
 
 #endregion
 
+#region File Uploads
+//Profile image Upload
+$route['rb/profile_image_upload'] = 'fileUploads/profileImageUpload';
+#endregion
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
