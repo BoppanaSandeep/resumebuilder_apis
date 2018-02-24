@@ -5,8 +5,8 @@ header("Access-Control-Allow-Headers: *");
 date_default_timezone_set('Asia/Calcutta');
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class RegistrationPage extends CI_Controller
 {
@@ -14,7 +14,7 @@ class RegistrationPage extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        require APPPATH . 'third_party/phpmail/vendor/autoload.php';//Load composer's autoloader
+        require APPPATH . 'third_party/phpmail/vendor/autoload.php'; //Load composer's autoloader
         $this->load->model('registration_model');
         $this->load->helper('url');
         $this->load->library('email');
@@ -91,6 +91,7 @@ class RegistrationPage extends CI_Controller
                     "reg_id" => $data['data'][0]['reg_id'],
                     "rb_id" => $data['data'][0]['rb_id'],
                     "name" => $data['data'][0]['name_first'] . ' ' . $data['data'][0]['name_last'],
+                    "profile_pic" => $data['data'][0]['profile_image'] == '' ? base_url() . "profile_imgs/profile-default.png" : base_url() . $data['data'][0]['profile_image'],
                     "email" => $data['data'][0]['email'],
                     "phonenumber" => $data['data'][0]['phonenumber'],
                     "joined_on" => $data['data'][0]['joined_on'],
@@ -129,9 +130,9 @@ class RegistrationPage extends CI_Controller
                     $res = $this->email($userdata);
                     if ($res['status'] = 'OK') {
                         echo json_encode(array('status' => 200, 'message' => 'OK', 'email' => $input['email']));
-                   } else {
-                       echo json_encode(array('status' => 200, 'message' => $res['msg']));
-                   }
+                    } else {
+                        echo json_encode(array('status' => 200, 'message' => $res['msg']));
+                    }
                 } else {
                     echo json_encode(array('status' => 200, 'message' => 'Email not exists.'));
                 }
@@ -143,7 +144,7 @@ class RegistrationPage extends CI_Controller
 
     public function email($userdata) //$userdata
 
-    {	
+    {
         // $userdata = array( //For testing
         //     "rb_id" => 'rb_id',
         //     "email" => 'boppanasandeep57@gmail.com',
@@ -152,28 +153,28 @@ class RegistrationPage extends CI_Controller
         $to = $userdata['email'];
         $subject = 'Resume Builder Password Request.';
         $message = "<table><thead><tr><th>Resume Builder Password Request.<br></th></tr></thead><tbody><tr><td>RB ID: " . $userdata['rb_id'] . "</td></tr><tr><td>Email ID: " . $userdata['email'] . "</td></tr><tr><td> Password: <span style='color:green;' >" . $userdata['password'] . "</span></td></tr></tbody></table>";
-        $mail = new PHPMailer(true);                                // Passing `true` enables exceptions
+        $mail = new PHPMailer(true); // Passing `true` enables exceptions
         try {
             //Server settings
             //$mail->SMTPDebug = 2;                                   // Enable verbose debug output
-            $mail->isSMTP();                                        // Set mailer to use SMTP
-            $mail->SMTPSecure = 'ssl';                              // Enable TLS encryption, `ssl` also accepted
-            $mail->Host = 'ssl://smtp.gmail.com:465';               // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                                 // Enable SMTP authentication
-            $mail->Username = 'boppanasandeep7@gmail.com';          // SMTP username
-            $mail->Password = '9000056250';                         // SMTP password
-            $mail->Port = 465;                                      // TCP port to connect to
+            $mail->isSMTP(); // Set mailer to use SMTP
+            $mail->SMTPSecure = 'ssl'; // Enable TLS encryption, `ssl` also accepted
+            $mail->Host = 'ssl://smtp.gmail.com:465'; // Specify main and backup SMTP servers
+            $mail->SMTPAuth = true; // Enable SMTP authentication
+            $mail->Username = 'boppanasandeep7@gmail.com'; // SMTP username
+            $mail->Password = '9000056250'; // SMTP password
+            $mail->Port = 465; // TCP port to connect to
             $mail->SMTPOptions = array(
-                    'ssl' => array(
+                'ssl' => array(
                     'verify_peer' => false,
                     'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                    )
-                );
+                    'allow_self_signed' => true,
+                ),
+            );
 
             //Recipients
             $mail->setFrom($mail->Username, $mail->Username);
-            $mail->addAddress($to, $to);                            // Add a recipient
+            $mail->addAddress($to, $to); // Add a recipient
             //$mail->addAddress('ellen@example.com');               // Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');
@@ -184,9 +185,9 @@ class RegistrationPage extends CI_Controller
             //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 
             //Content
-            $mail->isHTML(true);                                    // Set email format to HTML
+            $mail->isHTML(true); // Set email format to HTML
             $mail->Subject = $subject;
-            $mail->Body    = $message;
+            $mail->Body = $message;
             //$mail->AltBody = '<b>This is the body in plain text for non-HTML mail clients</b>';
 
             if ($mail->send()) {

@@ -22,33 +22,34 @@ class FileUploads extends CI_Controller
         if ($method != 'POST') {
             echo json_encode(array('status' => 400, 'message' => $method));
         } else {
-            $skills_delete = json_decode(file_get_contents('php://input'), true);
+            $fileUpload = json_decode(file_get_contents('php://input'), true);
             //print_r($skills_delete['user_id']);exit();
             $data = '';
             $succ = '';
             $target_dir = "profile_imgs/";
             $target_file = $target_dir . basename($_FILES["file"]["name"]);
-            $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
             // Check if image file is a actual image or fake image
             if (isset($_FILES["file"]["tmp_name"])) {
                 $check = getimagesize($_FILES["file"]["tmp_name"]);
                 if ($check !== false) {
                     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-                        $succ = "The file " . basename($_FILES["file"]["name"]) . " has been uploaded.";
-                        $data = 'OK';
+                        $data = $this->fileUploads_model->profileUpload($_POST['reg_id'], $target_file);
+                        if ($data == 'OK') {
+                            $succ = "The file has been uploaded.";
+                            echo json_encode(array('status' => 200, 'message' => $succ));
+                        } else {
+                            $succ = "Sorry, there was an error uploading your file.";
+                            echo json_encode(array('status' => 400, 'message' => $succ));
+                        }
                     } else {
                         $succ = "Sorry, there was an error uploading your file.";
+                        echo json_encode(array('status' => 400, 'message' => $succ));
                     }
                 } else {
                     $succ = "File is not an image.";
-                    $uploadOk = 0;
+                    echo json_encode(array('status' => 400, 'message' => $succ));
                 }
-            }
-            if ($data == 'OK') {
-                echo json_encode(array('status' => 200, 'message' => $succ));
-            } else {
-                echo json_encode(array('status' => 400, 'message' => $succ));
             }
         }
     }

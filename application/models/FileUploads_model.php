@@ -8,13 +8,12 @@ class FileUploads_model extends CI_Model
         $this->load->database();
     }
 
-    public function delete_skill($data)
+    public function profileUpload($user_id, $file_name)
     {
-        $values = array(
-            'skill_status' => 0,
-            'skill_updated' => date('Y-m-d H:i:s'),
-        );
-        $res=$this->db->update('skills', $values, $data);
+        $data = array('profile_image' => $file_name);
+        $this->db->where('status', 1);
+        $this->db->where('reg_id', $user_id);
+        $res = $this->db->update('registration', $data);
         if ($res) {
             return $reg['status'] = 'OK';
         } else {
