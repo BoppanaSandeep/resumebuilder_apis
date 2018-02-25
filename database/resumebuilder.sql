@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2018 at 03:14 PM
+-- Generation Time: Feb 25, 2018 at 11:41 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -46,7 +46,8 @@ INSERT INTO `rb_education` (`edu_id`, `reg_id`, `edu_university_clg_sch`, `edu_s
 (1, 1, 'Vidyalaya Public School', 'MPC', '2010', 85, '2018-02-18 13:39:46', '2018-02-15 18:51:12', 1),
 (2, 1, 'Gudlavalleru Engg College', '', '2016', 68, '2018-02-17 13:13:37', '2018-02-15 18:50:58', 1),
 (3, 1, 'Sri Chaitanya Junior College', 'MPC', '2012', 90, '2018-02-18 13:40:09', '0000-00-00 00:00:00', 1),
-(4, 1, 'GITM', 'Information Technology', '2016', 90, '2018-02-18 12:54:46', '0000-00-00 00:00:00', 1);
+(4, 1, 'GITM', 'Information Technology', '2016', 90, '2018-02-20 16:59:31', '2018-02-20 22:29:31', 0),
+(5, 3, 'Gudlavalleru Engineering College', 'Information Technology', '2016', 68, '2018-02-20 17:05:13', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -74,9 +75,11 @@ CREATE TABLE `rb_experience` (
 
 INSERT INTO `rb_experience` (`exp_id`, `reg_id`, `exp_company`, `exp_working_from`, `exp_last_work_date`, `exp_currently_working`, `exp_role`, `exp_job_desc`, `exp_added`, `exp_updated`, `exp_status`) VALUES
 (1, 1, 'Ameripro Solutions', '2017-03-20', '0000-00-00', 1, 'Junior Software Engineer', 'Junior Software Engineer', '2018-02-18 13:56:32', '2018-02-15 18:37:23', 1),
-(2, 1, 'Ameripro Solutions', '2018-02-12', '2018-02-12', 2, 'Senior Engineer', 'Senior Engineer', '2018-02-18 12:56:38', '2018-02-15 18:36:18', 1),
+(2, 1, 'Ameripro Solutions', '2018-02-12', '2018-02-12', 2, 'Senior Engineer', 'Senior Engineer', '2018-02-20 16:59:45', '2018-02-20 22:29:45', 0),
 (3, 1, 'Zlapch Tech Studio', '2018-02-12', '2018-02-12', 2, 'Developer', 'Developer', '2018-02-18 12:57:05', '2018-02-17 14:10:45', 1),
-(4, 1, 'Google', '2016-01-15', '2017-02-15', 1, 'Software Engineer', 'Slow network is detected. Fallback font will be used while loading: http://localhost:8100/assets/fonts/roboto-regular.woff2\n(index):1 Slow network is detected. Fallback font will be used while loading: http://localhost:8100/assets/fonts/ionicons.woff2?v=3.0.0-alpha.3', '2018-02-17 10:13:09', '0000-00-00 00:00:00', 1);
+(4, 1, 'Google', '2016-01-15', '2017-02-20', 2, 'Software Engineer', 'Slow network is detected. Fallback font will be used while loading: http://localhost:8100/assets/fonts/roboto-regular.woff2\n(index):1 Slow network is detected. Fallback font will be used while loading: http://localhost:8100/assets/fonts/ionicons.woff2?v=3.0.0-alpha.3', '2018-02-20 17:00:16', '0000-00-00 00:00:00', 1),
+(5, 3, 'Ameripro solutions', '2017-03-20', '0000-00-00', 1, 'Software engineer', 'Engineer', '2018-02-20 17:04:10', '0000-00-00 00:00:00', 1),
+(6, 9, 'Abc', '2018-02-20', '0000-00-00', 1, 'Abc', 'Abc', '2018-02-20 17:22:09', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -89,6 +92,7 @@ CREATE TABLE `rb_registration` (
   `rb_id` varchar(255) DEFAULT NULL,
   `name_first` varchar(255) NOT NULL,
   `name_last` varchar(255) NOT NULL,
+  `profile_image` varchar(200) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phonenumber` varchar(20) NOT NULL,
@@ -103,14 +107,16 @@ CREATE TABLE `rb_registration` (
 -- Dumping data for table `rb_registration`
 --
 
-INSERT INTO `rb_registration` (`reg_id`, `rb_id`, `name_first`, `name_last`, `email`, `password`, `phonenumber`, `dob`, `gender`, `joined_on`, `updated_on`, `status`) VALUES
-(1, 'RBFIR000001', 'Boppana', 'Sandeep', 'boppanasandeep57@gmail.com', 'sandeep57', '9573879057', '1995-03-01', 1, '2017-12-17 16:23:59', NULL, 1),
-(2, 'RBFIR000002', 'Boppana', 'Nagendra Prasad', 'boppanaagendraprasad@gmail.com', 'prasad', '9949398140', '1969-05-07', 1, '2017-12-17 16:27:04', NULL, 1),
-(3, 'RBFIR000003', 'san', 'deep', 'san@gmail.com', 'sandeep57', '987643212', '2018-01-06', 1, '2018-01-06 10:08:41', NULL, 1),
-(4, 'RBFIR000004', 'gf', 'fdgfd', 'dg@dgd.ghjg', 'rertetrt', '543435554', '2018-01-06', 1, '2018-01-06 10:09:22', NULL, 1),
-(5, 'RBFIR000005', '', '', '', '', '', '0000-00-00', 1, '2018-02-18 12:50:15', NULL, 1),
-(6, 'RBFIR000006', '', '', '', '', '', '0000-00-00', 0, '2018-02-18 13:17:32', NULL, 1),
-(7, 'RBFIR000007', '', '', '', '', '', '0000-00-00', 0, '2018-02-18 13:22:07', NULL, 1);
+INSERT INTO `rb_registration` (`reg_id`, `rb_id`, `name_first`, `name_last`, `profile_image`, `email`, `password`, `phonenumber`, `dob`, `gender`, `joined_on`, `updated_on`, `status`) VALUES
+(1, 'RBFIR000001', 'Boppana', 'Sandeep', 'profile_imgs/1519545577522.jpg', 'boppanasandeep57@gmail.com', 'sandeep57', '9573879057', '1995-03-01', 1, '2017-12-17 16:23:59', NULL, 1),
+(2, 'RBFIR000002', 'Boppana', 'Nagendra Prasad', '', 'boppanaagendraprasad@gmail.com', 'prasad', '9949398140', '1969-05-07', 1, '2017-12-17 16:27:04', NULL, 1),
+(3, 'RBFIR000003', 'san', 'deep', 'profile_imgs/1519541491550.jpg', 'san@gmail.com', 'sandeep57', '987643212', '2018-01-06', 1, '2018-01-06 10:08:41', NULL, 1),
+(4, 'RBFIR000004', 'gf', 'fdgfd', '', 'dg@dgd.ghjg', 'rertetrt', '543435554', '2018-01-06', 1, '2018-01-06 10:09:22', NULL, 1),
+(5, 'RBFIR000005', '', '', '', '', '', '', '0000-00-00', 1, '2018-02-18 12:50:15', NULL, 1),
+(6, 'RBFIR000006', '', '', '', '', '', '', '0000-00-00', 0, '2018-02-18 13:17:32', NULL, 1),
+(7, 'RBFIR000007', '', '', '', '', '', '', '0000-00-00', 0, '2018-02-18 13:22:07', NULL, 1),
+(8, 'RBFIR000008', '', '', '', '', '', '', '0000-00-00', 0, '2018-02-20 22:40:59', NULL, 1),
+(9, 'RBFIR000009', 'Sasi', 'Donepudi', '', 'sasidonepudi@gmail.com', 'sasi1234', '9999998888', '1994-02-10', 1, '2018-02-20 22:46:46', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -141,11 +147,19 @@ INSERT INTO `rb_skills` (`skill_id`, `reg_id`, `skill_name`, `skill_priority`, `
 (5, 1, 'HTML', 0, 4, '2018-02-15 06:17:35', '0000-00-00 00:00:00', 1),
 (6, 1, 'PHP', 0, 4, '2018-02-15 09:49:54', '0000-00-00 00:00:00', 1),
 (7, 1, '3D Max', 0, 2, '2018-02-15 09:58:26', '2018-02-15 15:28:26', 0),
-(8, 1, 'Abaqus', 0, 3, '2018-02-15 09:59:25', '0000-00-00 00:00:00', 1),
+(8, 1, 'Abaqus', 0, 3, '2018-02-20 16:58:33', '2018-02-20 22:28:33', 0),
 (9, 1, '3D Max', 0, 1, '2018-02-18 13:41:33', '2018-02-18 19:11:33', 0),
 (10, 1, 'Android', 0, 3, '2018-02-17 08:52:20', '0000-00-00 00:00:00', 1),
 (11, 1, 'Ansys', 0, 4, '2018-02-18 13:41:26', '2018-02-18 19:11:26', 0),
-(12, 1, 'ASP.net', 0, 1, '2018-02-17 09:58:42', '0000-00-00 00:00:00', 1);
+(12, 1, 'ASP.net', 0, 1, '2018-02-17 09:58:42', '0000-00-00 00:00:00', 1),
+(13, 1, 'Photoshop', 0, 3, '2018-02-20 17:01:17', '0000-00-00 00:00:00', 1),
+(14, 3, '3D Max', 0, 2, '2018-02-25 10:34:12', '2018-02-25 16:04:12', 0),
+(15, 3, 'Android', 0, 2, '2018-02-20 17:03:12', '0000-00-00 00:00:00', 1),
+(16, 3, 'Apache Administrator', 0, 2, '2018-02-25 10:34:08', '2018-02-25 16:04:08', 0),
+(17, 3, 'C', 0, 1, '2018-02-20 17:03:12', '0000-00-00 00:00:00', 1),
+(18, 3, 'Database administrator', 0, 3, '2018-02-20 17:03:12', '0000-00-00 00:00:00', 1),
+(19, 9, 'Android', 0, 3, '2018-02-20 17:22:40', '0000-00-00 00:00:00', 1),
+(20, 1, 'SQLite', 0, 3, '2018-02-20 17:24:05', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -303,22 +317,22 @@ ALTER TABLE `rb_technologies`
 -- AUTO_INCREMENT for table `rb_education`
 --
 ALTER TABLE `rb_education`
-  MODIFY `edu_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `edu_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `rb_experience`
 --
 ALTER TABLE `rb_experience`
-  MODIFY `exp_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `exp_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `rb_registration`
 --
 ALTER TABLE `rb_registration`
-  MODIFY `reg_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `reg_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `rb_skills`
 --
 ALTER TABLE `rb_skills`
-  MODIFY `skill_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `skill_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `rb_technologies`
 --
