@@ -38,14 +38,14 @@ class FileUploads extends CI_Controller
                         $data = $this->fileUploads_model->profileUpload($_POST['reg_id'], $target_file);
                         if ($data == 'OK') {
                            $remove_image['data'][0]['profile_image'] == '' ? : unlink($remove_image['data'][0]['profile_image']);
-                            $succ = "The file has been uploaded.";
+                            $succ = "Your Image has been uploaded.";
                             echo json_encode(array('status' => 200, 'message' => $succ));
                         } else {
-                            $succ = "Sorry, there was an error uploading your file.";
+                            $succ = "Sorry, there was an error uploading your Image.";
                             echo json_encode(array('status' => 400, 'message' => $succ));
                         }
                     } else {
-                        $succ = "Sorry, there was an error uploading your file.";
+                        $succ = "Sorry, there was an error uploading your Image.";
                         echo json_encode(array('status' => 400, 'message' => $succ));
                     }
                 } else {
