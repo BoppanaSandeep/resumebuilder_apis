@@ -10,7 +10,7 @@ class FileUploads extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //$this->load->model('registration_model');
+        $this->load->model('registration_model');
         //$this->load->model('formSubmissions_model');
         $this->load->model('fileUploads_model');
         $this->load->helper('url');
@@ -34,8 +34,10 @@ class FileUploads extends CI_Controller
                 $check = getimagesize($_FILES["file"]["tmp_name"]);
                 if ($check !== false) {
                     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                        $remove_image = $this->registration_model->loginStatus($_POST['rb_id']);
                         $data = $this->fileUploads_model->profileUpload($_POST['reg_id'], $target_file);
                         if ($data == 'OK') {
+                           $remove_image['data'][0]['profile_image'] == '' ? : unlink($remove_image['data'][0]['profile_image']);
                             $succ = "The file has been uploaded.";
                             echo json_encode(array('status' => 200, 'message' => $succ));
                         } else {
