@@ -20,6 +20,10 @@ class RegistrationPage extends CI_Controller
         $this->load->library('email');
     }
 
+    public function connection(){
+        echo json_encode(array('status' => 200, 'message' => 'OK'));
+    }
+
     public function postRegister()
     {
         $method = $_SERVER['REQUEST_METHOD'];

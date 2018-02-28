@@ -50,6 +50,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |        my-controller/my-method    -> my_controller/my_method
  */
 $route['default_controller'] = 'welcome/index';
+
+#region Connection Verifing
+$route['registrationpage/conn'] = 'registrationPage/connection';
+#endregion
+
 #region Registration
 $route['registrationpage'] = 'registrationPage/postRegister';
 $route['rb/login'] = 'registrationPage/LoginRb';
