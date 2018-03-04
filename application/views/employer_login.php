@@ -34,13 +34,10 @@
 
             <!-- Mixins-->
             <!-- Pen Title-->
-            <div class="pen-title">
-                <h1>Login/ Register</h1>
-            </div>
             <div class="container">
                 <div class="card"></div>
                 <div class="card">
-                    <h1 class="title">Login</h1>
+                    <h4 class="title">Login</h4>
                     <form>
                         <div class="input-container">
                             <input type="text" id="username" required="required" />
@@ -63,10 +60,11 @@
                     </form>
                 </div>
                 <div class="card alt">
-                    <div class="toggle"><spna class="glyphicon glyphicon-user"></spna></div>
-                    <h1 class="title">Register
+                    <div class="toggle">
+                    </div>
+                    <h4 class="title">Register
                         <div class="close"></div>
-                    </h1>
+                    </h4>
                     <form>
                         <div class="input-container">
                             <input type="text" id="Username" required="required" />
@@ -80,6 +78,21 @@
                         </div>
                         <div class="input-container">
                             <input type="password" id="Repeat Password" required="required" />
+                            <label for="Repeat Password">Repeat Password</label>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="input-container">
+                            <input type="text" id="Username2" required="required" />
+                            <label for="Username">Username</label>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="input-container">
+                            <input type="password" id="Password2" required="required" />
+                            <label for="Password">Password</label>
+                            <div class="bar"></div>
+                        </div>
+                        <div class="input-container">
+                            <input type="password" id="Repeat Password2" required="required" />
                             <label for="Repeat Password">Repeat Password</label>
                             <div class="bar"></div>
                         </div>

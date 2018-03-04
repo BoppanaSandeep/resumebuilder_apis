@@ -3,6 +3,8 @@ body {
     color: #666666;
     font-family: 'RobotoDraft', 'Roboto', sans-serif;
     font-size: 14px;
+    position: fixed !important;
+    width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -106,7 +108,10 @@ body {
     position: relative;
     max-width: 400px;
     width: 100%;
-    margin: 0 auto 100px;
+    margin-top: 4%;
+    margin-right: 5%;
+    margin-bottom: 4%;
+    float: right;
 }
 
 .container.active .card:first-child {
@@ -126,14 +131,14 @@ body {
     min-width: 100%;
     height: auto;
     border-radius: 5px;
-    padding: 60px 0 40px;
+    padding: 35px 0 35px;
     overflow: hidden;
 }
 
 .container.active .card.alt .toggle {
     position: absolute;
     top: 40px;
-    right: -70px;
+    right: 38px;
     box-shadow: none;
     -webkit-transform: scale(14);
     transform: scale(15);
@@ -180,6 +185,10 @@ body {
     transition-delay: .7s;
 }
 
+.row {
+    display: inherit;
+}
+
 /* Card */
 
 .card {
@@ -213,14 +222,13 @@ body {
     margin: 0 0 35px;
     padding: 10px 0 10px 50px;
     color: #ec2652;
-    font-size: 32px;
     font-weight: 600;
     text-transform: uppercase;
 }
 
 .card .input-container {
     position: relative;
-    margin: 0 60px 50px;
+    margin: 0 50px 20px;
 }
 
 .card .input-container input {
@@ -229,7 +237,7 @@ body {
     position: relative;
     background: none;
     width: 100%;
-    height: 54px;
+    height: 38px;
     border: 0;
     color: #212121;
     font-size: 20px;
@@ -257,9 +265,9 @@ body {
     top: 0;
     left: 0;
     color: #757575;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
-    line-height: 60px;
+    line-height: 30px;
     -webkit-transition: 0.2s ease;
     transition: 0.2s ease;
 }
@@ -302,10 +310,10 @@ body {
     position: relative;
     display: inline-block;
     background: 0;
-    width: 240px;
+    width: 200px;
     border: 2px solid #e3e3e3;
-    padding: 20px 0;
-    font-size: 24px;
+    padding: 10px 0;
+    font-size: 18px;
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
@@ -357,9 +365,9 @@ body {
 }
 
 .card .footer {
-    margin: 40px 0 0;
+    margin: 20px 0 0;
     color: #d3d3d3;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
     text-align: center;
 }
@@ -378,10 +386,10 @@ body {
 .card.alt {
     position: absolute;
     top: 40px;
-    right: -70px;
+    right: -30px;
     z-index: 10;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     background: none;
     border-radius: 100%;
     box-shadow: none;
@@ -397,8 +405,8 @@ body {
 .card.alt .toggle {
     position: relative;
     background: #ec2652;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     border-radius: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     color: #ffffff;
@@ -439,7 +447,7 @@ body {
     right: 60px;
     display: inline;
     color: #ffffff;
-    font-size: 58px;
+    font-size: 45px;
     font-weight: 400;
 }
 
