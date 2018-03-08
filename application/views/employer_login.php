@@ -11,6 +11,7 @@
     />
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="<?php echo base_url(); ?>assets/css/login.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="<?php echo base_url(); ?>assets/js/core/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/popper.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/core/bootstrap.min.js"></script>
@@ -29,12 +30,9 @@
 </head>
 
 <body>
-    <div class="container">
+<div class="container">
         <div class="row">
-
-            <!-- Mixins-->
-            <!-- Pen Title-->
-            <div class="container">
+            <div class="col-12 col-sm-8 col-md-6  col-xl-4 ml-auto">
                 <div class="card"></div>
                 <div class="card">
                     <h4 class="title">Login</h4>

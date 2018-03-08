@@ -1,13 +1,19 @@
+html {
+    min-width: 100%;
+    min-height: 100%;
+}
+
 body {
     background: #e9e9e9;
     color: #666666;
     font-family: 'RobotoDraft', 'Roboto', sans-serif;
     font-size: 14px;
-    position: fixed !important;
-    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 
 /* Pen Title */
 
@@ -37,6 +43,7 @@ body {
     text-decoration: none;
 }
 
+
 /* Rerun */
 
 .rerun {
@@ -61,9 +68,11 @@ body {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
+
 /* Scroll To Bottom */
 
-#codepen, #portfolio {
+#codepen,
+#portfolio {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -78,13 +87,16 @@ body {
     text-align: center;
 }
 
-#codepen i, #portfolio i {
+#codepen i,
+#portfolio i {
     line-height: 56px;
 }
 
-#codepen:hover, #portfolio:hover {
+#codepen:hover,
+#portfolio:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
+
 
 /* CodePen */
 
@@ -102,16 +114,13 @@ body {
     line-height: 44px;
 }
 
+
 /* Container */
 
 .container {
     position: relative;
-    max-width: 400px;
-    width: 100%;
     margin-top: 4%;
-    margin-right: 5%;
     margin-bottom: 4%;
-    float: right;
 }
 
 .container.active .card:first-child {
@@ -140,8 +149,8 @@ body {
     top: 40px;
     right: 38px;
     box-shadow: none;
-    -webkit-transform: scale(14);
-    transform: scale(15);
+    -webkit-transform: scale(21);
+    transform: scale(22);
     -webkit-transition: -webkit-transform .5s ease;
     transition: -webkit-transform .5s ease;
     transition: transform .5s ease;
@@ -152,7 +161,9 @@ body {
     content: '';
 }
 
-.container.active .card.alt .title, .container.active .card.alt .input-container, .container.active .card.alt .button-container {
+.container.active .card.alt .title,
+.container.active .card.alt .input-container,
+.container.active .card.alt .button-container {
     left: 0;
     opacity: 1;
     visibility: visible;
@@ -188,6 +199,7 @@ body {
 .row {
     display: inherit;
 }
+
 
 /* Card */
 
@@ -240,7 +252,7 @@ body {
     height: 38px;
     border: 0;
     color: #212121;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
 }
 
@@ -250,14 +262,15 @@ body {
     transform: translate(-12%, -50%) scale(0.75);
 }
 
-.card .input-container input:focus~.bar:before, .card .input-container input:focus~.bar:after {
+.card .input-container input:focus~.bar:before,
+.card .input-container input:focus~.bar:after {
     width: 50%;
 }
 
 .card .input-container input:valid~label {
     color: #9d9d9d;
-    -webkit-transform: translate(-12%, -50%) scale(0.75);
-    transform: translate(-12%, -50%) scale(0.75);
+    -webkit-transform: translate(-12%, -50%) scale(0.85);
+    transform: translate(-12%, -50%) scale(0.85);
 }
 
 .card .input-container label {
@@ -265,7 +278,7 @@ body {
     top: 0;
     left: 0;
     color: #757575;
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 300;
     line-height: 30px;
     -webkit-transition: 0.2s ease;
@@ -281,7 +294,8 @@ body {
     height: 1px;
 }
 
-.card .input-container .bar:before, .card .input-container .bar:after {
+.card .input-container .bar:before,
+.card .input-container .bar:after {
     content: '';
     position: absolute;
     background: #ec2652;
@@ -346,19 +360,25 @@ body {
     transition: .3s ease;
 }
 
-.card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
+.card .button-container button:hover,
+.card .button-container button:active,
+.card .button-container button:focus {
     border-color: #ec2652;
 }
 
-.card .button-container button:hover span, .card .button-container button:active span, .card .button-container button:focus span {
+.card .button-container button:hover span,
+.card .button-container button:active span,
+.card .button-container button:focus span {
     color: #ec2652;
 }
 
-.card .button-container button:active span, .card .button-container button:focus span {
+.card .button-container button:active span,
+.card .button-container button:focus span {
     color: #ffffff;
 }
 
-.card .button-container button:active:before, .card .button-container button:focus:before {
+.card .button-container button:active:before,
+.card .button-container button:focus:before {
     opacity: 1;
     -webkit-transform: scale(10);
     transform: scale(10);
@@ -386,10 +406,10 @@ body {
 .card.alt {
     position: absolute;
     top: 40px;
-    right: -30px;
+    right: 0px;
     z-index: 10;
-    width: 75px;
-    height: 75px;
+    width: 55px;
+    height: 55px;
     background: none;
     border-radius: 100%;
     box-shadow: none;
@@ -405,13 +425,13 @@ body {
 .card.alt .toggle {
     position: relative;
     background: #ec2652;
-    width: 75px;
-    height: 75px;
+    width: 55px;
+    height: 55px;
     border-radius: 100%;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     color: #ffffff;
-    font-size: 42px;
-    line-height: 100px;
+    font-size: 28px;
+    line-height: 60px;
     text-align: center;
     cursor: pointer;
 }
@@ -428,7 +448,9 @@ body {
     transform: translate(0, 0);
 }
 
-.card.alt .title, .card.alt .input-container, .card.alt .button-container {
+.card.alt .title,
+.card.alt .input-container,
+.card.alt .button-container {
     left: 100px;
     opacity: 0;
     visibility: hidden;
@@ -463,7 +485,8 @@ body {
     color: #ffffff;
 }
 
-.card.alt .input-container input:focus~.bar:before, .card.alt .input-container input:focus~.bar:after {
+.card.alt .input-container input:focus~.bar:before,
+.card.alt .input-container input:focus~.bar:after {
     background: #ffffff;
 }
 
@@ -472,7 +495,7 @@ body {
 }
 
 .card.alt .input-container label {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgb(255, 177, 194);
 }
 
 .card.alt .input-container .bar {
@@ -493,9 +516,11 @@ body {
     background: rgba(255, 255, 255, 0.9);
 }
 
-.card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
+.card.alt .button-container button:active:before,
+.card.alt .button-container button:focus:before {
     display: none;
 }
+
 
 /* Keyframes */
 
