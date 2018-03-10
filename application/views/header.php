@@ -35,50 +35,50 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active">
+                    <li class="<?php echo $active == 'dashboard' ? 'active' : ''; ?>" >
                         <a href="<?php echo base_url(); ?>">
                             <i class="now-ui-icons business_badge"></i>
                             <p>Empolyer</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>welcome/user">
+                    <li class="<?php echo $active == 'user' ? 'active' : ''; ?>" >
+                        <a href="<?php echo base_url(); ?>dashboard/user">
                             <i class="now-ui-icons users_single-02"></i>
                             <p>Profile</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>welcome/notify">
+                    <li class="<?php echo $active == 'notify' ? 'active' : ''; ?>" >
+                        <a href="<?php echo base_url(); ?>dashboard/notify">
                             <i class="now-ui-icons ui-1_bell-53"></i>
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>welcome/maps">
+                    <li class="<?php echo $active == 'map' ? 'active' : ''; ?>" >
+                        <a href="<?php echo base_url(); ?>dashboard/maps">
                             <i class="now-ui-icons location_map-big"></i>
                             <p>Maps</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>welcome/icons">
+                    <li class="<?php echo $active == 'icons' ? 'active' : ''; ?>" >
+                        <a href="<?php echo base_url(); ?>dashboard/icons">
                             <i class="now-ui-icons education_atom"></i>
                             <p>Icons</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>welcome/tables">
+                    <li class="<?php echo $active == 'tables' ? 'active' : ''; ?>" >
+                        <a href="<?php echo base_url(); ?>dashboard/tables">
                             <i class="now-ui-icons design_bullet-list-67"></i>
                             <p>Table List</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>welcome/typo">
+                    <li class="<?php echo $active == 'typo' ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url(); ?>dashboard/typo">
                             <i class="now-ui-icons text_caps-small"></i>
                             <p>Typography</p>
                         </a>
                     </li>
                     <li class="active-pro">
-                        <a href="<?php echo base_url(); ?>welcome/upgrade">
+                        <a href="<?php echo base_url(); ?>dashboard/upgrade">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                             <p>Upgrade to PRO</p>
                         </a>
@@ -117,7 +117,7 @@
                         </form>
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"  data-toggle="dropdown" aria-haspopup="true"
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
                                     <i class="now-ui-icons location_world"></i>
                                     <p>
@@ -139,9 +139,10 @@
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">
+                                        <?php echo $this->session->userdata('emp_company'); ?>
+                                    </a>
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard/logout">Logout</a>
                                 </div>
                             </li>
                         </ul>

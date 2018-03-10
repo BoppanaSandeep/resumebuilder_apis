@@ -15,6 +15,9 @@
     <script src="<?php echo base_url(); ?>assets/js/core/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/popper.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/core/bootstrap.min.js"></script>
+    <script>
+        var base_url = '<?php echo base_url(); ?>';
+    </script>
     <script src="<?php echo base_url(); ?>assets/js/employer/register_login.js"></script>
 </head>
 
@@ -25,14 +28,19 @@
                 <div class="card"></div>
                 <div class="card">
                     <h4 class="title">Login</h4>
-                    <form id="employer_login" name="employer_login" action="<?php echo base_url(); ?>employer/employerRegistration/EmployerRegister" method="post">
+                    <label class="error">
+                        <?php 
+                            echo $this->session->flashdata('error'); 
+                        ?>
+                    </label>
+                    <form id="employer_login" name="employer_login" action="<?php echo base_url(); ?>employer/employerRegistration/LoginEmp" method="post">
                         <div class="input-container">
-                            <input type="text" id="email" autocomplete="new-email" />
+                            <input type="text" name="email" id="email" autocomplete="new-email" />
                             <label for="email">Email</label>
                             <div class="bar"></div>
                         </div>
                         <div class="input-container">
-                            <input type="password" id="pwd" autocomplete="new-password"/>
+                            <input type="password" name="pwd" id="pwd" autocomplete="new-password"/>
                             <label for="pwd">Password</label>
                             <div class="bar"></div>
                         </div>
@@ -59,7 +67,7 @@
                             <div class="bar"></div>
                         </div>
                         <div class="input-container">
-                            <input type="text" name="company_email" id="company_email"/>
+                            <input type="text" name="company_email" id="company_email" onchange="VerifyEmail(this.value)"/>
                             <label for="company_email">Company Email</label>
                             <div class="bar"></div>
                         </div>

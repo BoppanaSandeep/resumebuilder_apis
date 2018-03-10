@@ -28,7 +28,9 @@ class Registration_model extends CI_Model
 
     public function InsertRegisterData($registerdata)
     {
-
+        $reg = array(
+            "status" => array(),
+        );
         $res = $this->db->insert("registration", $registerdata);
         if ($res) {
             return $reg['status'] = 'OK';

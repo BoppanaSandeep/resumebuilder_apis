@@ -29,11 +29,53 @@ class EmployerRegistration_model extends CI_Model
 
     public function EmpRegisterData($reg_data)
     {
+        $reg = array(
+            "status" => array(),
+        );
         $res = $this->db->insert("employer_registration", $reg_data);
         if ($res) {
             return $reg['status'] = 'OK';
         } else {
             return $reg['status'] = 'BAD';
+        }
+    }
+
+    public function EmpLogin($LoginData)
+    {
+        $result_array = array(
+            "status" => array(),
+            "data" => array(),
+        );
+        $this->db->select("*");
+        $this->db->from("employer_registration");
+        $this->db->where($LoginData);
+        $emprbid = $this->db->get();
+        if (sizeof($emprbid->result_array()) > 0) {
+            $result_array['status'] = 'OK';
+            $result_array['data'] = $emprbid->result_array();
+            return $result_array;
+        } else {
+            $result_array['status'] = 'BAD';
+            $result_array['data'] = '';
+            return $result_array;
+        }
+    }
+
+    public function verify_email($email)
+    {
+        $where_email = array(
+            "emp_email" => $email
+        );
+        $this->db->select("emp_email");
+        $this->db->from("employer_registration");
+        $this->db->where($where_email);
+        $emprbid = $this->db->get();
+        if (sizeof($emprbid->result_array()) > 0) {
+            $result_array['status'] = 'exist';
+            return $result_array;
+        } else {
+            $result_array['status'] = 'not_exist';
+            return $result_array;
         }
     }
 
