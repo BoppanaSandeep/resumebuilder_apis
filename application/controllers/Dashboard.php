@@ -43,16 +43,6 @@ class Dashboard extends CI_Controller
         }
     }
 
-    public function typo()
-    {
-        if ($this->session->userdata('emp_rb_id')) {
-            $act['active'] = 'typo';
-            $this->load->view('typography', $act);
-        } else {
-            redirect(base_url());
-        }
-    }
-
     public function icons()
     {
         if ($this->session->userdata('emp_rb_id')) {
@@ -86,7 +76,7 @@ class Dashboard extends CI_Controller
     public function upgrade()
     {   
         if ($this->session->userdata('emp_rb_id')) {
-            $act['active'] = 'active-pro';
+            $act['active'] = 'upgrade';
             $this->load->view('upgrade', $act);
         } else {
             redirect(base_url());

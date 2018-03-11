@@ -3,17 +3,7 @@
  =========================================================
  * now-ui-dashboard - v1.0.1
  =========================================================
-
- * Product Page: https://www.creative-tim.com/product/now-ui-dashboard
- * Copyright 2018 Creative Tim (http://www.creative-tim.com)
- * Licensed under MIT (https://github.com/creativetimofficial/now-ui-dashboard/blob/master/LICENSE.md)
-
- * Designed by www.invisionapp.com Coded by www.creative-tim.com
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
+ 
  */
 
 (function () {
@@ -21,11 +11,13 @@
 
     if (isWindows) {
         // if we are on windows OS we activate the perfectScrollbar function
-        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+        $('.sidebar .sidebar-wrapper, .main-panel, .chat-body').perfectScrollbar();
 
         $('html').addClass('perfect-scrollbar-on');
+        $('.chat-body').addClass('perfect-scrollbar-on');
     } else {
         $('html').addClass('perfect-scrollbar-off');
+        $('.chat-body').addClass('perfect-scrollbar-off');
     }
 })();
 

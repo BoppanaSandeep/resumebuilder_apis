@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2018 at 03:20 PM
+-- Generation Time: Mar 11, 2018 at 02:58 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -65,12 +65,18 @@ CREATE TABLE `rb_employer_registration` (
   `emp_company` varchar(255) NOT NULL,
   `emp_email` varchar(255) NOT NULL,
   `emp_name` varchar(255) NOT NULL,
+  `emp_first_name` varchar(250) NOT NULL,
+  `emp_last_name` varchar(250) NOT NULL,
   `emp_contact_num` varchar(20) NOT NULL,
   `emp_address` text NOT NULL,
+  `emp_city` varchar(255) NOT NULL,
+  `emp_country` varchar(255) NOT NULL,
+  `emp_postal` int(255) NOT NULL,
+  `emp_about` varchar(500) NOT NULL,
   `emp_pwd` varchar(255) NOT NULL,
   `emp_picture` varchar(255) NOT NULL,
-  `emp_joined_date` timestamp NULL DEFAULT NULL,
-  `emp_updated_date` timestamp NULL DEFAULT NULL,
+  `emp_joined_date` datetime DEFAULT NULL,
+  `emp_updated_date` datetime DEFAULT NULL,
   `emp_status` int(10) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -78,15 +84,17 @@ CREATE TABLE `rb_employer_registration` (
 -- Dumping data for table `rb_employer_registration`
 --
 
-INSERT INTO `rb_employer_registration` (`employer_id`, `emp_rb_id`, `emp_company`, `emp_email`, `emp_name`, `emp_contact_num`, `emp_address`, `emp_pwd`, `emp_picture`, `emp_joined_date`, `emp_updated_date`, `emp_status`) VALUES
-(1, 'RBFIREMP000001', 'ABC', 'abc@abc.com', 'ABC', '9874563210', 'hyderabad ', 'sandeep57', '', NULL, NULL, 1),
-(2, 'RBFIREMP000001', 'ABC2', 'abc2@abc.com', 'ABC2', '9874563210', '4309 N Whipple', '123456', '', NULL, NULL, 1),
-(3, 'RBFIREMP000001', 'ABC2', 'abc2@abc.com', 'ABC2', '9874563210', '4309 N Whipple', '123456', '', NULL, NULL, 1),
-(4, 'RBFIREMP000002', 'ABC2', 'abc2@abc.com', 'ABC2', '9874563210', '4309 N Whipple', '123456', '', NULL, NULL, 1),
-(5, 'RBFIREMP000003', 'ABC2', 'abc2@abc.com', 'ABC2', '9874563210', '4309 N Whipple', '123456', '', NULL, NULL, 1),
-(6, 'RBFIREMP000004', 'ABC2', 'abc2@abc.com', 'ABC2', '9874563210', '4309 N Whipple', '123456', '', NULL, NULL, 1),
-(7, 'RBFIREMP000005', '1', 'adc@sdfsd.sdf', '1', '1', '1 ', '1', '', NULL, NULL, 1),
-(8, 'RBFIREMP000006', '2', '2@2.cm', '2', '2', '2 ', '2', '', NULL, NULL, 1);
+INSERT INTO `rb_employer_registration` (`employer_id`, `emp_rb_id`, `emp_company`, `emp_email`, `emp_name`, `emp_first_name`, `emp_last_name`, `emp_contact_num`, `emp_address`, `emp_city`, `emp_country`, `emp_postal`, `emp_about`, `emp_pwd`, `emp_picture`, `emp_joined_date`, `emp_updated_date`, `emp_status`) VALUES
+(1, 'RBFIREMP000001', 'ABC', 'abc@abc.com', 'ABC', 'AC', 'B', '9874563210', 'Nizampet, Hyderabad, Telangana.', 'Hyderabad', 'India', 123456, 'Lamborghini Mercy \r\nYour chick she so thirsty \r\nI''m in that two seat Lambo', 'sandeep57', '', NULL, '2018-03-11 19:25:17', 1),
+(4, 'RBFIREMP000002', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
+(5, 'RBFIREMP000003', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
+(6, 'RBFIREMP000004', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
+(7, 'RBFIREMP000005', '1', 'adc@sdfsd.sdf', '1', '', '', '1', '1 ', '', '', 0, '', '1', '', NULL, NULL, 1),
+(8, 'RBFIREMP000006', '2', '2@2.cm', '2', '', '', '2', '2 ', '', '', 0, '', '2', '', NULL, NULL, 1),
+(9, 'RBFIREMP000007', 'sandeep', '2@2.cm', 'sandeep', '', '', '9786543210', 'sandeep, vij ', '', '', 0, '', '123456', '', NULL, NULL, 1),
+(10, 'RBFIREMP000008', 'sdfkjs', '2@2.cm', 'ffksdff', '', '', 'jdfjkdfk', 'kjdfsdr435 ', '', '', 0, '', '12345', '', NULL, NULL, 1),
+(11, 'RBFIREMP000009', 'sdfsdf', '2@2.cm', 'sdfsdf', '', '', 'sdfsfsdf', ' fsdfsdfsdf', '', '', 0, '', '1234', '', NULL, NULL, 1),
+(12, 'RBFIREMP0000010', 'asdadsasdad', 'sandeep@gmil.com', 'asdasd', '', '', '324', ' asdasd', '', '', 0, '', '123', '', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -380,7 +388,7 @@ ALTER TABLE `rb_education`
 -- AUTO_INCREMENT for table `rb_employer_registration`
 --
 ALTER TABLE `rb_employer_registration`
-  MODIFY `employer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `employer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `rb_experience`
 --

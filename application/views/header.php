@@ -9,14 +9,20 @@
     <title>Resume Builder - Employer</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
     />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- CSS Files -->
+    <link href="<?php echo base_url(); ?>assets/css/all.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/css/now-ui-dashboard.css?v=1.0.1" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="<?php echo base_url(); ?>assets/demo/demo.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="<?php echo base_url(); ?>assets/demo/fonts.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/css/styles.css" rel="stylesheet" />
+    <script>
+        // base url
+        var base_url='<?php echo base_url(); ?>';
+        // session varibales for Javascript
+        var session_empid='<?php echo $this->session->userdata('employer_id'); ?>';
+        var session_emp_rbid='<?php echo $this->session->userdata('emp_rb_id'); ?>';
+    </script>
 </head>
 
 <body class="">
@@ -71,13 +77,7 @@
                             <p>Table List</p>
                         </a>
                     </li>
-                    <li class="<?php echo $active == 'typo' ? 'active' : ''; ?>">
-                        <a href="<?php echo base_url(); ?>dashboard/typo">
-                            <i class="now-ui-icons text_caps-small"></i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li class="active-pro">
+                    <li class="<?php echo $active == 'upgrade' ? 'active' : ''; ?>">
                         <a href="<?php echo base_url(); ?>dashboard/upgrade">
                             <i class="now-ui-icons arrows-1_cloud-download-93"></i>
                             <p>Upgrade to PRO</p>

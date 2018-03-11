@@ -24,6 +24,7 @@ class EmployerRegistration extends CI_Controller
             "emp_contact_num" => $this->input->post('contact_number', true),
             "emp_address" => $this->input->post('contact_address', true),
             "emp_pwd" => $this->input->post('password', true),
+            "emp_joined_date" => date('Y-m-d H:i:s'),
         );
 
         $res = $this->EmployerRegistration_model->EmpRegisterData($resgister_data);
@@ -60,14 +61,52 @@ class EmployerRegistration extends CI_Controller
     public function VerifyEmail()
     {
         //echo $this->input->get('email');
-        if ($this->input->get('email')) {
-            $email = $this->EmployerRegistration_model->verify_email($this->input->get('email'));
+        if ($this->input->get('email', true)) {
+            $email = $this->EmployerRegistration_model->verify_email($this->input->get('email', true));
             //print_r($email);
             if ($email['status'] == 'exist') {
                 echo $email['status'];
-            }else{
+            } else {
                 echo $email['status'];
             }
+        }
+    }
+
+    public function getProfileDetails()
+    {
+        if ($this->input->get('emp_rb_id', true)) {
+            $details = $this->EmployerRegistration_model->ProfileDetails($this->input->get('emp_rb_id', true));
+            //print_r($email);
+            if ($details['status'] == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK', 'info' => $details['data']));
+            } else {
+                echo json_encode(array('status' => 200, 'message' => 'BAD'));
+            }
+        }
+    }
+
+    public function updateEmpProfile()
+    {
+        //print_r($this->input->post());
+        $resgister_data = array(
+            "emp_company" => $this->input->post('company', true),
+            "emp_email" => $this->input->post('email', true),
+            "emp_name" => $this->input->post('emp_name', true),
+            "emp_first_name" => $this->input->post('first_name', true),
+            "emp_last_name" => $this->input->post('last_name', true),
+            "emp_contact_num" => $this->input->post('contact_number', true),
+            "emp_address" => $this->input->post('address', true),
+            "emp_city" => $this->input->post('city', true),
+            "emp_country" => $this->input->post('country', true),
+            "emp_postal" => $this->input->post('postal', true),
+            "emp_about" => $this->input->post('about', true),
+            "emp_updated_date" => date('Y-m-d H:i:s'),
+        );
+        $res = $this->EmployerRegistration_model->EmpUpdateData($resgister_data);
+        if ($res == 'OK') {
+            echo json_encode(array('status' => 200, 'message' => 'OK'));
+        } else {
+            echo json_encode(array('status' => 200, 'message' => 'BAD'));
         }
     }
 }

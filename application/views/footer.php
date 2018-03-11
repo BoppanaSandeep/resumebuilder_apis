@@ -3,29 +3,27 @@
                     <nav>
                         <ul>
                             <li>
-                                <a href="https://www.creative-tim.com">
-                                    Creative Tim
+                                <a href="#">
+                                    Resume Builder
                                 </a>
                             </li>
                             <li>
-                                <a href="http://presentation.creative-tim.com">
+                                <a href="#">
                                     About Us
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="http://blog.creative-tim.com">
                                     Blog
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </nav>
                     <div class="copyright">
                         &copy;
                         <script>
                             document.write(new Date().getFullYear())
-                        </script>, Designed by
-                        <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-                        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                        </script>
                     </div>
                 </div>
             </footer>

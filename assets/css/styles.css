@@ -7,3 +7,51 @@
 label.error {
     text-align: center;
 }
+
+.card .card-body {
+    padding: 1.25rem;
+}
+
+.table>thead>tr>th {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.user-header-row, .user-header-row>* {
+    margin-bottom: -1%;
+}
+
+.user-header-row>.col-md-3>.fa {
+    font-size: 30px;
+    float: right;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.user-header-row>.col-md-3>.fa:hover {
+    color: #2ca8ff !important;
+}
+
+.modal-header {
+    padding: 0px 10px 10px 5px;
+    background: #2CA8FF;
+    color: #fff;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.modal-header>h5 {
+    margin-top: 10px;
+}
+
+.modal-footer {
+    padding: 5px;
+}
+
+.modal-footer>button {
+    margin: 0;
+}
+
+.pr-1 {
+    padding-left: 4px;
+}
