@@ -119,4 +119,17 @@ class EmployerRegistration_model extends CI_Model
         }
     }
 
+    public function companyLogoUpload($file_name)
+    {
+        $data = array('emp_picture' => $file_name, 'emp_updated_date' => date('Y-m-d H:i:s'));
+        $this->db->where('emp_status', 1);
+        $this->db->where('emp_rb_id', $this->session->userdata('emp_rb_id'));
+        $res = $this->db->update('employer_registration', $data);
+        if ($res) {
+            return $reg['status'] = 'OK';
+        } else {
+            return $reg['status'] = 'BAD';
+        }
+    }
+
 }

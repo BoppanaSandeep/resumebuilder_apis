@@ -7,7 +7,7 @@ class EmployerRegistration extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('url');
+        $this->load->helper(array('form', 'url'));
         $this->load->model('employer/EmployerRegistration_model');
         $this->load->library('session');
     }
@@ -107,6 +107,39 @@ class EmployerRegistration extends CI_Controller
             echo json_encode(array('status' => 200, 'message' => 'OK'));
         } else {
             echo json_encode(array('status' => 200, 'message' => 'BAD'));
+        }
+    }
+
+    public function uploadCompanyImg()
+    {
+        $data = '';
+        $succ = '';
+        $target_dir = "company_logos/";
+        $target_file = $target_dir . date('YmdHis') . "_" . $_FILES["image"]["name"];
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        // Check if image file is a actual image or fake image
+        if (isset($_FILES["image"]["tmp_name"])) {
+            $check = getimagesize($_FILES["image"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                    $remove_image = $this->EmployerRegistration_model->ProfileDetails($this->session->userdata('emp_rb_id'));
+                    $data = $this->EmployerRegistration_model->companyLogoUpload($target_file);
+                    if ($data == 'OK') {
+                        $remove_image['data'][0]['emp_picture'] == '' ?: unlink($remove_image['data'][0]['emp_picture']);
+                        $succ = "Your Image has been uploaded.";
+                        echo json_encode(array('status' => 200, 'message' => $succ));
+                    } else {
+                        $succ = "Sorry, there was an error uploading your Image.";
+                        echo json_encode(array('status' => 400, 'message' => $succ));
+                    }
+                } else {
+                    $succ = "Sorry, there was an error uploading your Image.";
+                    echo json_encode(array('status' => 400, 'message' => $succ));
+                }
+            } else {
+                $succ = "File is not an image.";
+                echo json_encode(array('status' => 400, 'message' => $succ));
+            }
         }
     }
 }

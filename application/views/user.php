@@ -109,19 +109,17 @@
                 </div>
                 <div class="card-body">
                     <div class="author">
-                        <a href="#">
-                            <img class="avatar border-gray" src="../assets/img//mike.jpg" alt="...">
-                            <h5 class="title">Mike Andrew</h5>
-                        </a>
-                        <p class="description">
-                            michael24
+                        <!-- <a href="#"> -->
+                        <img class="avatar border-gray imgupload" title="Click to update." src="../assets/img/company_logo.png" alt="...">
+                        <span class="uploading text-primary"></span>
+                        <form>
+                            <input type="file" name="company_logo" id="company_logo" />
+                        </form>
+                        <h5 class="title text-primary company_name"></h5>
+                        <!-- </a> -->
+                        <p class="description about">
                         </p>
                     </div>
-                    <p class="description text-center">
-                        "Lamborghini Mercy
-                        <br> Your chick she so thirsty
-                        <br> I'm in that two seat Lambo"
-                    </p>
                 </div>
                 <hr>
                 <div class="button-container">
@@ -136,6 +134,30 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+
         </div>
     </div>
 </div>

@@ -8,6 +8,12 @@ label.error {
     text-align: center;
 }
 
+input[name="company_logo"] {
+    width: 80%;
+    margin: 4% 10% !important;
+    padding: 0px 5px;
+}
+
 .card .card-body {
     padding: 1.25rem;
 }
@@ -17,7 +23,8 @@ label.error {
     font-weight: 600;
 }
 
-.user-header-row, .user-header-row>* {
+.user-header-row,
+.user-header-row>* {
     margin-bottom: -1%;
 }
 
@@ -30,6 +37,10 @@ label.error {
 
 .user-header-row>.col-md-3>.fa:hover {
     color: #2ca8ff !important;
+}
+
+img:hover {
+    cursor: pointer;
 }
 
 .modal-header {
