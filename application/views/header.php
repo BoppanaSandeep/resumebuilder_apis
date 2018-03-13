@@ -32,7 +32,7 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                <a href="#" class="simple-text logo-mini">
                     RB
                 </a>
                 <a href="#" class="simple-text logo-normal">
@@ -43,43 +43,43 @@
                 <ul class="nav">
                     <li class="<?php echo $active == 'dashboard' ? 'active' : ''; ?>" >
                         <a href="<?php echo base_url(); ?>">
-                            <i class="now-ui-icons business_badge"></i>
+                            <i class="fa fa-briefcase"></i>
                             <p>Empolyer</p>
                         </a>
                     </li>
                     <li class="<?php echo $active == 'user' ? 'active' : ''; ?>" >
                         <a href="<?php echo base_url(); ?>dashboard/user">
-                            <i class="now-ui-icons users_single-02"></i>
+                            <i class="fa fa-user"></i>
                             <p>Profile</p>
+                        </a>
+                    </li>
+                    <li class="<?php echo $active == 'job_posts' ? 'active' : ''; ?>" >
+                        <a href="<?php echo base_url(); ?>dashboard/job_posts">
+                            <i class="fa fa-clipboard"></i>
+                            <p>Post Jobs</p>
                         </a>
                     </li>
                     <li class="<?php echo $active == 'notify' ? 'active' : ''; ?>" >
                         <a href="<?php echo base_url(); ?>dashboard/notify">
-                            <i class="now-ui-icons ui-1_bell-53"></i>
+                            <i class="fa fa-bell"></i>
                             <p>Notifications</p>
                         </a>
                     </li>
                     <li class="<?php echo $active == 'map' ? 'active' : ''; ?>" >
                         <a href="<?php echo base_url(); ?>dashboard/maps">
-                            <i class="now-ui-icons location_map-big"></i>
+                            <i class="fa fa-map"></i>
                             <p>Maps</p>
-                        </a>
-                    </li>
-                    <li class="<?php echo $active == 'icons' ? 'active' : ''; ?>" >
-                        <a href="<?php echo base_url(); ?>dashboard/icons">
-                            <i class="now-ui-icons education_atom"></i>
-                            <p>Icons</p>
                         </a>
                     </li>
                     <li class="<?php echo $active == 'tables' ? 'active' : ''; ?>" >
                         <a href="<?php echo base_url(); ?>dashboard/tables">
-                            <i class="now-ui-icons design_bullet-list-67"></i>
+                            <i class="fa fa-table"></i>
                             <p>Table List</p>
                         </a>
                     </li>
                     <li class="<?php echo $active == 'upgrade' ? 'active' : ''; ?>">
                         <a href="<?php echo base_url(); ?>dashboard/upgrade">
-                            <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                            <i class="fa fa-cloud"></i>
                             <p>Upgrade to PRO</p>
                         </a>
                     </li>
@@ -98,7 +98,7 @@
                                 <span class="navbar-toggler-bar bar3"></span>
                             </button>
                         </div>
-                        <a class="navbar-brand" href="#pablo">Dashboard</a>
+                        <!-- <a class="navbar-brand" href="#pablo">Dashboard</a> -->
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -111,7 +111,7 @@
                             <div class="input-group no-border">
                                 <input type="text" value="" class="form-control" placeholder="Search...">
                                 <span class="input-group-addon">
-                                    <i class="now-ui-icons ui-1_zoom-bold"></i>
+                                    <i class="fa fa-search"></i>
                                 </span>
                             </div>
                         </form>
@@ -119,7 +119,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    <i class="now-ui-icons location_world"></i>
+                                    <i class="fa fa-globe"></i>
                                     <p>
                                         <span class="d-lg-none d-md-block">Notifications</span>
                                     </p>
@@ -133,7 +133,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                     aria-expanded="false">
-                                    <i class="now-ui-icons users_single-02"></i>
+                                    <i class="fa fa-ellipsis-v"></i>
                                     <p>
                                         <span class="d-lg-none d-md-block">Account</span>
                                     </p>

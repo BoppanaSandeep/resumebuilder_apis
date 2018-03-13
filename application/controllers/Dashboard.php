@@ -32,22 +32,21 @@ class Dashboard extends CI_Controller
             redirect(base_url());
         }
     }
+    public function job_posts()
+    {
+        if ($this->session->userdata('emp_rb_id')) {
+            $act['active'] = 'job_posts';
+            $this->load->view('job_posts.php', $act);
+        } else {
+            redirect(base_url());
+        }
+    }
 
     public function tables()
     {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'tables';
             $this->load->view('tables', $act);
-        } else {
-            redirect(base_url());
-        }
-    }
-
-    public function icons()
-    {
-        if ($this->session->userdata('emp_rb_id')) {
-            $act['active'] = 'icons';
-            $this->load->view('icons', $act);
         } else {
             redirect(base_url());
         }
@@ -74,7 +73,7 @@ class Dashboard extends CI_Controller
     }
 
     public function upgrade()
-    {   
+    {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'upgrade';
             $this->load->view('upgrade', $act);

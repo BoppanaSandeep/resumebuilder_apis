@@ -4,6 +4,39 @@
 </div>
 <div class="content">
     <div class="row">
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <img class="imguploadbackdrop" src="../assets/img/company_logo.png" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="author">
+                        <!-- <a href="#"> -->
+                        <img class="avatar border-gray imgupload" title="Click to update." src="../assets/img/company_logo.png" alt="...">
+                        <form>
+                            <input type="file" name="company_logo" id="company_logo" />
+                        </form>
+                        <span class="uploading text-primary"></span>
+                        <h5 class="title text-primary company_name"></h5>
+                        <!-- </a> -->
+                        <p class="description about">
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="button-container">
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                        <i class="fa fa-facebook-f"></i>
+                    </button>
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                        <i class="fa fa-twitter"></i>
+                    </button>
+                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
+                        <i class="fa fa-google-plus-g"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -21,19 +54,21 @@
                 <div class="card-body">
                     <form name="edit_profile" id="edit_profile" method="post">
                         <div class="row">
-                            <div class="col-md-5 pr-1">
+                            <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label>Company</label>
                                     <input type="text" class="form-control" name="company" id="company" placeholder="Company" value="">
                                 </div>
                             </div>
-                            <div class="col-md-3 px-1">
+                            <div class="col-md-6 pl-1">
                                 <div class="form-group">
                                     <label>Employer Name</label>
                                     <input type="text" class="form-control" name="emp_name" id="emp_name" placeholder="Employer Name" value="">
                                 </div>
                             </div>
-                            <div class="col-md-4 pl-1">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-1">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email address</label>
                                     <input type="text" name="email" id="email" class="form-control" placeholder="Email" onchange="VerifyEmail(this.value)">
@@ -94,7 +129,7 @@
                             <div class="col-md-12 pr-1">
                                 <div class="form-group">
                                     <label>About Your Company</label>
-                                    <textarea rows="4" cols="80" class="form-control" name="about" id="about" placeholder="Here can be your company description" value="Mike"></textarea>
+                                    <textarea rows="4" cols="80" class="form-control" name="about" id="about" placeholder="Here can be your company description"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -102,39 +137,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-user">
-                <div class="image">
-                    <img src="../assets/img//bg5.jpg" alt="...">
-                </div>
-                <div class="card-body">
-                    <div class="author">
-                        <!-- <a href="#"> -->
-                        <img class="avatar border-gray imgupload" title="Click to update." src="../assets/img/company_logo.png" alt="...">
-                        <span class="uploading text-primary"></span>
-                        <form>
-                            <input type="file" name="company_logo" id="company_logo" />
-                        </form>
-                        <h5 class="title text-primary company_name"></h5>
-                        <!-- </a> -->
-                        <p class="description about">
-                        </p>
-                    </div>
-                </div>
-                <hr>
-                <div class="button-container">
-                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
-                        <i class="fa fa-facebook-f"></i>
-                    </button>
-                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
-                        <i class="fa fa-twitter"></i>
-                    </button>
-                    <button href="#" class="btn btn-neutral btn-icon btn-round btn-lg">
-                        <i class="fa fa-google-plus-g"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 <!-- The Modal -->
