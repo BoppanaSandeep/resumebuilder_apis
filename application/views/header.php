@@ -7,8 +7,7 @@
     <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Resume Builder - Employer</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
-    />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!-- CSS Files -->
     <link href="<?php echo base_url(); ?>assets/css/all.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -18,10 +17,12 @@
     <link href="<?php echo base_url(); ?>assets/css/styles.css" rel="stylesheet" />
     <script>
         // base url
-        var base_url='<?php echo base_url(); ?>';
+        var base_url = '<?php echo base_url(); ?>';
         // session varibales for Javascript
-        var session_empid='<?php echo $this->session->userdata('employer_id'); ?>';
-        var session_emp_rbid='<?php echo $this->session->userdata('emp_rb_id'); ?>';
+        var session_empid = '<?php echo $this->session->userdata('
+        employer_id '); ?>';
+        var session_emp_rbid = '<?php echo $this->session->userdata('
+        emp_rb_id '); ?>';
     </script>
 </head>
 
@@ -41,37 +42,51 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="<?php echo $active == 'dashboard' ? 'active' : ''; ?>" >
+                    <li class="<?php echo $active == 'dashboard' ? 'active' : ''; ?>">
                         <a href="<?php echo base_url(); ?>">
                             <i class="fa fa-briefcase"></i>
                             <p>Empolyer</p>
                         </a>
                     </li>
-                    <li class="<?php echo $active == 'user' ? 'active' : ''; ?>" >
+                    <li class="<?php echo $active == 'user' ? 'active' : ''; ?>">
                         <a href="<?php echo base_url(); ?>dashboard/user">
                             <i class="fa fa-user"></i>
                             <p>Profile</p>
                         </a>
                     </li>
-                    <li class="<?php echo $active == 'job_posts' ? 'active' : ''; ?>" >
-                        <a href="<?php echo base_url(); ?>dashboard/job_posts">
-                            <i class="fa fa-clipboard"></i>
-                            <p>Post Jobs</p>
+                    <li class="<?php echo $active == 'job_posts' ? 'active' : ''; ?>">
+                        <a class="arrow" data-toggle="collapse" href="#collapselist" role="button" aria-expanded="false" aria-controls="collapselist">
+                            <i class="fa fa-clipboard"></i> Post Jobs
+                            <span class="fa fa-caret-down" aria-hidden="true"></span>
                         </a>
+                        <div class="collapse" id="collapselist">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa fa-eye"></i>View
+                                    </a>
+                                </li>
+                                <li class="<?php echo $active_add == 'add' ? 'active' : ''; ?>">
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard/job_posts">
+                                        <i class="fa fa-plus"></i>Add
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
-                    <li class="<?php echo $active == 'notify' ? 'active' : ''; ?>" >
+                    <li class="<?php echo $active == 'notify' ? 'active' : ''; ?>">
                         <a href="<?php echo base_url(); ?>dashboard/notify">
                             <i class="fa fa-bell"></i>
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <li class="<?php echo $active == 'map' ? 'active' : ''; ?>" >
+                    <li class="<?php echo $active == 'map' ? 'active' : ''; ?>">
                         <a href="<?php echo base_url(); ?>dashboard/maps">
                             <i class="fa fa-map"></i>
                             <p>Maps</p>
                         </a>
                     </li>
-                    <li class="<?php echo $active == 'tables' ? 'active' : ''; ?>" >
+                    <li class="<?php echo $active == 'tables' ? 'active' : ''; ?>">
                         <a href="<?php echo base_url(); ?>dashboard/tables">
                             <i class="fa fa-table"></i>
                             <p>Table List</p>
@@ -100,8 +115,7 @@
                         </div>
                         <!-- <a class="navbar-brand" href="#pablo">Dashboard</a> -->
                     </div>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                         <span class="navbar-toggler-bar navbar-kebab"></span>
                         <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -117,8 +131,7 @@
                         </form>
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-globe"></i>
                                     <p>
                                         <span class="d-lg-none d-md-block">Notifications</span>
@@ -131,8 +144,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-ellipsis-v"></i>
                                     <p>
                                         <span class="d-lg-none d-md-block">Account</span>

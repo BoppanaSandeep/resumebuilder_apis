@@ -1,11 +1,12 @@
 <?php $this->load->view("header");?>
 <link href="<?php echo base_url(); ?>assets/css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+
 <div class="panel-header panel-header-sm">
 </div>
 <div class="content">
-    <form name="job_posts" id="job_posts" method="post">
+    <form name="job_posts" id="job_posts" method="post" action="<?php echo base_url(); ?>employer/jobPosts/SaveJobPosts">
         <div class="row append_multiple">
-            <div class="col-md-6">
+            <div class="col-md-6 margin_0_auto">
                 <div class="card">
                     <div class="card-header">
                         <div class="row user-header-row">
@@ -38,7 +39,15 @@
                             <div class="col-md-12 pr-1">
                                 <div class="form-group">
                                     <label>Job Description</label>
-                                    <textarea rows="4" cols="80" class="form-control" name="job_description" id="job_description" placeholder="Here can be your job description"></textarea>
+                                    <textarea rows="4" cols="80" class="form-control" name="job_description[]" id="job_description" placeholder="Here can be your job description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 pr-1">
+                                <div class="form-group">
+                                    <label>Skills Required</label>
+                                    <input type="text" name="skills_req[]" id="skills_req" class="form-control" placeholder="Skills Required" onchange="VerifyEmail(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -46,21 +55,21 @@
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
                                     <label>Job Opening Date</label>
-                                    <input type="text" class="form-control" name="job_opening_date[]" id="job_opening_date" placeholder="Job Opening Date" value="">
+                                    <input type="text" class="form-control job_opening_date" name="job_opening_date[]" id="job_opening_date" placeholder="Job Opening Date" value="">
                                 </div>
                             </div>
                             <div class="col-md-6 pl-1">
                                 <div class="form-group">
                                     <label>Job Closing Date</label>
-                                    <input type="text" class="form-control" name="job_closing_date[]" id="job_closing_date" placeholder="Job Closing Date" value="">
+                                    <input type="text" class="form-control job_closing_date" name="job_closing_date[]" id="job_closing_date" placeholder="Job Closing Date" value="">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 pr-1">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Contact Email</label>
-                                    <input type="text" name="contact_email[]" id="contact_email" class="form-control" placeholder="Contact Email" onchange="VerifyEmail(this.value)">
+                                    <label>Contact Email</label>
+                                    <input type="text" name="contact_email[]" id="contact_email" class="form-control" placeholder="Contact Email">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +77,7 @@
                             <div class="col-md-12 pr-1">
                                 <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input type="text" class="form-control" name="contact_number" id="contact_number" placeholder="Contact Number" value="">
+                                    <input type="text" class="form-control" name="contact_number[]" id="contact_number" placeholder="Contact Number" value="">
                                 </div>
                             </div>
                         </div>
@@ -104,6 +113,11 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6 margin_0_auto">
+                <button class="btn btn-info btn-block">Save</button>
+            </div>
+        </div>
     </form>
 </div>
 <!-- The Modal -->
@@ -131,6 +145,10 @@
     </div>
 </div>
 <?php $this->load->view("footer");?>
-
+<?php
+if ($this->session->flashdata('msg') != '') {
+    echo "<script>demo.showNotification('top','center', '" . $this->session->flashdata('msg') . "', 'fa fa-exclamation' , '1000', '" . $this->session->flashdata('color') . "')</script>";
+}
+?>
 <script src="<?php echo base_url(); ?>assets/js/datepicker/bootstrap-datepicker.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/employer/job_posts.js"></script>

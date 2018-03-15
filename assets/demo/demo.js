@@ -1,21 +1,20 @@
 demo = {
-    initPickColor: function () {
-        $('.pick-class-label').click(function () {
-            var new_class = $(this).attr('new-class');
-            var old_class = $('#display-buttons').attr('data-class');
-            var display_div = $('#display-buttons');
+    initPickColor: function() {
+        $('.pick-class-label').click(function() {
+            var new_class = $(this).attr('new-class')
+            var old_class = $('#display-buttons').attr('data-class')
+            var display_div = $('#display-buttons')
             if (display_div.length) {
-                var display_buttons = display_div.find('.btn');
-                display_buttons.removeClass(old_class);
-                display_buttons.addClass(new_class);
-                display_div.attr('data-class', new_class);
+                var display_buttons = display_div.find('.btn')
+                display_buttons.removeClass(old_class)
+                display_buttons.addClass(new_class)
+                display_div.attr('data-class', new_class)
             }
-        });
+        })
     },
 
-    initDashboardPageCharts: function () {
-
-        chartColor = "#FFFFFF";
+    initDashboardPageCharts: function() {
+        chartColor = '#FFFFFF'
 
         // General configuration for the charts with Line gradientStroke
         gradientChartOptionsConfiguration = {
@@ -25,9 +24,9 @@ demo = {
             },
             tooltips: {
                 bodySpacing: 4,
-                mode: "nearest",
+                mode: 'nearest',
                 intersect: 0,
-                position: "nearest",
+                position: 'nearest',
                 xPadding: 10,
                 yPadding: 10,
                 caretPadding: 10
@@ -41,7 +40,7 @@ demo = {
                         display: false
                     },
                     gridLines: {
-                        zeroLineColor: "transparent",
+                        zeroLineColor: 'transparent',
                         drawTicks: false,
                         display: false,
                         drawBorder: false
@@ -54,7 +53,7 @@ demo = {
                         display: false
                     },
                     gridLines: {
-                        zeroLineColor: "transparent",
+                        zeroLineColor: 'transparent',
                         drawTicks: false,
                         display: false,
                         drawBorder: false
@@ -64,7 +63,7 @@ demo = {
             layout: {
                 padding: { left: 0, right: 0, top: 15, bottom: 15 }
             }
-        };
+        }
 
         gradientChartOptionsConfigurationWithNumbersAndGrid = {
             maintainAspectRatio: false,
@@ -73,9 +72,9 @@ demo = {
             },
             tooltips: {
                 bodySpacing: 4,
-                mode: "nearest",
+                mode: 'nearest',
                 intersect: 0,
-                position: "nearest",
+                position: 'nearest',
                 xPadding: 10,
                 yPadding: 10,
                 caretPadding: 10
@@ -85,7 +84,7 @@ demo = {
                 yAxes: [{
                     gridLines: 0,
                     gridLines: {
-                        zeroLineColor: "transparent",
+                        zeroLineColor: 'transparent',
                         drawBorder: false
                     }
                 }],
@@ -96,7 +95,7 @@ demo = {
                         display: false
                     },
                     gridLines: {
-                        zeroLineColor: "transparent",
+                        zeroLineColor: 'transparent',
                         drawTicks: false,
                         display: false,
                         drawBorder: false
@@ -106,28 +105,28 @@ demo = {
             layout: {
                 padding: { left: 0, right: 0, top: 15, bottom: 15 }
             }
-        };
+        }
 
-        var ctx = document.getElementById('bigDashboardChart').getContext("2d");
+        var ctx = document.getElementById('bigDashboardChart').getContext('2d')
 
-        var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-        gradientStroke.addColorStop(0, '#80b6f4');
-        gradientStroke.addColorStop(1, chartColor);
+        var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0)
+        gradientStroke.addColorStop(0, '#80b6f4')
+        gradientStroke.addColorStop(1, chartColor)
 
-        var gradientFill = ctx.createLinearGradient(0, 200, 0, 50);
-        gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-        gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+        var gradientFill = ctx.createLinearGradient(0, 200, 0, 50)
+        gradientFill.addColorStop(0, 'rgba(128, 182, 244, 0)')
+        gradientFill.addColorStop(1, 'rgba(255, 255, 255, 0.24)')
 
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+                labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
                 datasets: [{
-                    label: "Data",
+                    label: 'Data',
                     borderColor: chartColor,
                     pointBorderColor: chartColor,
-                    pointBackgroundColor: "#1e3d60",
-                    pointHoverBackgroundColor: "#1e3d60",
+                    pointBackgroundColor: '#1e3d60',
+                    pointHoverBackgroundColor: '#1e3d60',
                     pointHoverBorderColor: chartColor,
                     pointBorderWidth: 1,
                     pointHoverRadius: 7,
@@ -155,20 +154,20 @@ demo = {
                     bodyFontColor: '#666',
                     bodySpacing: 4,
                     xPadding: 12,
-                    mode: "nearest",
+                    mode: 'nearest',
                     intersect: 0,
-                    position: "nearest"
+                    position: 'nearest'
                 },
                 legend: {
-                    position: "bottom",
-                    fillStyle: "#FFF",
+                    position: 'bottom',
+                    fillStyle: '#FFF',
                     display: false
                 },
                 scales: {
                     yAxes: [{
                         ticks: {
-                            fontColor: "rgba(255,255,255,0.4)",
-                            fontStyle: "bold",
+                            fontColor: 'rgba(255,255,255,0.4)',
+                            fontStyle: 'bold',
                             beginAtZero: true,
                             maxTicksLimit: 5,
                             padding: 10
@@ -177,64 +176,63 @@ demo = {
                             drawTicks: true,
                             drawBorder: false,
                             display: true,
-                            color: "rgba(255,255,255,0.1)",
-                            zeroLineColor: "transparent"
+                            color: 'rgba(255,255,255,0.1)',
+                            zeroLineColor: 'transparent'
                         }
 
                     }],
                     xAxes: [{
                         gridLines: {
-                            zeroLineColor: "transparent",
-                            display: false,
+                            zeroLineColor: 'transparent',
+                            display: false
 
                         },
                         ticks: {
                             padding: 10,
-                            fontColor: "rgba(255,255,255,0.4)",
-                            fontStyle: "bold"
+                            fontColor: 'rgba(255,255,255,0.4)',
+                            fontStyle: 'bold'
                         }
                     }]
                 }
             }
-        });
-
+        })
     },
 
-    initGoogleMaps: function () {
-        var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+    initGoogleMaps: function() {
+        var myLatlng = new google.maps.LatLng(40.748817, -73.985428)
         var mapOptions = {
             zoom: 13,
             center: myLatlng,
-            scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
-            styles: [{ "featureType": "water", "elementType": "geometry", "stylers": [{ "color": "#e9e9e9" }, { "lightness": 17 }] }, { "featureType": "landscape", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{ "color": "#ffffff" }, { "lightness": 17 }] }, { "featureType": "road.highway", "elementType": "geometry.stroke", "stylers": [{ "color": "#ffffff" }, { "lightness": 29 }, { "weight": 0.2 }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 18 }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#ffffff" }, { "lightness": 16 }] }, { "featureType": "poi", "elementType": "geometry", "stylers": [{ "color": "#f5f5f5" }, { "lightness": 21 }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#dedede" }, { "lightness": 21 }] }, { "elementType": "labels.text.stroke", "stylers": [{ "visibility": "on" }, { "color": "#ffffff" }, { "lightness": 16 }] }, { "elementType": "labels.text.fill", "stylers": [{ "saturation": 36 }, { "color": "#333333" }, { "lightness": 40 }] }, { "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "geometry", "stylers": [{ "color": "#f2f2f2" }, { "lightness": 19 }] }, { "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "color": "#fefefe" }, { "lightness": 20 }] }, { "featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{ "color": "#fefefe" }, { "lightness": 17 }, { "weight": 1.2 }] }]
-        };
+            scrollwheel: false, // we disable de scroll over the map, it is a really annoing when you scroll through page
+            styles: [{ 'featureType': 'water', 'elementType': 'geometry', 'stylers': [{ 'color': '#e9e9e9' }, { 'lightness': 17 }] }, { 'featureType': 'landscape', 'elementType': 'geometry', 'stylers': [{ 'color': '#f5f5f5' }, { 'lightness': 20 }] }, { 'featureType': 'road.highway', 'elementType': 'geometry.fill', 'stylers': [{ 'color': '#ffffff' }, { 'lightness': 17 }] }, { 'featureType': 'road.highway', 'elementType': 'geometry.stroke', 'stylers': [{ 'color': '#ffffff' }, { 'lightness': 29 }, { 'weight': 0.2 }] }, { 'featureType': 'road.arterial', 'elementType': 'geometry', 'stylers': [{ 'color': '#ffffff' }, { 'lightness': 18 }] }, { 'featureType': 'road.local', 'elementType': 'geometry', 'stylers': [{ 'color': '#ffffff' }, { 'lightness': 16 }] }, { 'featureType': 'poi', 'elementType': 'geometry', 'stylers': [{ 'color': '#f5f5f5' }, { 'lightness': 21 }] }, { 'featureType': 'poi.park', 'elementType': 'geometry', 'stylers': [{ 'color': '#dedede' }, { 'lightness': 21 }] }, { 'elementType': 'labels.text.stroke', 'stylers': [{ 'visibility': 'on' }, { 'color': '#ffffff' }, { 'lightness': 16 }] }, { 'elementType': 'labels.text.fill', 'stylers': [{ 'saturation': 36 }, { 'color': '#333333' }, { 'lightness': 40 }] }, { 'elementType': 'labels.icon', 'stylers': [{ 'visibility': 'off' }] }, { 'featureType': 'transit', 'elementType': 'geometry', 'stylers': [{ 'color': '#f2f2f2' }, { 'lightness': 19 }] }, { 'featureType': 'administrative', 'elementType': 'geometry.fill', 'stylers': [{ 'color': '#fefefe' }, { 'lightness': 20 }] }, { 'featureType': 'administrative', 'elementType': 'geometry.stroke', 'stylers': [{ 'color': '#fefefe' }, { 'lightness': 17 }, { 'weight': 1.2 }] }]
+        }
 
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions)
 
         var marker = new google.maps.Marker({
             position: myLatlng,
-            title: "Hello World!"
-        });
+            title: 'Hello World!'
+        })
 
-        // To add the marker to the map, call setMap();
-        marker.setMap(map);
+        // To add the marker to the map, call setMap()
+        marker.setMap(map)
     },
 
-    showNotification: function (from, align) {
-        color = 'primary';
+    showNotification: function(from = 'top', align = 'center', msg = 'None', icon = 'fa fa-question', time = 3000, color = 'primary') {
+        color = color
 
         $.notify({
-            icon: "now-ui-icons ui-1_bell-53",
-            message: "Welcome to <b>Now Ui Dashboard Pro</b> - a beautiful freebie for every web developer."
+            icon: icon,
+            message: msg
 
         }, {
-                type: color,
-                timer: 8000,
-                placement: {
-                    from: from,
-                    align: align
-                }
-            });
+            type: color,
+            timer: time,
+            placement: {
+                from: from,
+                align: align
+            }
+        })
     }
 
-};
+}

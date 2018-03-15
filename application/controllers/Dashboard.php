@@ -36,6 +36,7 @@ class Dashboard extends CI_Controller
     {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'job_posts';
+            $act['active_add'] = 'add';
             $this->load->view('job_posts.php', $act);
         } else {
             redirect(base_url());

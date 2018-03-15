@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2018 at 02:58 PM
+-- Generation Time: Mar 15, 2018 at 02:51 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -85,7 +85,7 @@ CREATE TABLE `rb_employer_registration` (
 --
 
 INSERT INTO `rb_employer_registration` (`employer_id`, `emp_rb_id`, `emp_company`, `emp_email`, `emp_name`, `emp_first_name`, `emp_last_name`, `emp_contact_num`, `emp_address`, `emp_city`, `emp_country`, `emp_postal`, `emp_about`, `emp_pwd`, `emp_picture`, `emp_joined_date`, `emp_updated_date`, `emp_status`) VALUES
-(1, 'RBFIREMP000001', 'ABC', 'abc@abc.com', 'ABC', 'AC', 'B', '9874563210', 'Nizampet, Hyderabad, Telangana.', 'Hyderabad', 'India', 123456, 'Lamborghini Mercy \r\nYour chick she so thirsty \r\nI''m in that two seat Lambo', 'sandeep57', '', NULL, '2018-03-11 19:25:17', 1),
+(1, 'RBFIREMP000001', 'Sandeep Inc.', 'boppanasandeep57@gmail.com', 'Sandeep', 'Boppana', 'Sandeep', '9573879057', 'Nizampet, Hyderabad, Telangana.', 'Hyderabad', 'India', 500090, 'Lamborghini Mercy \r\nYour chick she so thirsty \r\nI''m in that two seat Lambo', 'sandeep57', 'company_logos/20180313131953_Tulips.jpg', NULL, '2018-03-13 15:29:42', 1),
 (4, 'RBFIREMP000002', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
 (5, 'RBFIREMP000003', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
 (6, 'RBFIREMP000004', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
@@ -129,6 +129,44 @@ INSERT INTO `rb_experience` (`exp_id`, `reg_id`, `exp_company`, `exp_working_fro
 (6, 9, 'Abc', '2018-02-20', '0000-00-00', 1, 'Abc', 'Abc', '2018-02-20 17:22:09', '0000-00-00 00:00:00', 1),
 (7, 3, 'ab', '2016-02-27', '2017-06-25', 2, 'ab', 'ab', '2018-02-27 12:24:19', '0000-00-00 00:00:00', 1),
 (8, 3, 'Ab', '2018-02-27', '2018-02-27', 2, 'Ab', 'Ab', '2018-02-27 12:33:43', '0000-00-00 00:00:00', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rb_jobposts`
+--
+
+CREATE TABLE `rb_jobposts` (
+  `post_id` int(11) NOT NULL,
+  `post_emp_id` int(11) NOT NULL,
+  `job_title` varchar(100) NOT NULL,
+  `job_position` varchar(100) NOT NULL,
+  `job_description` text NOT NULL,
+  `skills_req` varchar(500) NOT NULL,
+  `job_opening_date` date NOT NULL,
+  `job_closing_date` date NOT NULL,
+  `contact_email` varchar(250) NOT NULL,
+  `contact_number` int(20) NOT NULL,
+  `address` text NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `country` varchar(100) NOT NULL,
+  `added_date` datetime NOT NULL,
+  `update_date` datetime NOT NULL,
+  `post_status` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rb_jobposts`
+--
+
+INSERT INTO `rb_jobposts` (`post_id`, `post_emp_id`, `job_title`, `job_position`, `job_description`, `skills_req`, `job_opening_date`, `job_closing_date`, `contact_email`, `contact_number`, `address`, `city`, `state`, `country`, `added_date`, `update_date`, `post_status`) VALUES
+(1, 1, '', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:29:33', '2018-03-15 17:29:33', 1),
+(2, 1, 'sadsad', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1),
+(3, 1, 'sadsad', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1),
+(4, 1, '', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1),
+(5, 1, '', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1),
+(6, 1, '', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1);
 
 -- --------------------------------------------------------
 
@@ -358,6 +396,12 @@ ALTER TABLE `rb_experience`
   ADD PRIMARY KEY (`exp_id`);
 
 --
+-- Indexes for table `rb_jobposts`
+--
+ALTER TABLE `rb_jobposts`
+  ADD PRIMARY KEY (`post_id`);
+
+--
 -- Indexes for table `rb_registration`
 --
 ALTER TABLE `rb_registration`
@@ -394,6 +438,11 @@ ALTER TABLE `rb_employer_registration`
 --
 ALTER TABLE `rb_experience`
   MODIFY `exp_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `rb_jobposts`
+--
+ALTER TABLE `rb_jobposts`
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `rb_registration`
 --
