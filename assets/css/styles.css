@@ -8,6 +8,10 @@ label.error {
     text-align: center;
 }
 
+.active-pro {
+    background: #2da8ff;
+}
+
 input[name="company_logo"] {
     width: 80%;
     margin: 4% 10% !important;
@@ -98,16 +102,87 @@ textarea.form-control {
 }
 
 .sidebar #collapselist ul li a {
-    margin: 0px 2px;
+    margin: 2px 2px;
 }
 
 .sidebar #collapselist ul li a:hover,
-.sidebar #collapselist ul li a:active,
-.sidebar #collapselist ul li a:focus,
-.sidebar #collapselist ul li a:visited {
-    background: rgba(255, 255, 255, 0.1);
+.sidebar #collapselist ul li a:focus {
+    background: #fff;
+    color: #2da8ff;
+}
+
+.sidebar #collapselist ul li a:hover i,
+.sidebar #collapselist ul li a:focus i {
+    color: #2da8ff;
 }
 
 li a.arrow span.fa-caret-down {
     padding-left: 15px;
+}
+
+.sidebar .nav li.active-pro>a,
+.off-canvas-sidebar .nav li.active-pro>a {
+    background-color: #2da8ff;
+    -webkit-box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
+    box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
+}
+
+.view_posts>.card-header {
+    padding: 25px;
+    border-bottom: 1px solid rgba(45, 168, 255, 0.22)!important;
+}
+
+.view_posts>.card-footer {
+    border-top: 1px solid rgba(45, 168, 255, 0.22)!important;
+}
+
+.accordion {
+    width: 100%;
+    padding: 4px 8px;
+}
+
+.accordion .card {
+    margin-bottom: 0 !important;
+}
+
+.accordion .card-header {
+    padding: 15px;
+    background-color: #91d1ff !important;
+}
+
+.accordion .card-header a {
+    color: #0e2846 !important;
+    font-weight: 600;
+}
+
+.pagination {
+    justify-content: center;
+    margin: 0;
+}
+
+.row.header-color .card-header {
+    padding: 10px;
+    background-color: #c6ced7 !important;
+    color: #852b2b;
+    font-weight: 600;
+}
+
+.col-12.col-sm-12.col-md-6.col-lg-4,
+.col-12.col-sm-12.col-md-12.col-lg-12 {
+    padding: 1%;
+}
+
+.actions {
+    font-size: 25px;
+    padding: 0px!important;
+    float: right;
+}
+
+.actions>.fa {
+    padding: 10px;
+    margin: 0;
+}
+
+.header-color:first-child {
+    margin-top: -3%;
 }

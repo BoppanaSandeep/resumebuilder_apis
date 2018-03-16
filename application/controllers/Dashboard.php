@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -19,6 +18,7 @@ class Dashboard extends CI_Controller
         //print_r($this->session->userdata());
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'dashboard';
+            $act['active_sub'] = '';
             $this->load->view('dashboard', $act);
         }
     }
@@ -27,17 +27,30 @@ class Dashboard extends CI_Controller
     {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'user';
+            $act['active_sub'] = '';
             $this->load->view('user', $act);
         } else {
             redirect(base_url());
         }
     }
+
     public function job_posts()
     {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'job_posts';
-            $act['active_add'] = 'add';
+            $act['active_sub'] = 'add';
             $this->load->view('job_posts.php', $act);
+        } else {
+            redirect(base_url());
+        }
+    }
+
+    public function job_posts_view()
+    {
+        if ($this->session->userdata('emp_rb_id')) {
+            $act['active'] = 'job_posts';
+            $act['active_sub'] = 'view';
+            $this->load->view('job_posts_view.php', $act);
         } else {
             redirect(base_url());
         }
@@ -47,6 +60,7 @@ class Dashboard extends CI_Controller
     {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'tables';
+            $act['active_sub'] = '';
             $this->load->view('tables', $act);
         } else {
             redirect(base_url());
@@ -57,6 +71,7 @@ class Dashboard extends CI_Controller
     {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'map';
+            $act['active_sub'] = '';
             $this->load->view('map', $act);
         } else {
             redirect(base_url());
@@ -67,6 +82,7 @@ class Dashboard extends CI_Controller
     {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'notify';
+            $act['active_sub'] = '';
             $this->load->view('notifications', $act);
         } else {
             redirect(base_url());
@@ -77,6 +93,7 @@ class Dashboard extends CI_Controller
     {
         if ($this->session->userdata('emp_rb_id')) {
             $act['active'] = 'upgrade';
+            $act['active_sub'] = '';
             $this->load->view('upgrade', $act);
         } else {
             redirect(base_url());

@@ -30,10 +30,6 @@
         </div>
     </div>
 </body>
-<!--   Core JS Files   -->
-<script src="<?php echo base_url(); ?>assets/js/core/jquery.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/core/popper.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/core/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Google Maps Plugin    -->
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMnl4v3iO4HBG77DRYaWiMn49x9JXTK2s"></script> -->

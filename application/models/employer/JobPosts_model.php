@@ -54,4 +54,33 @@ class JobPosts_model extends CI_Model
             return $result_array;
         }
     }
+
+    public function JobPosts($post_emp_id)
+    {
+        $where_email = array(
+            "post_emp_id" => $post_emp_id,
+            "post_status" => 1,
+        );
+
+        $this->db->where($where_email);
+        $this->db->from('jobposts');
+        $count = $this->db->count_all_results();
+
+        $this->db->select("*");
+        $this->db->from("jobposts");
+        $this->db->where($where_email);
+        $this->db->order_by('added_date', 'DESC');
+        $this->db->limit(20, 0);
+        $jobposts = $this->db->get();
+        if (sizeof($jobposts->result_array()) > 0) {
+            $result_array['status'] = 'OK';
+            $result_array['count'] = $count;
+            $result_array['data'] = $jobposts->result_array();
+            return $result_array;
+        } else {
+            $result_array['status'] = 'BAD';
+            return $result_array;
+        }
+    }
+
 }

@@ -15,14 +15,16 @@
     <link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="<?php echo base_url(); ?>assets/demo/fonts.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/css/styles.css" rel="stylesheet" />
+    <!--   Core JS Files   -->
+    <script src="<?php echo base_url(); ?>assets/js/core/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/core/popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/core/bootstrap.min.js"></script>
     <script>
         // base url
         var base_url = '<?php echo base_url(); ?>';
         // session varibales for Javascript
-        var session_empid = '<?php echo $this->session->userdata('
-        employer_id '); ?>';
-        var session_emp_rbid = '<?php echo $this->session->userdata('
-        emp_rb_id '); ?>';
+        var session_empid = '<?php echo $this->session->userdata('employer_id'); ?>';
+        var session_emp_rbid = '<?php echo $this->session->userdata('emp_rb_id'); ?>';
     </script>
 </head>
 
@@ -54,19 +56,19 @@
                             <p>Profile</p>
                         </a>
                     </li>
-                    <li class="<?php echo $active == 'job_posts' ? 'active' : ''; ?>">
+                    <li class="<?php echo $active == 'job_posts' ? 'active-pro' : ''; ?>">
                         <a class="arrow" data-toggle="collapse" href="#collapselist" role="button" aria-expanded="false" aria-controls="collapselist">
                             <i class="fa fa-clipboard"></i> Post Jobs
                             <span class="fa fa-caret-down" aria-hidden="true"></span>
                         </a>
-                        <div class="collapse" id="collapselist">
+                        <div class="collapse <?php echo $active_sub == '' ? '' : 'show'; ?>" id="collapselist">
                             <ul class="list-unstyled">
-                                <li>
-                                    <a class="dropdown-item" href="#">
+                                <li class="<?php echo $active_sub == 'view' ? 'active' : ''; ?>">
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard/job_posts_view">
                                         <i class="fa fa-eye"></i>View
                                     </a>
                                 </li>
-                                <li class="<?php echo $active_add == 'add' ? 'active' : ''; ?>">
+                                <li class="<?php echo $active_sub == 'add' ? 'active' : ''; ?>">
                                     <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard/job_posts">
                                         <i class="fa fa-plus"></i>Add
                                     </a>

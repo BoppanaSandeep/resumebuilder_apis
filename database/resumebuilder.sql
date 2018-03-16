@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2018 at 02:51 PM
+-- Generation Time: Mar 16, 2018 at 02:33 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -146,7 +146,7 @@ CREATE TABLE `rb_jobposts` (
   `job_opening_date` date NOT NULL,
   `job_closing_date` date NOT NULL,
   `contact_email` varchar(250) NOT NULL,
-  `contact_number` int(20) NOT NULL,
+  `contact_number` varchar(20) NOT NULL,
   `address` text NOT NULL,
   `city` varchar(100) NOT NULL,
   `state` varchar(100) NOT NULL,
@@ -161,12 +161,10 @@ CREATE TABLE `rb_jobposts` (
 --
 
 INSERT INTO `rb_jobposts` (`post_id`, `post_emp_id`, `job_title`, `job_position`, `job_description`, `skills_req`, `job_opening_date`, `job_closing_date`, `contact_email`, `contact_number`, `address`, `city`, `state`, `country`, `added_date`, `update_date`, `post_status`) VALUES
-(1, 1, '', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:29:33', '2018-03-15 17:29:33', 1),
-(2, 1, 'sadsad', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1),
-(3, 1, 'sadsad', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1),
-(4, 1, '', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1),
-(5, 1, '', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1),
-(6, 1, '', '', '', '', '1970-01-01', '1970-01-01', '', 0, '', '', '', '', '2018-03-15 17:51:07', '2018-03-15 17:51:07', 1);
+(1, 1, 'Developer', 'Jr. Software Engineer', 'Jr. Software Engineer all capabilities of doing work.', 'PHP, Codeigniter,HTML5, JS, CSS, Angular 2', '2018-03-17', '2018-03-20', 'hr@abc.com', '9874563210', 'Hitech city, hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 16:41:00', '2018-03-16 16:41:00', 1),
+(2, 1, 'Designer', 'Software Engineer', 'Good in UI/ UX related designs.', 'All design Technologies', '2018-03-19', '2018-03-21', 'hr@abc.com', '9632587410', 'Hyderabad', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 16:44:25', '2018-03-16 16:44:25', 1),
+(3, 1, 'job_title', 'job_position', '`job_description`', '`skills_req`', '2018-03-19', '2018-03-23', '`contact_email`', '9632587415', '`address`', '`city`', '`state`', '`country`', '2018-03-16 16:48:10', '0000-00-00 00:00:00', 1),
+(4, 1, 'Database', 'Back End Engineer', 'Back End Engineer', 'My SQL, Oracle, Maria DB', '2018-03-17', '2018-03-27', 'hr@abc.com', '9874563210', 'Mindspace, Hitech City, Hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 18:25:56', '2018-03-16 18:25:56', 1);
 
 -- --------------------------------------------------------
 
@@ -442,7 +440,7 @@ ALTER TABLE `rb_experience`
 -- AUTO_INCREMENT for table `rb_jobposts`
 --
 ALTER TABLE `rb_jobposts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `rb_registration`
 --

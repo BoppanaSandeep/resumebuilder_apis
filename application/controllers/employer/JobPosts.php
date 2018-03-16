@@ -53,4 +53,20 @@ class JobPosts extends CI_Controller
             redirect('dashboard/job_posts');
         }
     }
+
+    public function FetchJobPosts()
+    {
+        if ($this->session->userdata('emp_rb_id')) {
+            $res_jobPosts = $this->JobPosts_model->JobPosts($this->session->userdata('employer_id'));
+            //print_r($email);
+            if ($res_jobPosts['status'] == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK', 'total_count' => $res_jobPosts['count'], 'info' => $res_jobPosts['data']));
+            } else {
+                echo json_encode(array('status' => 200, 'message' => 'BAD'));
+            }
+        } else {
+            echo json_encode(array('status' => 200, 'message' => 'BAD'));
+        }
+    }
+
 }
