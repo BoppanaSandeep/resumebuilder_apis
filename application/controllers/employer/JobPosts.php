@@ -57,7 +57,7 @@ class JobPosts extends CI_Controller
     public function FetchJobPosts()
     {
         if ($this->session->userdata('emp_rb_id')) {
-            $res_jobPosts = $this->JobPosts_model->JobPosts($this->session->userdata('employer_id'));
+            $res_jobPosts = $this->JobPosts_model->JobPosts($this->session->userdata('employer_id'), $this->input->get('page_number', true));
             //print_r($email);
             if ($res_jobPosts['status'] == 'OK') {
                 echo json_encode(array('status' => 200, 'message' => 'OK', 'total_count' => $res_jobPosts['count'], 'info' => $res_jobPosts['data']));

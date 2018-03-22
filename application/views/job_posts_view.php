@@ -3,13 +3,13 @@
 
 <div class="panel-header panel-header-sm">
 </div>
-<div class="content">
+<div class="content container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card view_posts">
                 <div class="card-header">
                     <div class="row user-header-row">
-                        <div class="col-md-12">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <h6 class="title">View Job Posts</h6>
                         </div>
                     </div>
@@ -46,13 +46,13 @@
                 </div>
                 <div class="card-footer">
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                        <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
                         <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li> -->
                     </ul>
                 </div>
             </div>

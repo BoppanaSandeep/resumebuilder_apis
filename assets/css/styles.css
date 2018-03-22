@@ -146,8 +146,8 @@ li a.arrow span.fa-caret-down {
 }
 
 .accordion .card-header {
-    padding: 15px;
-    background-color: #91d1ff !important;
+    padding: 5px;
+    background-color: rgba(183, 219, 241, 0.62) !important;
 }
 
 .accordion .card-header a {
@@ -173,16 +173,20 @@ li a.arrow span.fa-caret-down {
 }
 
 .actions {
-    font-size: 25px;
-    padding: 0px!important;
+    font-size: 1.28rem;
     float: right;
 }
 
 .actions>.fa {
-    padding: 10px;
-    margin: 0;
+    padding: 0px 5px;
+    cursor: pointer;
 }
 
-.header-color:first-child {
-    margin-top: -3%;
+.card-header.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    align-items: center !important;
 }
+
+
+/* @media only screen and (max-width: 425px) {} */
