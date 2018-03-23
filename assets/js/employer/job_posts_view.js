@@ -1,14 +1,21 @@
 $(function() {
-    fetchJobPosts()
+    fetchJobPosts(1, 10)
+    $("[data-toggle='tooltip']").tooltip()
+    $('select.custom-select').hide()
+
+    // var encrypted = CryptoJS.AES.encrypt('Message', 'S@ndeep57', 'cfg')
+    // var decrypted = CryptoJS.AES.decrypt(encrypted, 'S@ndeep57', 'cfg')
+    // console.log(decrypted)
 })
 
-function fetchJobPosts(page_number = 1) {
-    var params = { page_number: page_number }
+function fetchJobPosts(page_number = 1, page_limit = 10) {
+    $('.loader, .page-loader').show()
+    var params = { page_number: page_number, page_limit: page_limit }
     $.get(base_url + 'employer/JobPosts/FetchJobPosts', params, function(data, status) {
         var data = $.parseJSON(data)
-        console.log(data)
-        if (data.message == 'OK') {
-            var template = ''
+        console.log(data, data.info.length)
+        var template = ''
+        if (data.message == 'OK' && data.info.length > 0) {
             $.each(data.info, function(key, res) {
                 // Accordion start
                 template += '<div class="accordion" id="accordion-' + key + '">'
@@ -70,9 +77,18 @@ function fetchJobPosts(page_number = 1) {
             })
             $('.append_jobposts').children().remove()
             $('.append_jobposts').append(template)
-            AddPagination(data.total_count, page_number)
+            AddPagination(data.total_count, page_number, page_limit)
+            $('.loader').fadeOut()
+            $('.page-loader').delay(350).fadeOut('slow')
+            window.location.href = '#top'
+            window.history.pushState('', 'Resume Builder', 'job_posts_view')
         } else {
-            window.location.href = base_url
+            template += '<div class="card">'
+            template += '<div class="card-body text-danger d-flex justify-content-center"><strong>No Posts</strong></div>'
+            template += '</div>'
+            $('.append_jobposts').append(template)
+            $('.loader').fadeOut()
+            $('.page-loader').delay(350).fadeOut('slow')
         }
 
         $('.accordion').click(function() {
@@ -82,35 +98,44 @@ function fetchJobPosts(page_number = 1) {
     })
 }
 
-function AddPagination(count, curr_page) {
+function AddPagination(count, curr_page, page_limit) {
     $('.pagination, .tooltip').children().remove()
-    var limit = 20
     var pag_templete = ''
-    var total_pages = Math.ceil(count / limit)
-    var page_count_limit = 10
+    var total_pages = Math.ceil(count / page_limit)
+    var page_num_limits = 5
+    var page_count_limit = page_num_limits
+    var curr_page_count = curr_page
 
-    if (total_pages > 10) {
-        page_count_limit = (page_count_limit + curr_page) - 1
+    if (total_pages > page_num_limits) {
+        page_count_limit = (page_count_limit + curr_page_count) - 1
     } else {
         page_count_limit = total_pages
     }
 
-    if (page_count_limit > total_pages) {
+    if (page_count_limit >= total_pages) {
+        var diff = total_pages - curr_page_count
+        if (diff < page_num_limits) {
+            curr_page_count = curr_page_count - (page_num_limits - diff)
+        }
         page_count_limit = total_pages
     }
 
-    console.log(count, total_pages)
+    // console.log(curr_page_count, page_count_limit)
 
-    pag_templete += '<li class="page-item" onclick="fetchJobPosts(1)" data-toggle="tooltip" data-trigger="hover" title="First" ><a class="page-link" href="javascript:void(0)"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>'
-    pag_templete += '<li class="page-item" onclick="fetchJobPosts(' + (curr_page == 1 ? 1 : curr_page - 1) + ')" data-toggle="tooltip" data-trigger="hover" title="Previous"><a class="page-link" href="javascript:void(0)"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>'
+    pag_templete += '<li class="page-item" onclick="fetchJobPosts(1, ' + page_limit + ')" data-toggle="tooltip" data-trigger="hover" title="First" ' + (curr_page == 1 ? 'disabled' : '') + '><a class="page-link" href="javascript:void(0)"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>'
 
-    for (var i = curr_page; i <= page_count_limit; i++) {
-        pag_templete += '<li class="page-item ' + (curr_page == i ? 'active' : '') + '" onclick="fetchJobPosts(' + i + ')"><a class="page-link" href="javascript:void(0)">' + i + '</a></li>'
+    pag_templete += '<li class="page-item" onclick="fetchJobPosts(' + (curr_page == 1 ? 1 : curr_page - 1) + ', ' + page_limit + ')" data-toggle="tooltip" data-trigger="hover" title="Previous" ' + (curr_page == 1 ? 'disabled' : '') + '><a class="page-link" href="javascript:void(0)"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>'
+
+    for (var i = curr_page_count; i <= page_count_limit; i++) {
+        pag_templete += '<li class="page-item ' + (curr_page == i ? 'active' : '') + '" onclick="fetchJobPosts(' + i + ', ' + page_limit + ')"><a class="page-link" href="javascript:void(0)">' + i + '</a></li>'
     }
 
-    pag_templete += '<li class="page-item" onclick="fetchJobPosts(' + (curr_page == total_pages ? total_pages : curr_page + 1) + ')" data-toggle="tooltip" data-trigger="hover" title="Next"><a class="page-link" href="javascript:void(0)"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>'
-    pag_templete += '<li class="page-item" onclick="fetchJobPosts(' + total_pages + ')"><a class="page-link" href="javascript:void(0)" data-toggle="tooltip" data-trigger="hover" title="Last"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>'
+    pag_templete += '<li class="page-item" onclick="fetchJobPosts(' + (curr_page == total_pages ? total_pages : curr_page + 1) + ', ' + page_limit + ')" data-toggle="tooltip" data-trigger="hover" title="Next" ' + (curr_page == total_pages ? 'disabled' : '') + '><a class="page-link" href="javascript:void(0)"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>'
 
+    pag_templete += '<li class="page-item" onclick="fetchJobPosts(' + total_pages + ', ' + page_limit + ')" ' + (curr_page == total_pages ? 'disabled' : '') + '><a class="page-link" href="javascript:void(0)" data-toggle="tooltip" data-trigger="hover" title="Last"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>'
+
+    $('select.custom-select > option[value="' + page_limit + '"]').attr('selected', 'selected')
+    $('select.custom-select').show()
     $('.pagination').append(pag_templete)
     $("[data-toggle='tooltip']").tooltip()
 }

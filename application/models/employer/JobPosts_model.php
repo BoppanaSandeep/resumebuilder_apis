@@ -55,26 +55,21 @@ class JobPosts_model extends CI_Model
         }
     }
 
-    public function JobPosts($post_emp_id, $pagenumber)
+    public function JobPosts($where_cond, $pagenumber, $page_limit)
     {
-        $where_email = array(
-            "post_emp_id" => (int) $post_emp_id,
-            "post_status" => 1,
-        );
-        $limit = 20;
+        $limit = $page_limit;
         $from_limit = 0;
         if ($pagenumber > 0) {
-            $limit = 20;
             $from_limit = $limit * ($pagenumber - 1);
         }
 
-        $this->db->where($where_email);
+        $this->db->where($where_cond);
         $this->db->from('jobposts');
         $count = $this->db->count_all_results();
 
         $this->db->select("*");
         $this->db->from("jobposts");
-        $this->db->where($where_email);
+        $this->db->where($where_cond);
         $this->db->order_by('added_date', 'DESC');
         $this->db->limit($limit, $from_limit);
         $jobposts = $this->db->get();

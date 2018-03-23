@@ -1,3 +1,11 @@
+.panel-header-sm {
+    height: initial;
+}
+
+.panel-header {
+    padding-bottom: 0;
+}
+
 .error {
     color: #ffae00;
     font-weight: 600;
@@ -188,5 +196,124 @@ li a.arrow span.fa-caret-down {
     align-items: center !important;
 }
 
+.card-footer.row {
+    margin: 0;
+}
 
-/* @media only screen and (max-width: 425px) {} */
+.card-footer .custom-select {
+    max-width: 20% !important;
+    line-height: 1.25em;
+    height: 35px;
+}
+
+.card-footer .input-group,
+.card-footer .pagination {
+    padding: 2px;
+    line-height: 1.25em;
+}
+
+.card-footer .input-group {
+    align-items: center;
+    justify-content: flex-end!important;
+}
+
+.card-footer .pagination {
+    align-items: center;
+    justify-content: flex-start!important;
+}
+
+.card-footer .input-group {
+    margin-bottom: 0px;
+}
+
+li[disabled] {
+    pointer-events: none;
+}
+
+li[disabled]:hover {
+    cursor: not-allowed;
+}
+
+
+/* Page Loader */
+
+.page-loader {
+    position: absolute;
+    background: transparent;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 9998;
+}
+
+.loader {
+    position: relative;
+    border-left: 2px solid #ffffff00;
+    border-top: 2px solid #2da8ff;
+    border-right: 2px solid #2da8ff;
+    border-bottom: 2px solid #2da8ff;
+    height: 46px;
+    width: 46px;
+    left: 50%;
+    top: 50%;
+    text-indent: -9999em;
+    font-size: 10px;
+    z-index: 9999;
+    -webkit-animation: load 0.8s infinite linear;
+    -moz-animation: load 0.8s infinite linear;
+    ms-animation: load 0.8s infinite linear;
+    o-animation: load 0.8s infinite linear;
+    animation: load 0.8s infinite linear;
+}
+
+.loader,
+.loader:after {
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+}
+
+@-webkit-keyframes load {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Page Loader */
+
+@media screen and (max-width: 991px) {
+    .card-footer .input-group,
+    .card-footer .pagination {
+        justify-content: center !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card-footer .custom-select {
+        max-width: 10% !important;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .card-footer .custom-select {
+        max-width: 25% !important;
+    }
+}

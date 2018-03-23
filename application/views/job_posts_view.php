@@ -1,9 +1,12 @@
 <?php $this->load->view("header");?>
 <link href="<?php echo base_url(); ?>assets/css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
 
-<div class="panel-header panel-header-sm">
+<div class="panel-header panel-header-sm" id="top">
 </div>
 <div class="content container">
+    <div class="page-loader" style="display: none;">
+        <div class="loader" style="display: none;">Loading...</div>
+    </div>
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="card view_posts">
@@ -16,43 +19,24 @@
                 </div>
                 <div class="card-body">
                     <div class="row append_jobposts">
-                        <!-- <div class="accordion" id="accordion">
-                            <div class="card border border-info">
-                                <div class="card-header">
-                                    <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Job Title
-                                    </a>
-                                </div>
-                                <div id="collapseOne" class="collapse">
-                                    <div class="card-body">
-                                        <div class="row header-color">
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-                                                <div class="card">
-                                                    <div class="card-header">Header</div>
-                                                    <div class="card-body">Content</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-                                                <div class="card">
-                                                    <div class="card-header">Header</div>
-                                                    <div class="card-body">Content</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+
                     </div>
                 </div>
-                <div class="card-footer">
-                    <ul class="pagination">
-                        <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li> -->
+                <div class="card-footer row">
+                    <div class="input-group col-12 col-sm-12 col-md-12 col-lg-5">
+                        <!-- <div class="input-group-prepend">
+                            <label class="input-group-text" for="limit">Limit</label>
+                        </div> -->
+                        <select class="custom-select" id="limit" data-toggle="tooltip" data-trigger="hover" title="Page Limit" onchange="fetchJobPosts(1, this.value)">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <ul class="pagination col-12 col-sm-12 col-md-12 col-lg-5">
+
                     </ul>
                 </div>
             </div>
@@ -65,5 +49,6 @@ if ($this->session->flashdata('msg') != '') {
     echo "<script>demo.showNotification('top','center', '" . $this->session->flashdata('msg') . "', 'fa fa-exclamation' , '1000', '" . $this->session->flashdata('color') . "')</script>";
 }
 ?>
-<script src="<?php echo base_url(); ?>assets/js/datepicker/bootstrap-datepicker.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/employer/job_posts_view.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/datepicker/bootstrap-datepicker.js"></script>
+    <!-- <script src="<?php //echo base_url(); ?>assets/js/secure/aes.js"></script> -->
+    <script src="<?php echo base_url(); ?>assets/js/employer/job_posts_view.js"></script>
