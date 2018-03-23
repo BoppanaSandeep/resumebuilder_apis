@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2018 at 02:33 PM
+-- Generation Time: Mar 23, 2018 at 02:52 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -85,7 +85,7 @@ CREATE TABLE `rb_employer_registration` (
 --
 
 INSERT INTO `rb_employer_registration` (`employer_id`, `emp_rb_id`, `emp_company`, `emp_email`, `emp_name`, `emp_first_name`, `emp_last_name`, `emp_contact_num`, `emp_address`, `emp_city`, `emp_country`, `emp_postal`, `emp_about`, `emp_pwd`, `emp_picture`, `emp_joined_date`, `emp_updated_date`, `emp_status`) VALUES
-(1, 'RBFIREMP000001', 'Sandeep Inc.', 'boppanasandeep57@gmail.com', 'Sandeep', 'Boppana', 'Sandeep', '9573879057', 'Nizampet, Hyderabad, Telangana.', 'Hyderabad', 'India', 500090, 'Lamborghini Mercy \r\nYour chick she so thirsty \r\nI''m in that two seat Lambo', 'sandeep57', 'company_logos/20180313131953_Tulips.jpg', NULL, '2018-03-13 15:29:42', 1),
+(1, 'RBFIREMP000001', 'Sandeep Inc.', 'boppanasandeep57@gmail.com', 'Sandeep', 'Boppana', 'Sandeep', '9573879057', 'Nizampet, Hyderabad, Telangana.', 'Hyderabad', 'India', 500090, 'Lamborghini Mercy \r\nYour chick she so thirsty \r\nI''m in that two seat Lambo', 'sandeep57', 'company_logos/20180323182638_Desert.jpg', NULL, '2018-03-23 18:26:38', 1),
 (4, 'RBFIREMP000002', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
 (5, 'RBFIREMP000003', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
 (6, 'RBFIREMP000004', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
@@ -440,7 +440,7 @@ ALTER TABLE `rb_experience`
 -- AUTO_INCREMENT for table `rb_jobposts`
 --
 ALTER TABLE `rb_jobposts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=666;
 --
 -- AUTO_INCREMENT for table `rb_registration`
 --
