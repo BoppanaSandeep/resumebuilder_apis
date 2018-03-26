@@ -218,7 +218,7 @@ demo = {
         marker.setMap(map)
     },
 
-    showNotification: function(from = 'top', align = 'center', msg = 'None', icon = 'fa fa-question', time = 3000, color = 'primary') {
+    showNotification: function(from = 'top', align = 'center', msg = 'None', icon = 'fa fa-question', time = 1000, color = 'primary') {
         color = color
 
         $.notify({

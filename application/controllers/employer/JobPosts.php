@@ -36,7 +36,6 @@ class JobPosts extends CI_Controller
                     "state" => $this->input->post('state', true)[$i],
                     "country" => $this->input->post('country', true)[$i],
                     "added_date" => date('Y-m-d H:i:s'),
-                    "update_date" => date('Y-m-d H:i:s'),
                     "post_status" => 1,
                 );
                 //print_r($jobposts_data);
@@ -59,18 +58,57 @@ class JobPosts extends CI_Controller
         if ($this->session->userdata('emp_rb_id')) {
             $where_cond = array(
                 "post_emp_id" => (int) $this->session->userdata('employer_id'),
-                "post_status" => 1,
             );
-            $res_jobPosts = $this->JobPosts_model->JobPosts($where_cond, $this->input->get('page_number', true),$this->input->get('page_limit', true));
+            $res_jobPosts = $this->JobPosts_model->JobPosts($where_cond, $this->input->get('page_number', true), $this->input->get('page_limit', true));
             //print_r($email);
             if ($res_jobPosts['status'] == 'OK') {
                 echo json_encode(array('status' => 200, 'message' => 'OK', 'total_count' => $res_jobPosts['count'], 'info' => $res_jobPosts['data']));
+            } else {
+                echo json_encode(array('status' => 200, 'message' => 'BAD', 'info' => ''));
+            }
+        } else {
+            echo json_encode(array('status' => 200, 'message' => 'BAD'));
+        }
+    }
+
+    public function UpdatingPostStatus()
+    {
+        if ($this->session->userdata('emp_rb_id')) {
+            $where_cond = array(
+                "post_id" => (int) $this->input->post('postid', true),
+                "post_emp_id" => (int) $this->session->userdata('employer_id'),
+            );
+            $status = 1;
+            if ($this->input->post('type', true) == 'del') {
+                $status = 0;
+            } else {
+                $status = $this->input->post('post_status', true) == 1 ? 2 : 1;
+            }
+
+            $update_status = array(
+                "post_status" => $status,
+                "update_date" => date('Y-m-d H:i:s'),
+            );
+            $res_jobPosts = $this->JobPosts_model->UpdatePostData($where_cond, $update_status);
+            //print_r($email);
+            if ($res_jobPosts == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK'));
             } else {
                 echo json_encode(array('status' => 200, 'message' => 'BAD'));
             }
         } else {
             echo json_encode(array('status' => 200, 'message' => 'BAD'));
         }
+    }
+
+    public function EditPost()
+    {
+
+    }
+
+    public function DeletePost()
+    {
+
     }
 
 }

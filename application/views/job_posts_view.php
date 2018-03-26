@@ -51,4 +51,5 @@ if ($this->session->flashdata('msg') != '') {
 ?>
     <script src="<?php echo base_url(); ?>assets/js/datepicker/bootstrap-datepicker.js"></script>
     <!-- <script src="<?php //echo base_url(); ?>assets/js/secure/aes.js"></script> -->
+    <script src="<?php echo base_url(); ?>assets/js/employer/pagination.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/employer/job_posts_view.js"></script>
