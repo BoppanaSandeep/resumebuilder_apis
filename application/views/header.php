@@ -50,10 +50,10 @@
                             <p>Empolyer</p>
                         </a>
                     </li>
-                    <li class="<?php echo $active == 'user' ? 'active' : ''; ?>">
-                        <a href="<?php echo base_url(); ?>dashboard/user">
-                            <i class="fa fa-user"></i>
-                            <p>Profile</p>
+                    <li class="<?php echo $active == 'search_employees' ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url(); ?>dashboard/search_employees">
+                            <i class="fa fa-group"></i>
+                            <p>Search Employees</p>
                         </a>
                     </li>
                     <li class="<?php echo $active == 'job_posts' ? 'active-pro' : ''; ?>">
@@ -145,7 +145,7 @@
                                     </p>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard/user">
                                         <?php echo $this->session->userdata('emp_company'); ?>
                                     </a>
                                     <a class="dropdown-item" href="<?php echo base_url(); ?>dashboard/logout">Logout</a>

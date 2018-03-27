@@ -8,7 +8,6 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
-        $this->load->library('encryption');
         $this->load->model('employer/JobPosts_model');
         if (!$this->session->userdata('emp_rb_id')) {
             $this->load->view('employer_login');
@@ -31,6 +30,16 @@ class Dashboard extends CI_Controller
             $act['active'] = 'user';
             $act['active_sub'] = '';
             $this->load->view('user', $act);
+        } else {
+            redirect(base_url());
+        }
+    }
+    public function search_employees()
+    {
+        if ($this->session->userdata('emp_rb_id')) {
+            $act['active'] = 'search_employees';
+            $act['active_sub'] = '';
+            $this->load->view('search_employees', $act);
         } else {
             redirect(base_url());
         }

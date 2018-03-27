@@ -1,9 +1,26 @@
+.dropdown-menu.dropdown-menu-right.show {
+    background: #2da8ff;
+}
+
+.dropdown-menu:before {
+    color: #2da8ff;
+}
+
+.navbar a.dropdown-item {
+    color: #fff;
+}
+
+.sidebar .nav li>a,
+.off-canvas-sidebar .nav li>a {
+    font-size: 0.85em;
+}
+
 .panel-header-sm {
     height: initial;
 }
 
 .panel-header {
-    padding-bottom: 0;
+    padding-bottom: 10px;
 }
 
 .error {
@@ -39,7 +56,8 @@ input[name="company_logo"] {
     font-weight: 600;
 }
 
-.user-header-row, .user-header-row>* {
+.user-header-row,
+.user-header-row>* {
     margin-bottom: -1%;
 }
 
@@ -116,12 +134,14 @@ textarea.form-control {
     margin: 2px 2px;
 }
 
-.sidebar #collapselist ul li a:hover, .sidebar #collapselist ul li a:focus {
+.sidebar #collapselist ul li a:hover,
+.sidebar #collapselist ul li a:focus {
     background: #fff;
     color: #2da8ff;
 }
 
-.sidebar #collapselist ul li a:hover i, .sidebar #collapselist ul li a:focus i {
+.sidebar #collapselist ul li a:hover i,
+.sidebar #collapselist ul li a:focus i {
     color: #2da8ff;
 }
 
@@ -129,7 +149,8 @@ li a.arrow span.fa-caret-down {
     padding-left: 15px;
 }
 
-.sidebar .nav li.active-pro>a, .off-canvas-sidebar .nav li.active-pro>a {
+.sidebar .nav li.active-pro>a,
+.off-canvas-sidebar .nav li.active-pro>a {
     background-color: #2da8ff;
     -webkit-box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
     box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
@@ -175,7 +196,8 @@ li a.arrow span.fa-caret-down {
     font-weight: 600;
 }
 
-.col-12.col-sm-12.col-md-6.col-lg-4, .col-12.col-sm-12.col-md-12.col-lg-12 {
+.col-12.col-sm-12.col-md-6.col-lg-4,
+.col-12.col-sm-12.col-md-12.col-lg-12 {
     padding: 1%;
 }
 
@@ -205,7 +227,8 @@ li a.arrow span.fa-caret-down {
     height: 35px;
 }
 
-.card-footer .input-group, .card-footer .pagination {
+.card-footer .input-group,
+.card-footer .pagination {
     padding: 2px;
     line-height: 1.25em;
 }
@@ -231,6 +254,7 @@ li[disabled] {
 li[disabled]:hover {
     cursor: not-allowed;
 }
+
 
 /* Page Loader */
 
@@ -264,7 +288,8 @@ li[disabled]:hover {
     animation: load 0.8s infinite linear;
 }
 
-.loader, .loader:after {
+.loader,
+.loader:after {
     border-radius: 50%;
     width: 46px;
     height: 46px;
@@ -292,6 +317,7 @@ li[disabled]:hover {
     }
 }
 
+
 /* Page Loader */
 
 @media screen and (max-width: 1024px) {
@@ -301,7 +327,8 @@ li[disabled]:hover {
 }
 
 @media screen and (max-width: 991px) {
-    .card-footer .input-group, .card-footer .pagination {
+    .card-footer .input-group,
+    .card-footer .pagination {
         justify-content: center !important;
     }
 }
