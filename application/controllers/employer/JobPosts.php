@@ -90,7 +90,6 @@ class JobPosts extends CI_Controller
                 "update_date" => date('Y-m-d H:i:s'),
             );
             $res_jobPosts = $this->JobPosts_model->UpdatePostData($where_cond, $update_status);
-            //print_r($email);
             if ($res_jobPosts == 'OK') {
                 echo json_encode(array('status' => 200, 'message' => 'OK'));
             } else {
@@ -101,14 +100,43 @@ class JobPosts extends CI_Controller
         }
     }
 
-    public function EditPost()
+    public function SaveEditJobPosts()
     {
-
-    }
-
-    public function DeletePost()
-    {
-
+        if (trim($this->input->post('post_id', true)) != '' && trim($this->input->post('post_id', true)) != 0) {
+            $where_cond = array(
+                "post_id" => (int) $this->input->post('post_id', true),
+                "post_emp_id" => (int) $this->session->userdata('employer_id'),
+            );
+            $jobposts_data = array(
+                "job_title" => $this->input->post('job_title', true),
+                "job_position" => $this->input->post('job_position', true),
+                "job_description" => $this->input->post('job_description', true),
+                "skills_req" => $this->input->post('skills_req', true),
+                "job_opening_date" => date('Y-m-d', strtotime($this->input->post('job_opening_date', true))),
+                "job_closing_date" => date('Y-m-d', strtotime($this->input->post('job_closing_date', true))),
+                "contact_email" => $this->input->post('contact_email', true),
+                "contact_number" => $this->input->post('contact_number', true),
+                "address" => $this->input->post('address', true),
+                "city" => $this->input->post('city', true),
+                "state" => $this->input->post('state', true),
+                "country" => $this->input->post('country', true),
+                "update_date" => date('Y-m-d H:i:s'),
+            );
+            $res_jobPosts = $this->JobPosts_model->UpdatePostData($where_cond, $jobposts_data);
+            if ($res_jobPosts == 'OK') {
+                $this->session->set_flashdata("msg", "Updated Successfully");
+                $this->session->set_flashdata("color", "success");
+                redirect('dashboard/job_posts_view');
+            } else {
+                $this->session->set_flashdata("msg", "Something went wrong, try again.");
+                $this->session->set_flashdata("color", "danger");
+                redirect('dashboard/EditJobPost?postid='.$this->input->post('post_id', true));
+            }
+        }else{
+            $this->session->set_flashdata("msg", "Something went wrong, try again.");
+            $this->session->set_flashdata("color", "danger");
+            redirect('dashboard/job_posts_view');
+        }
     }
 
 }

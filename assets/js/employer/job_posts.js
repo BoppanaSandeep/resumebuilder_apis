@@ -1,10 +1,10 @@
 var job_posts_card = ''
 var email_regx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-$(function () {
+$(function() {
     job_posts_card = $('.append_multiple').first().html()
     $('.fa-minus').hide()
-    // console.log(job_posts_card)
+        // console.log(job_posts_card)
 
     $('.job_opening_date, .job_closing_date').datepicker({
         format: 'dd-mm-yyyy',
@@ -13,7 +13,7 @@ $(function () {
         todayHighlight: true
     })
 
-    $("#job_posts").submit(function () {
+    $("#job_posts").submit(function() {
         var error = false
         $('input').removeClass('error2');
         //console.log($('.append_multiple').children().length);

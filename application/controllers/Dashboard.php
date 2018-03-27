@@ -8,6 +8,8 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->library('encryption');
+        $this->load->model('employer/JobPosts_model');
         if (!$this->session->userdata('emp_rb_id')) {
             $this->load->view('employer_login');
         }
@@ -98,6 +100,35 @@ class Dashboard extends CI_Controller
         } else {
             redirect(base_url());
         }
+    }
+
+    public function EditJobPost()
+    {
+        if ($this->session->userdata('emp_rb_id')) {
+            $act['active'] = '';
+            $act['active_sub'] = '';
+            $act['post_data'] = $this->JobPosts_model->FetchPostData(base64_decode($this->input->get('postid')));
+            if ($act['post_data']['status'] == 'OK') {
+                $this->load->view('job_posts_edit', $act);
+            } else {
+                $act['active'] = 'job_posts';
+                $act['active_sub'] = 'view';
+                $this->session->set_flashdata("msg", "Something went wrong.");
+                $this->session->set_flashdata("color", "danger");
+                //$this->load->view('job_posts_view', $act);
+            }
+        } else {
+            redirect(base_url());
+        }
+    }
+
+    public function exampleEncrpt()
+    {
+        $plain_text = 'This is a plain-text message!';
+        $ciphertext = $this->encryption->encrypt($plain_text);
+
+        // Outputs: This is a plain-text message!
+        echo $this->encryption->decrypt($ciphertext);
     }
 
     public function logout()

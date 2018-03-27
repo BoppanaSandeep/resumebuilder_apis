@@ -66,4 +66,22 @@ class JobPosts_model extends CI_Model
         }
     }
 
+    public function FetchPostData($post_id)
+    {
+        $this->db->select("*");
+        $this->db->from("jobposts");
+        $this->db->where('post_id', $post_id);
+        $this->db->where_in('post_status', array(1, 2));
+        $jobpost = $this->db->get();
+
+        if (sizeof($jobpost->result_array()) > 0) {
+            $result_array['status'] = 'OK';
+            $result_array['data'] = $jobpost->result_array();
+            return $result_array;
+        } else {
+            $result_array['status'] = 'BAD';
+            return $result_array;
+        }
+    }
+
 }
