@@ -55,7 +55,7 @@ class SearchEmployees_model extends CI_Model
         $result = array();
         foreach ($where_cond as $likeskills) {
             $this->db->distinct();
-            $this->db->select('reg.reg_id, concat(reg.name_first," ",reg.name_last) as name, reg.profile_image, ex.exp_job_desc');
+            $this->db->select('reg.reg_id, concat(reg.name_first," ",reg.name_last) as name, reg.profile_image, ex.exp_job_desc, ex.exp_role');
             $this->db->from('registration reg');
             $this->db->join('skills sk', 'sk.reg_id = reg.reg_id', 'left');
             $this->db->join('experience ex', 'ex.reg_id = reg.reg_id', 'left');
@@ -68,6 +68,9 @@ class SearchEmployees_model extends CI_Model
             foreach ($res_empployee->result_array() as $row) {
                 $row['skills'] = '';
                 if (!in_array($row['name'], $result)) {
+
+                    $row['profile_image'] = ($row['profile_image'] == '' ? 'profile_imgs/profile-default.png' : $row['profile_image']);
+
                     $this->db->select("skill_name");
                     $this->db->from("skills");
                     $this->db->where('reg_id', $row['reg_id']);

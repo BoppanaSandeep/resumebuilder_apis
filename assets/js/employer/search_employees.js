@@ -12,29 +12,57 @@ function fetchEmployees(page_number = 1, page_limit = 10) {
             // console.log(data, data.info.length)
         var template = ''
         if (data.message == 'OK' && data.info.length > 0) {
-            $.each(data.info, function(key, res) {})
-                // $('.append_jobposts').children().remove()
-                // $('.append_jobposts').append(template)
-                // AddPagination(data.total_count, page_number, page_limit)
+            $.each(data.info, function(key, res) {
+                template += '<div class="card col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">'
+                template += '<div class="card-body row">'
+                template += '<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"><img class="rounded-circle" src="' + base_url + res.profile_image + '" alt="Image"></div>'
+                template += '<div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8"><h6 class="card-title">' + res.name + '</h6><small class="card-subtitle mb-2 text-muted">' + res.exp_role + '</small></div>'
+                template += '<blockquote class="col-12 blockquote mb-0"><p class="card-text">' + res.skills + '</p><footer class="blockquote-footer">Skills</footer></blockquote>'
+                template += '<blockquote class="col-12 blockquote mb-0"><p class="card-text">' + res.exp_job_desc + '.</p><footer class="blockquote-footer">Current Job Descrpition</footer></blockquote>'
+                template += '</div>'
+                template += '<div class="card-footer"><a href="#" class="card-link">Contact Details</a><a href="#" class="card-link">View More</a></div>'
+                template += '</div>'
+            })
+            $('.append_employees').children().remove()
+            $('.append_employees').append(template)
+            $('.search_result').html('Displaying data related to your Job Posts.')
+            AddPagination(data.count, page_number, page_limit)
             $('.loader').fadeOut()
             $('.page-loader').delay(350).fadeOut('slow')
-                // window.location.href = '#top'
-                // window.history.pushState('', 'Resume Builder', 'job_posts_view')
+            window.location.href = '#top'
+            window.history.pushState('', 'Resume Builder', 'search_employees')
         } else {
-            // template += '<div class="card">'
-            // template += '<div class="card-body text-danger d-flex justify-content-center"><strong>No Posts</strong></div>'
-            // template += '</div>'
-            //$('.append_jobposts').append(template)
+            template += '<div class="card">'
+            template += '<div class="card-body text-danger d-flex justify-content-center"><strong>We are unable to found data related to your Job Posts/ Search, try by using search.</strong></div>'
+            template += '</div>'
+            $('.append_employees').append(template)
             $('.loader').fadeOut()
             $('.page-loader').delay(350).fadeOut('slow')
         }
-
-        $('.accordion').click(function() {
-            $(this).prevAll().find('.collapse.show').removeClass('show')
-            $(this).nextAll().find('.collapse.show').removeClass('show')
-        })
     })
 }
+
+/* <div class="card col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <div class="card-body row">
+        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <img class="rounded-circle" src="<?php echo base_url(); ?>profile_imgs/profile-default.png" alt="Card image cap">
+        </div>
+        <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+            <h6 class="card-title">Boppana Sandeep</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Developer</h6>
+        </div>
+        <blockquote class="blockquote mb-0">
+            <p class="card-text">Android, HTML, Javascript, Photoshop, PHP, SQLite</p>
+            <footer class="blockquote-footer">Skills</footer>
+        </blockquote>
+        <blockquote class="blockquote mb-0">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <footer class="blockquote-footer">Current Job Descrpition</footer>
+        </blockquote>
+        <a href="#" class="card-link float-right">Contact Details</a>
+        <a href="#" class="card-link float-right">View More</a>
+    </div>
+</div> */
 
 function AddPagination(count, curr_page, page_limit) {
     $('.pagination, .tooltip').children().remove()

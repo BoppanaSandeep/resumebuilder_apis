@@ -9,22 +9,34 @@
     </div>
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="card view_posts">
+            <div class="card search_employees">
                 <div class="card-header">
                     <div class="row user-header-row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
                             <h6 class="title">Search Employees</h6>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
+                            <div class="input-group search_fields">
+                                <input type="text" class="form-control" name="skills" id="skills" placeholder="Skills">
+                                <input type="text" class="form-control" name="position" id="position" placeholder="Position">
+                                <input type="text" class="form-control" name="experience" id="experience" placeholder="Experience">
+                                <input type="text" class="form-control" name="location" id="location" placeholder="Location">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="">Search</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
+                    <p class="search_result"></p>
                     <div class="row append_employees">
 
                     </div>
                 </div>
                 <div class="card-footer row">
                     <div class="input-group col-12 col-sm-12 col-md-12 col-lg-5">
-                        <select class="custom-select" id="limit" data-toggle="tooltip" data-trigger="hover" title="Page Limit" onchange="fetchJobPosts(1, this.value)">
+                        <select class="custom-select" id="limit" data-toggle="tooltip" data-trigger="hover" title="Page Limit" onchange="fetchEmployees(1, this.value)">
                             <option value="10">10</option>
                             <option value="20">20</option>
                             <option value="30">30</option>
