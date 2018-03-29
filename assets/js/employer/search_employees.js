@@ -13,7 +13,7 @@ function fetchEmployees(page_number = 1, page_limit = 10) {
         var template = ''
         if (data.message == 'OK' && data.info.length > 0) {
             $.each(data.info, function(key, res) {
-                template += '<div class="card col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">'
+                template += '<div class="card col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">'
                 template += '<div class="card-body row">'
                 template += '<div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4"><img class="rounded-circle" src="' + base_url + res.profile_image + '" alt="Image"></div>'
                 template += '<div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8"><h6 class="card-title">' + res.name + '</h6><small class="card-subtitle mb-2 text-muted">' + res.exp_role + '</small></div>'
@@ -41,28 +41,6 @@ function fetchEmployees(page_number = 1, page_limit = 10) {
         }
     })
 }
-
-/* <div class="card col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-    <div class="card-body row">
-        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-            <img class="rounded-circle" src="<?php echo base_url(); ?>profile_imgs/profile-default.png" alt="Card image cap">
-        </div>
-        <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-            <h6 class="card-title">Boppana Sandeep</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Developer</h6>
-        </div>
-        <blockquote class="blockquote mb-0">
-            <p class="card-text">Android, HTML, Javascript, Photoshop, PHP, SQLite</p>
-            <footer class="blockquote-footer">Skills</footer>
-        </blockquote>
-        <blockquote class="blockquote mb-0">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <footer class="blockquote-footer">Current Job Descrpition</footer>
-        </blockquote>
-        <a href="#" class="card-link float-right">Contact Details</a>
-        <a href="#" class="card-link float-right">View More</a>
-    </div>
-</div> */
 
 function AddPagination(count, curr_page, page_limit) {
     $('.pagination, .tooltip').children().remove()

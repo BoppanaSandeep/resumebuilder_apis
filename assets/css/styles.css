@@ -275,9 +275,10 @@
         font-size: small;
     }
     
-    .append_employees .card.col-12.col-sm-12.col-md-5.col-lg-3.col-xl-3 {
+    .append_employees .card.col-12.col-sm-12.col-md-6.col-lg-6.col-xl-3 {
         margin: 1%;
-        padding: 0;
+        max-width: 47%;
+        background: rgba(45, 168, 255, 0.36);
     }
     
     .append_employees .rounded-circle {
@@ -299,6 +300,8 @@
     .append_employees .card-footer {
         bottom: 0;
         position: absolute;
+        font-size: 12px;
+        font-weight: bold;
     }
     
     .search_fields>.form-control,
@@ -398,6 +401,13 @@
     @media screen and (max-width: 768px) {
         .card-footer .custom-select {
             max-width: 10% !important;
+        }
+    }
+    
+    @media screen and (max-width: 767px) {
+        .append_employees .card.col-12.col-sm-12.col-md-6.col-lg-6.col-xl-3 {
+            margin: 2%;
+            max-width: none;
         }
     }
     
