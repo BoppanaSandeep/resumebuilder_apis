@@ -20,7 +20,11 @@ class SearchEmployees extends CI_Controller
             $req_skills = $this->SearchEmployees_model->SearchForEmployeesSkills();
             if (isset($req_skills['status']) == 'OK') {
                 $res_searemp = $this->SearchEmployees_model->SearchEmployees($req_skills['data'], $this->input->get('page_number', true), $this->input->get('page_limit', true));
-                echo json_encode(array('status' => 200, 'message' => 'OK', 'count' => $res_searemp['count'], 'info' => $res_searemp['data']));
+                if ($res_searemp['status'] == 'OK') {
+                    echo json_encode(array('status' => 200, 'message' => 'OK', 'count' => $res_searemp['count'], 'info' => $res_searemp['data']));
+                } else {
+                    echo json_encode(array('status' => 200, 'message' => 'BAD', 'info' => ''));
+                }
             } else {
                 echo json_encode(array('status' => 200, 'message' => 'BAD', 'info' => ''));
             }
