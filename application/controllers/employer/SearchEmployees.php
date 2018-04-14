@@ -32,4 +32,18 @@ class SearchEmployees extends CI_Controller
             echo json_encode(array('status' => 200, 'message' => 'BAD'));
         }
     }
+
+    public function FetchEmployeesAsPerSearch()
+    {
+        if ($this->session->userdata('emp_rb_id')) {
+            $res_searemp = $this->SearchEmployees_model->SearchEmployeesAsPerSearch($this->input->get('skills', true), $this->input->get('position', true), $this->input->get('experience', true), $this->input->get('location', true), $this->input->get('page_number', true), $this->input->get('page_limit', true));
+            if ($res_searemp['status'] == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK', 'count' => $res_searemp['count'], 'info' => $res_searemp['data']));
+            } else {
+                echo json_encode(array('status' => 200, 'message' => 'BAD', 'info' => ''));
+            }
+        } else {
+            echo json_encode(array('status' => 200, 'message' => 'BAD'));
+        }
+    }
 }

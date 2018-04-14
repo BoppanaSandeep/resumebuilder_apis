@@ -10,7 +10,7 @@ class Registration_model extends CI_Model
     public function generte_rbid()
     {
         $this->db->select("rb_id");
-        $this->db->order_by('rb_id', "desc");
+        $this->db->order_by('reg_id', "desc");
         $this->db->limit(1);
         $rbid = $this->db->get("registration");
         if (sizeof($rbid->result_array()) > 0) {

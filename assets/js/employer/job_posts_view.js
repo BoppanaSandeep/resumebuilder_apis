@@ -137,6 +137,10 @@ function AddPagination(count, curr_page, page_limit) {
     var page_count_limit = page_num_limits
     var curr_page_count = curr_page
 
+    if(curr_page_count < page_num_limits){
+        curr_page_count = 1;
+    }
+
     if (total_pages > page_num_limits) {
         page_count_limit = (page_count_limit + curr_page_count) - 1
     } else {

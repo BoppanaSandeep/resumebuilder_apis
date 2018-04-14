@@ -22,7 +22,7 @@
                                 <input type="text" class="form-control" name="experience" id="experience" placeholder="Experience">
                                 <input type="text" class="form-control" name="location" id="location" placeholder="Location">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="">Search</span>
+                                    <span class="input-group-text" id="search">Search</span>
                                 </div>
                             </div>
                         </div>
@@ -37,6 +37,7 @@
                 <div class="card-footer row">
                     <div class="input-group col-12 col-sm-12 col-md-12 col-lg-5">
                         <select class="custom-select" id="limit" data-toggle="tooltip" data-trigger="hover" title="Page Limit" onchange="fetchEmployees(1, this.value)">
+                            <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="20">20</option>
                             <option value="30">30</option>
