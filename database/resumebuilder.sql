@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2018 at 03:39 PM
+-- Generation Time: Apr 15, 2018 at 03:42 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -52,9 +52,16 @@ INSERT INTO `rb_education` (`edu_id`, `reg_id`, `edu_university_clg_sch`, `edu_s
 (7, 3, 'G', 'G', '2018', 58, '2018-02-27 12:34:28', '0000-00-00 00:00:00', 1),
 (8, 3, 'Dghj', 'Gghh', '2014', 69, '2018-02-27 12:35:20', '0000-00-00 00:00:00', 1),
 (9, 3, 'a', 'a', '2011', 45, '2018-02-27 12:40:48', '0000-00-00 00:00:00', 1),
-(10, 2, 'GDV', 'IT', '2013', 85, '2018-03-28 09:24:03', '0000-00-00 00:00:00', 1),
-(11, 9, 'GDV', 'IT', '2016', 80, '2018-03-28 09:26:28', '0000-00-00 00:00:00', 1),
-(12, 10, 'GDLV', 'CSE', '2016', 90, '2018-03-28 09:29:30', '0000-00-00 00:00:00', 1);
+(10, 2, 'Gdlv', 'MBA', '2000', 80, '2018-04-14 08:51:27', '0000-00-00 00:00:00', 1),
+(11, 9, 'Gdlav', 'IT', '2016', 67, '2018-04-14 08:55:46', '0000-00-00 00:00:00', 1),
+(12, 4, 'Gdlav', 'IT', '2016', 72, '2018-04-14 09:02:57', '0000-00-00 00:00:00', 1),
+(13, 15, 'Sarojini', 'ECE', '2014', 70, '2018-04-14 09:07:39', '0000-00-00 00:00:00', 1),
+(14, 16, 'Gdlv', 'CSE', '1995', 80, '2018-04-14 09:30:55', '0000-00-00 00:00:00', 1),
+(15, 17, 'Vr s', 'IT', '2016', 70, '2018-04-14 09:34:11', '0000-00-00 00:00:00', 1),
+(16, 18, 'Gdlv', 'Cse', '2016', 80, '2018-04-14 09:36:42', '0000-00-00 00:00:00', 1),
+(17, 19, 'Iith', 'Msc computers', '1998', 80, '2018-04-14 09:39:07', '0000-00-00 00:00:00', 1),
+(18, 20, 'Iitw', 'Cse', '1973', 80, '2018-04-14 09:41:20', '0000-00-00 00:00:00', 1),
+(19, 21, 'Jansi', 'It', '1984', 80, '2018-04-14 09:43:21', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +104,9 @@ INSERT INTO `rb_employer_registration` (`employer_id`, `emp_rb_id`, `emp_company
 (9, 'RBFIREMP000007', 'sandeep', '2@2.cm', 'sandeep', '', '', '9786543210', 'sandeep, vij ', '', '', 0, '', '123456', '', NULL, NULL, 1),
 (10, 'RBFIREMP000008', 'sdfkjs', '2@2.cm', 'ffksdff', '', '', 'jdfjkdfk', 'kjdfsdr435 ', '', '', 0, '', '12345', '', NULL, NULL, 1),
 (11, 'RBFIREMP000009', 'sdfsdf', '2@2.cm', 'sdfsdf', '', '', 'sdfsfsdf', ' fsdfsdfsdf', '', '', 0, '', '1234', '', NULL, NULL, 1),
-(12, 'RBFIREMP0000010', 'asdadsasdad', 'sandeep@gmil.com', 'asdasd', '', '', '324', ' asdasd', '', '', 0, '', '123', '', NULL, NULL, 1);
+(12, 'RBFIREMP0000010', 'asdadsasdad', 'sandeep@gmil.com', 'asdasd', '', '', '324', ' asdasd', '', '', 0, '', '123', 'company_logos/20180415190536_error.png', NULL, '2018-04-15 19:05:36', 1),
+(13, 'RBFIREMP0000011', 'google', 'hr@google.com', 'Google', '', '', '9874563210', 'dfsdfd ', '', '', 0, '', 'google@123', 'company_logos/20180415190536_error.png', '2018-04-15 19:03:30', '2018-04-15 19:05:36', 1),
+(14, 'RBFIREMP0000012', 'Github', 'hr@github.com', 'Github', '', '', '9856741230', ' sdfsdf', '', '', 0, '', 'github@123', '', '2018-04-15 19:09:43', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -129,11 +138,18 @@ INSERT INTO `rb_experience` (`exp_id`, `reg_id`, `exp_company`, `exp_working_fro
 (3, 1, 'Zlapch Tech Studio', '2018-02-12', '2018-02-12', 2, 'Developer', 'Developer', '2018-02-18 12:57:05', '2018-02-17 14:10:45', 1),
 (4, 1, 'Google', '2016-01-15', '2017-02-20', 2, 'Software Engineer', 'Slow network is detected. Fallback font will be used while loading: http://localhost:8100/assets/fonts/roboto-regular.woff2\n(index):1 Slow network is detected. Fallback font will be used while loading: http://localhost:8100/assets/fonts/ionicons.woff2?v=3.0.0-alpha.3', '2018-02-26 08:23:57', '2018-02-26 13:53:57', 0),
 (5, 3, 'Ameripro solutions', '2017-03-20', '0000-00-00', 1, 'Software engineer', 'Engineer', '2018-02-20 17:04:10', '0000-00-00 00:00:00', 1),
-(6, 9, 'Abc', '2018-02-20', '0000-00-00', 1, 'Abc', 'Abc', '2018-02-20 17:22:09', '0000-00-00 00:00:00', 1),
+(6, 9, 'Cognizent', '2017-06-20', '0000-00-00', 1, 'System Adminstrator', 'Job processi g', '2018-04-14 08:57:06', '2018-04-14 14:27:06', 1),
 (7, 3, 'ab', '2016-02-27', '2017-06-25', 2, 'ab', 'ab', '2018-02-27 12:24:19', '0000-00-00 00:00:00', 1),
 (8, 3, 'Ab', '2018-02-27', '2018-02-27', 2, 'Ab', 'Ab', '2018-02-27 12:33:43', '0000-00-00 00:00:00', 1),
-(9, 2, 'ABC', '2014-03-28', '0000-00-00', 1, 'Developer', 'Developer and Lead', '2018-03-28 09:23:42', '0000-00-00 00:00:00', 1),
-(10, 10, 'Abc', '2016-03-28', '0000-00-00', 1, 'Lead', 'Lead', '2018-03-28 09:29:10', '2018-03-28 14:59:10', 1);
+(9, 2, 'Bnp', '2005-04-14', '0000-00-00', 1, 'Chairman', 'Chairman', '2018-04-14 08:50:42', '0000-00-00 00:00:00', 1),
+(10, 4, 'Atmecs', '2017-04-14', '0000-00-00', 1, 'Software Engineer', 'Lead', '2018-04-14 09:02:37', '0000-00-00 00:00:00', 1),
+(11, 15, 'Chakresh', '2014-05-14', '0000-00-00', 1, 'MD', 'Management', '2018-04-14 09:07:16', '0000-00-00 00:00:00', 1),
+(12, 16, 'Sridevi', '2000-04-14', '0000-00-00', 1, 'CEO', 'CEO', '2018-04-14 09:30:12', '0000-00-00 00:00:00', 1),
+(13, 17, 'Vr', '2016-04-14', '0000-00-00', 1, 'Vr', 'Vr', '2018-04-14 09:33:26', '0000-00-00 00:00:00', 1),
+(14, 18, 'Google', '2017-04-14', '0000-00-00', 1, 'Enginner', 'Engineer', '2018-04-14 09:36:25', '0000-00-00 00:00:00', 1),
+(15, 19, 'Infosys', '2007-04-14', '0000-00-00', 1, 'Engineer', 'Engineer', '2018-04-14 09:38:30', '0000-00-00 00:00:00', 1),
+(16, 20, 'Nn rao', '1977-04-14', '0000-00-00', 1, 'Chairman', 'Chairman', '2018-04-14 09:40:48', '0000-00-00 00:00:00', 1),
+(17, 21, 'Jansi', '1994-04-14', '0000-00-00', 1, 'Md', 'Md', '2018-04-14 09:43:00', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -158,7 +174,7 @@ CREATE TABLE `rb_jobposts` (
   `country` varchar(100) NOT NULL,
   `added_date` datetime NOT NULL,
   `update_date` datetime NOT NULL,
-  `post_status` int(10) NOT NULL COMMENT '0 - Deleted, 1 - Active, 2- Inactive'
+  `post_status` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -166,11 +182,11 @@ CREATE TABLE `rb_jobposts` (
 --
 
 INSERT INTO `rb_jobposts` (`post_id`, `post_emp_id`, `job_title`, `job_position`, `job_description`, `skills_req`, `job_opening_date`, `job_closing_date`, `contact_email`, `contact_number`, `address`, `city`, `state`, `country`, `added_date`, `update_date`, `post_status`) VALUES
-(1, 1, 'Developer', 'Jr. Software Engineer', 'Jr. Software Engineer all capabilities of doing work.', 'PHP, Codeigniter,HTML5, JS, CSS, Angular 2', '2018-03-17', '2018-03-20', 'hr@abc.com', '9874563210', 'Hitech city, hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 16:41:00', '2018-03-27 13:11:38', 1),
+(1, 1, 'Developer', 'Jr. Software Engineer', 'Jr. Software Engineer all capabilities of doing work.', 'PHP, Codeigniter,HTML5, JS, CSS, Angular 2', '2018-03-17', '2018-03-20', 'hr@abc.com', '9874563210', 'Hitech city, hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 16:41:00', '2018-03-16 16:41:00', 1),
 (2, 1, 'Designer', 'Software Engineer', 'Good in UI/ UX related designs.', 'All design Technologies', '2018-03-19', '2018-03-21', 'hr@abc.com', '9632587410', 'Hyderabad', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 16:44:25', '2018-03-16 16:44:25', 1),
-(3, 1, 'job_title', 'job_position', '`job_description`', '`skills_req`', '2018-03-19', '2018-03-23', 'con@hr.com', '9632587415', '`address`', '`city`', '`state`', '`country`', '2018-03-16 16:48:10', '2018-03-27 13:22:45', 1),
-(4, 1, 'Database', 'Back End Engineer', 'Back End Engineer', 'My SQL, Oracle, Maria DB', '2018-03-17', '2018-03-27', 'hr@abc.com', '9874563210', 'Mindspace, Hitech City, Hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 18:25:56', '2018-03-27 13:10:19', 1),
-(5, 1, 'Dev', 'Dev', 'Developer', 'PHP', '2018-03-27', '2018-03-29', 'hr@abc.com', '9874563210', 'Hyd', 'Hyd', 'Telanagana', 'India', '2018-03-27 12:51:00', '2018-03-27 16:03:50', 1);
+(3, 1, 'job_title', 'job_position', '`job_description`', '`skills_req`', '2018-03-19', '2018-03-23', '`contact_email`', '9632587415', '`address`', '`city`', '`state`', '`country`', '2018-03-16 16:48:10', '0000-00-00 00:00:00', 1),
+(4, 1, 'Database', 'Back End Engineer', 'Back End Engineer', 'My SQL, Oracle, Maria DB', '2018-03-17', '2018-03-27', 'hr@abc.com', '9874563210', 'Mindspace, Hitech City, Hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 18:25:56', '2018-03-16 18:25:56', 1),
+(666, 1, '.NET Developer', 'DEveloper', 'Developer', 'C#.Net', '2018-04-14', '2018-04-25', 'hr@rb.com', '9632587410', 'Hyd, Telanaga', 'Hyderabad', 'Telanagana', 'India', '2018-04-14 15:16:36', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -199,12 +215,18 @@ CREATE TABLE `rb_registration` (
 --
 
 INSERT INTO `rb_registration` (`reg_id`, `rb_id`, `name_first`, `name_last`, `profile_image`, `email`, `password`, `phonenumber`, `dob`, `gender`, `joined_on`, `updated_on`, `status`) VALUES
-(1, 'RBFIR000001', 'Boppana', 'Sandeep', 'profile_imgs/1519741722731.jpg', 'boppanasandeep57@gmail.com', 'sandeep57', '9573879057', '1995-03-01', 1, '2017-12-17 16:23:59', NULL, 1),
-(2, 'RBFIR000002', 'Boppana', 'Nagendra Prasad', '', 'bnp@gmail.com', 'prasad', '9949398140', '1969-05-07', 1, '2017-12-17 16:27:04', NULL, 1),
+(1, 'RBFIR000001', 'Boppana', 'Sandeep', 'profile_imgs/1523690690262.jpg', 'boppanasandeep57@gmail.com', 'sandeep57', '9573879057', '1995-03-01', 1, '2017-12-17 16:23:59', '2018-04-14 12:55:10', 1),
+(2, 'RBFIR000002', 'Boppana', 'Nagendra Prasad', 'profile_imgs/1523695947325.jpg', 'bnp@gmail.com', 'prasad', '9949398140', '1969-05-07', 1, '2017-12-17 16:27:04', '2018-04-14 14:22:47', 1),
 (3, 'RBFIR000003', 'san', 'deep', 'profile_imgs/1519741722731.jpg', 'san@gmail.com', 'sandeep57', '987643212', '2018-01-06', 1, '2018-01-06 10:08:41', NULL, 1),
-(4, 'RBFIR000004', 'chakresh', 'b', '', 'dg@dgd.ghjg', 'bc123456', '543435554', '2018-01-06', 1, '2018-01-06 10:09:22', NULL, 1),
+(4, 'RBFIR000004', 'Vamsi', 'V', 'profile_imgs/1523696497693.jpg', 'vamsi@rb.com', 'vamsi', '543435554', '2018-01-06', 1, '2018-01-06 10:09:22', '2018-04-14 14:31:57', 1),
 (9, 'RBFIR000009', 'Sasi', 'Donepudi', 'profile_imgs/1519634021036.jpg', 'sasidonepudi@gmail.com', 'sasi1234', '9999998888', '1994-02-10', 1, '2018-02-20 22:46:46', NULL, 1),
-(10, 'RBFIR0000010', 'Vamsi', 'V', '', 'vamsi@gmail.com', 'vamsi1234', '9573879057', '1995-01-16', 1, '2018-03-28 14:57:53', NULL, 1);
+(15, 'RBFIR0000010', 'Chakresh', 'B', 'profile_imgs/1523696783096.jpg', 'cb@rb.com', 'chakresh', '9632587410', '1993-06-14', 1, '2018-04-14 14:35:08', '2018-04-14 14:36:40', 1),
+(16, 'RBFIR0000011', 'Sri devi', 'B', 'profile_imgs/1523698157260.jpg', 'sri@gmail.com', 'sridevi123', '9632587410', '1975-06-04', 2, '2018-04-14 14:41:48', '2018-04-14 14:59:37', 1),
+(17, 'RBFIR0000012', 'Kali', 'E', 'profile_imgs/1523698340800.jpg', 'kali@gmail.com', 'kali1234', '3698521470', '1992-01-01', 1, '2018-04-14 14:42:45', '2018-04-14 15:02:39', 1),
+(18, 'RBFIR0000013', 'Ganesh', 'C', 'profile_imgs/1523698537771.jpg', 'ganesh@gmail.com', 'ganesh123', '9856321470', '1995-01-01', 1, '2018-04-14 14:43:38', '2018-04-14 15:05:56', 1),
+(19, 'RBFIR0000014', 'Srinivas', 'N', 'profile_imgs/1523698651890.jpg', 'narra@gmail.com', 'narra123', '7412580963', '1974-01-01', 1, '2018-04-14 14:45:30', '2018-04-14 15:07:50', 1),
+(20, 'RBFIR0000015', 'Narashimarao', 'N', 'profile_imgs/1523698804104.jpg', 'narra@gmail.com', 'nn123456', '7896541230', '1948-01-01', 1, '2018-04-14 14:49:34', '2018-04-14 15:10:22', 1),
+(21, 'RBFIR0000016', 'Jansi', 'N', 'profile_imgs/1523698941829.jpg', 'narra@gmail.com', 'jansi1234', '7458963210', '1949-01-01', 2, '2018-04-14 14:58:28', '2018-04-14 15:12:40', 1);
 
 -- --------------------------------------------------------
 
@@ -258,9 +280,22 @@ INSERT INTO `rb_skills` (`skill_id`, `reg_id`, `skill_name`, `skill_priority`, `
 (28, 3, 'J2ME', 0, 2, '2018-02-27 12:32:25', '0000-00-00 00:00:00', 1),
 (29, 3, 'PHP', 0, 5, '2018-02-27 12:40:16', '0000-00-00 00:00:00', 1),
 (30, 3, 'C#.Net', 0, 3, '2018-02-28 13:31:43', '0000-00-00 00:00:00', 1),
-(31, 2, 'PHP', 0, 4, '2018-03-28 09:24:27', '0000-00-00 00:00:00', 1),
-(32, 9, 'PHP', 0, 3, '2018-03-28 09:25:21', '0000-00-00 00:00:00', 1),
-(33, 10, 'PHP', 0, 3, '2018-03-28 09:29:44', '0000-00-00 00:00:00', 1);
+(31, 1, 'MySQL', 0, 3, '2018-04-14 07:27:56', '0000-00-00 00:00:00', 1),
+(32, 1, 'Oracle', 0, 3, '2018-04-14 07:27:56', '0000-00-00 00:00:00', 1),
+(33, 2, 'MySQL', 0, 3, '2018-04-14 08:52:07', '0000-00-00 00:00:00', 1),
+(34, 2, 'Android', 0, 2, '2018-04-14 08:52:09', '0000-00-00 00:00:00', 1),
+(35, 2, 'PHP', 0, 3, '2018-04-14 08:54:10', '0000-00-00 00:00:00', 1),
+(36, 9, 'PHP', 0, 3, '2018-04-14 08:56:04', '0000-00-00 00:00:00', 1),
+(37, 4, 'PHP', 0, 3, '2018-04-14 09:03:14', '0000-00-00 00:00:00', 1),
+(38, 15, 'MySQL', 0, 3, '2018-04-14 09:07:51', '0000-00-00 00:00:00', 1),
+(39, 15, 'PHP', 0, 2, '2018-04-14 09:08:53', '0000-00-00 00:00:00', 1),
+(40, 16, 'PHP', 0, 4, '2018-04-14 09:31:15', '0000-00-00 00:00:00', 1),
+(41, 17, 'PHP', 0, 4, '2018-04-14 09:34:23', '0000-00-00 00:00:00', 1),
+(42, 18, 'PHP', 0, 4, '2018-04-14 09:36:56', '0000-00-00 00:00:00', 1),
+(43, 19, 'Android', 0, 3, '2018-04-14 09:39:18', '0000-00-00 00:00:00', 1),
+(44, 19, 'C#.Net', 0, 3, '2018-04-14 09:39:39', '0000-00-00 00:00:00', 1),
+(45, 20, 'Oracle', 0, 3, '2018-04-14 09:41:39', '0000-00-00 00:00:00', 1),
+(46, 21, 'PHP', 0, 3, '2018-04-14 09:43:31', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -430,32 +465,32 @@ ALTER TABLE `rb_technologies`
 -- AUTO_INCREMENT for table `rb_education`
 --
 ALTER TABLE `rb_education`
-  MODIFY `edu_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `edu_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `rb_employer_registration`
 --
 ALTER TABLE `rb_employer_registration`
-  MODIFY `employer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `employer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `rb_experience`
 --
 ALTER TABLE `rb_experience`
-  MODIFY `exp_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `exp_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `rb_jobposts`
 --
 ALTER TABLE `rb_jobposts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
 --
 -- AUTO_INCREMENT for table `rb_registration`
 --
 ALTER TABLE `rb_registration`
-  MODIFY `reg_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `reg_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `rb_skills`
 --
 ALTER TABLE `rb_skills`
-  MODIFY `skill_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `skill_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `rb_technologies`
 --
