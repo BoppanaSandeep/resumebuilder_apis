@@ -9,6 +9,10 @@ $(function () {
             demo.showNotification('top', 'center', 'Enter any one field to search.', 'fa fa-exclamation', '1000', 'danger')
         }
     });
+    $("#clear").click(function () {
+        $(".search_fields input").val('');
+        fetchEmployees(1, 10);
+    })
 })
 
 function fetchEmployees(page_number = 1, page_limit = 10) {
@@ -40,7 +44,7 @@ function fetchEmployees(page_number = 1, page_limit = 10) {
             })
             $('.append_employees').children().remove()
             $('.append_employees').append(template)
-            $('.search_result').html('Displaying data related to your '+serarch+'.')
+            $('.search_result').html('Displaying data related to your ' + serarch + '.')
             AddPagination(data.count, page_number, page_limit)
             $('.loader').fadeOut()
             $('.page-loader').delay(350).fadeOut('slow')
@@ -48,10 +52,12 @@ function fetchEmployees(page_number = 1, page_limit = 10) {
             window.history.pushState('', 'Resume Builder', 'search_employees')
         } else {
             template += '<div class="card">'
-            template += '<div class="card-body text-danger d-flex justify-content-center"><strong>We are unable to find data related to your '+serarch+', try by using different search.</strong></div>'
+            template += '<div class="card-body text-danger d-flex justify-content-center"><strong>We are unable to find data related to your ' + serarch + ', try by using different search.</strong></div>'
             template += '</div>'
             $('.append_employees').children().remove()
             $('.append_employees').append(template)
+            $('select.custom-select, .pagination').hide()
+            $('.search_result').html('')
             $('.loader').fadeOut()
             $('.page-loader').delay(350).fadeOut('slow')
             window.location.href = '#top'
@@ -101,7 +107,7 @@ function AddPagination(count, curr_page, page_limit) {
     pag_templete += '<li class="page-item" onclick="fetchEmployees(' + total_pages + ', ' + page_limit + ')" ' + (curr_page == total_pages ? 'disabled' : '') + '><a class="page-link" href="javascript:void(0)" data-toggle="tooltip" data-trigger="hover" title="Last"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>'
 
     $('select.custom-select > option[value="' + page_limit + '"]').attr('selected', 'selected')
-    $('select.custom-select').show()
+    $('select.custom-select, .pagination').show()
     $('.pagination').append(pag_templete)
     $("[data-toggle='tooltip']").tooltip()
 }

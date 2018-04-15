@@ -12,8 +12,23 @@
             <div class="card view_posts">
                 <div class="card-header">
                     <div class="row user-header-row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-4">
                             <h6 class="title">View Job Posts</h6>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
+                            <div class="input-group search_fields">
+                                <input type="text" class="form-control rounded-left" name="job_title" id="job_title" placeholder="Job Title">
+                                <input type="text" class="form-control" name="job_position" id="job_position" placeholder="Job Position">
+                                <input type="text" class="form-control" name="location" id="location" placeholder="Location">
+                                <input type="text" class="form-control" name="fromdate" id="fromdate" placeholder="From Date">
+                                <input type="text" class="form-control" name="todate" id="todate" placeholder="To Date">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text btn-info border-right" id="search">Search</span>
+                                </div>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text btn-info rounded-right" id="clear">Clear</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

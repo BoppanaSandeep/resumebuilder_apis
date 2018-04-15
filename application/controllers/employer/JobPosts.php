@@ -59,7 +59,14 @@ class JobPosts extends CI_Controller
             $where_cond = array(
                 "post_emp_id" => (int) $this->session->userdata('employer_id'),
             );
-            $res_jobPosts = $this->JobPosts_model->JobPosts($where_cond, $this->input->get('page_number', true), $this->input->get('page_limit', true));
+            $search_conditions = array(
+                "job_title" => !empty($this->input->get('job_title', true)) ? $this->input->get('job_title', true) : '',
+                "job_position" => !empty($this->input->get('job_position', true)) ? $this->input->get('job_position', true) : '',
+                "location" => !empty($this->input->get('location', true)) ? $this->input->get('location', true) : '',
+                "fromdate" => !empty($this->input->get('fromdate', true)) ? date('Y-m-d H:i:s', strtotime($this->input->get('fromdate', true))) : '',
+                "todate" => !empty($this->input->get('todate', true)) ? date('Y-m-d H:i:s', strtotime($this->input->get('todate', true))) : '',
+            );
+            $res_jobPosts = $this->JobPosts_model->JobPosts($where_cond, $search_conditions, $this->input->get('page_number', true), $this->input->get('page_limit', true));
             //print_r($email);
             if ($res_jobPosts['status'] == 'OK') {
                 echo json_encode(array('status' => 200, 'message' => 'OK', 'total_count' => $res_jobPosts['count'], 'info' => $res_jobPosts['data']));
@@ -130,9 +137,9 @@ class JobPosts extends CI_Controller
             } else {
                 $this->session->set_flashdata("msg", "Something went wrong, try again.");
                 $this->session->set_flashdata("color", "danger");
-                redirect('dashboard/EditJobPost?postid='.$this->input->post('post_id', true));
+                redirect('dashboard/EditJobPost?postid=' . $this->input->post('post_id', true));
             }
-        }else{
+        } else {
             $this->session->set_flashdata("msg", "Something went wrong, try again.");
             $this->session->set_flashdata("color", "danger");
             redirect('dashboard/job_posts_view');

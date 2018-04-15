@@ -24,6 +24,11 @@ class Dashboard extends CI_Controller
         }
     }
 
+    public function login()
+    {
+        $this->load->view('login');
+    }
+
     public function user()
     {
         if ($this->session->userdata('emp_rb_id')) {

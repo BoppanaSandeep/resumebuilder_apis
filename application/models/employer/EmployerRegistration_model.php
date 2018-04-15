@@ -11,7 +11,7 @@ class EmployerRegistration_model extends CI_Model
     public function generte_emprbid()
     {
         $this->db->select("emp_rb_id");
-        $this->db->order_by('emp_rb_id', "desc");
+        $this->db->order_by('employer_id', "desc");
         $this->db->limit(1);
         $rbempid = $this->db->get("employer_registration");
         if (sizeof($rbempid->result_array()) > 0) {

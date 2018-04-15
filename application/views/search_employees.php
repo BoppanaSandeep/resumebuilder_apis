@@ -17,12 +17,15 @@
                         </div>
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
                             <div class="input-group search_fields">
-                                <input type="text" class="form-control" name="skills" id="skills" placeholder="Skills">
+                                <input type="text" class="form-control rounded-left" name="skills" id="skills" placeholder="Skills">
                                 <input type="text" class="form-control" name="position" id="position" placeholder="Position">
                                 <input type="text" class="form-control" name="experience" id="experience" placeholder="Experience">
                                 <input type="text" class="form-control" name="location" id="location" placeholder="Location">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="search">Search</span>
+                                    <span class="input-group-text btn-info border-right" id="search">Search</span>
+                                </div>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text btn-info rounded-right" id="clear">Clear</span>
                                 </div>
                             </div>
                         </div>

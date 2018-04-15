@@ -35,7 +35,7 @@ class JobPosts_model extends CI_Model
         }
     }
 
-    public function JobPosts($where_cond, $pagenumber, $page_limit)
+    public function JobPosts($where_cond, $search_conditions, $pagenumber, $page_limit)
     {
         $limit = $page_limit;
         $from_limit = 0;
@@ -44,12 +44,46 @@ class JobPosts_model extends CI_Model
         }
 
         $this->db->where($where_cond);
+        if ($search_conditions['job_title'] != '') {
+            $this->db->like('job_title', $search_conditions['job_title']);
+        }
+        if ($search_conditions['job_position'] != '') {
+            $this->db->like('job_position', $search_conditions['job_position']);
+        }
+        if ($search_conditions['fromdate'] != '' && $search_conditions['todate'] != '') {
+            $this->db->where('added_date >=', $search_conditions['fromdate']);
+            $this->db->where('added_date <=', $search_conditions['todate']);
+        } else if ($search_conditions['fromdate'] != '' || $search_conditions['todate'] != '') {
+            $this->db->where('added_date', !empty($search_conditions['fromdate']) ? $search_conditions['fromdate'] : $search_conditions['todate']);
+        } else {
+
+        }
+        if ($search_conditions['location'] != '') {
+            $this->db->like('address', $search_conditions['location']);
+        }
         $this->db->from('jobposts');
         $count = $this->db->count_all_results();
 
         $this->db->select("*");
         $this->db->from("jobposts");
         $this->db->where($where_cond);
+        if ($search_conditions['job_title'] != '') {
+            $this->db->like('job_title', $search_conditions['job_title']);
+        }
+        if ($search_conditions['job_position'] != '') {
+            $this->db->like('job_position', $search_conditions['job_position']);
+        }
+        if ($search_conditions['fromdate'] != '' && $search_conditions['todate'] != '') {
+            $this->db->where('added_date >=', $search_conditions['fromdate']);
+            $this->db->where('added_date <=', $search_conditions['todate']);
+        } else if ($search_conditions['fromdate'] != '' || $search_conditions['todate'] != '') {
+            $this->db->where('added_date', !empty($search_conditions['fromdate']) ? $search_conditions['fromdate'] : $search_conditions['todate']);
+        } else {
+
+        }
+        if ($search_conditions['location'] != '') {
+            $this->db->like('address', $search_conditions['location']);
+        }
         $this->db->where_in('post_status', array(1, 2));
         $this->db->order_by('added_date', 'DESC');
         $this->db->limit($limit, $from_limit);

@@ -137,7 +137,7 @@ class SearchEmployees_model extends CI_Model
 
         $this->db->group_by("name");
         if (isset($location) && $experience != '') {
-            $this->db->having('experience>', $experience);
+            $this->db->having('experience>=', $experience);
             $this->db->having('experience<', $experience + 1);
         }
 
@@ -165,7 +165,7 @@ class SearchEmployees_model extends CI_Model
 
         $this->db->group_by("name");
         if (isset($location) && $experience != '') {
-            $this->db->having('experience>', $experience);
+            $this->db->having('experience>=', $experience);
             $this->db->having('experience<', $experience + 1);
         }
         $this->db->order_by('sk.skill_updated', 'DESC');
