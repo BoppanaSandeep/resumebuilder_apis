@@ -13,6 +13,18 @@ $(function() {
         todayHighlight: true
     })
 
+    $('textarea[name="job_description[]"]').summernote({
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['fontsize', ['fontname', 'fontsize', 'color']],
+            ['para', ['ul', 'ol', 'paragraph', 'height']],
+            ['link', ['linkDialogShow', 'unlink', 'table', 'hr']],
+            ['Misc', ['fullscreen']]
+        ],
+        height: 200
+    });
+
     $("#job_posts").submit(function() {
         var error = false
         $('input').removeClass('error2');
@@ -96,6 +108,17 @@ function add() {
         startDate: new Date(),
         todayHighlight: true
     })
+    $('textarea[name="job_description[]"]').summernote({
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['fontsize', ['fontname', 'fontsize', 'color']],
+            ['para', ['ul', 'ol', 'paragraph', 'height']],
+            ['link', ['linkDialogShow', 'unlink', 'table', 'hr']],
+            ['Misc', ['fullscreen']]
+        ],
+        height: 200
+    });
     if ($('.append_multiple').children().length > 1) {
         $('.append_multiple .fa-plus:not(:last)').hide()
         $('.append_multiple .fa-minus:not(:last)').show()

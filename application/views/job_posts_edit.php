@@ -1,5 +1,7 @@
 <?php $this->load->view("header");?>
 <link href="<?php echo base_url(); ?>assets/css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+
 <?php $post = $post_data['data'][0];?>
 <div class="panel-header panel-header-sm">
 </div>
@@ -111,7 +113,14 @@
         </div>
         <div class="row">
             <div class="col-md-6 margin_0_auto">
+            <div class="col-md-12 p-0">
                 <button class="btn btn-info btn-block">Save</button>
+            </div>
+            <div class="col-md-12 p-0">
+                <a href="<?php echo base_url(); ?>dashboard/job_posts_view">
+                    <button type="button" class="btn btn-light btn-block">Cancel</button>
+                </a>
+            </div>
             </div>
         </div>
     </form>
@@ -123,4 +132,5 @@ if ($this->session->flashdata('msg') != '') {
 }
 ?>
 <script src="<?php echo base_url(); ?>assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/employer/job_posts_edit.js"></script>

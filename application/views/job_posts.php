@@ -1,5 +1,6 @@
 <?php $this->load->view("header");?>
 <link href="<?php echo base_url(); ?>assets/css/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
 
 <div class="panel-header panel-header-sm">
 </div>
@@ -126,4 +127,5 @@ if ($this->session->flashdata('msg') != '') {
 }
 ?>
 <script src="<?php echo base_url(); ?>assets/js/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/employer/job_posts.js"></script>

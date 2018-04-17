@@ -8,6 +8,18 @@ $(function() {
         todayHighlight: true
     })
 
+    $('textarea[name="job_description"]').summernote({
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['fontsize', ['fontname', 'fontsize', 'color']],
+            ['para', ['ul', 'ol', 'paragraph', 'height']],
+            ['link', ['linkDialogShow', 'unlink', 'table', 'hr']],
+            ['Misc', ['fullscreen']]
+        ],
+        height: 200
+    });
+
     $('#job_posts').submit(function() {
         var error = false
         $('input').removeClass('error2')
