@@ -96,5 +96,10 @@ $route['rb/edu_delete_data'] = 'deleteOperations/DeleteEducation';
 $route['rb/profile_image_upload'] = 'fileUploads/profileImageUpload';
 #endregion
 
+#region Fetch Job Posts
+//Fetch Job Posts from companies
+$route['rb/fetching_job_posts/(:any)'] = 'formOptionsFetching/FetchingJobPosts/$1';
+#endregion
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
