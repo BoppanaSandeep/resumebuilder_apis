@@ -101,5 +101,11 @@ $route['rb/profile_image_upload'] = 'fileUploads/profileImageUpload';
 $route['rb/fetching_job_posts/(:any)'] = 'formOptionsFetching/FetchingJobPosts/$1';
 #endregion
 
+#region Fetch Job Posts
+//Fetch Job Posts from companies
+$route['rb/fetching_search_job_posts/(:any)'] = 'formOptionsFetching/FetchingSearchJobPosts/$1';
+#endregion
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;

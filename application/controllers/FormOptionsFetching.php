@@ -54,4 +54,23 @@ class FormOptionsFetching extends CI_Controller
             }
         }
     }
+
+    public function FetchingSearchJobPosts($search_value = '')
+    {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method != 'GET') {
+            echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
+        } else {
+            if ($search_value != '') {
+                $data = $this->formOptionsFetching_model->fetchsearchjobposts($search_value);
+                if ($data['status'] == 'OK') {
+                    echo json_encode(array('status' => 200, 'message' => 'OK', 'posts' => $data['data']));
+                } else {
+                    echo json_encode(array('status' => 200, 'message' => 'Bad'));
+                }
+            } else {
+                echo json_encode(array('status' => 200, 'message' => 'Bad'));
+            }
+        }
+    }
 }

@@ -73,4 +73,45 @@ class FormOptionsFetching_model extends CI_Model
             return $result_array;
         }
     }
+
+    public function fetchsearchjobposts($search_value)
+    {
+        $this->db->distinct('jb.post_id');
+        $this->db->select("jb.*, emp.employer_id, emp.emp_rb_id, emp.emp_company, emp.emp_email, emp.emp_address, emp.emp_picture");
+        $this->db->from("jobposts jb");
+        $this->db->join("employer_registration emp", "emp.employer_id = jb.post_emp_id", 'left');
+        $this->db->like("jb.job_title", $search_value);
+        $this->db->or_like("jb.job_position", $search_value);
+        $this->db->or_like("jb.job_description", $search_value);
+        $this->db->or_like("jb.skills_req", $search_value);
+        $this->db->or_like("emp.emp_company", $search_value);
+        $this->db->order_by('jb.job_closing_date', 'ASC');
+        $posts = $this->db->get();
+        //echo $this->db->last_query();
+
+        if (sizeof($posts->result_array()) > 0) {
+            $result = array();
+            foreach ($posts->result_array() as $data) {
+                $data['emp_picture'] = $data['emp_picture'] == '' ? base_url() . "profile_imgs/profile-default.png" : base_url() . $data['emp_picture'];
+                $numofdays1 = date_diff(new DateTime($data['added_date']), new DateTime("now"));
+                $numofdays1 = $numofdays1->format('%a');
+                $numofdays2 = $data['update_date'] == '0000-00-00 00:00:00' ? 0 : date_diff(new DateTime($data['update_date']), new DateTime("now"));
+                if ($numofdays2 !== 0) {
+                    $numofdays2 = $numofdays2->format('%a');
+                    $data['numofdays'] = (int) $numofdays2;
+                } else {
+                    $data['numofdays'] = (int) $numofdays1;
+                }
+                array_push($result, $data);
+            }
+            $result_array['status'] = 'OK';
+            $result_array['data'] = $result;
+            return $result_array;
+        } else {
+            $result_array['status'] = 'BAD';
+            $result_array['data'] = '';
+            return $result_array;
+        }
+    }
+
 }
