@@ -17,7 +17,7 @@ $(function() {
         toolbar: [
             // [groupName, [list of button]]
             ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['fontsize', ['fontname', 'fontsize', 'color']],
+            ['fontsize', ['fontsize', 'color']],
             ['para', ['ul', 'ol', 'paragraph', 'height']],
             ['link', ['linkDialogShow', 'unlink', 'table', 'hr']],
             ['Misc', ['fullscreen']]
@@ -112,7 +112,7 @@ function add() {
         toolbar: [
             // [groupName, [list of button]]
             ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['fontsize', ['fontname', 'fontsize', 'color']],
+            ['fontsize', ['fontsize', 'color']],
             ['para', ['ul', 'ol', 'paragraph', 'height']],
             ['link', ['linkDialogShow', 'unlink', 'table', 'hr']],
             ['Misc', ['fullscreen']]
