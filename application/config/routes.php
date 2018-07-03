@@ -102,10 +102,13 @@ $route['rb/fetching_job_posts/(:any)'] = 'formOptionsFetching/FetchingJobPosts/$
 #endregion
 
 #region Fetch Job Posts
-//Fetch Job Posts from companies
+//Fetch Job Posts from companies through searching
 $route['rb/fetching_search_job_posts/(:any)'] = 'formOptionsFetching/FetchingSearchJobPosts/$1';
 #endregion
 
+#region Apply for job post
+$route['rb/applyForJobPosts/(:any)/(:any)'] = 'jobPostOperations/applingForJobPost/$1/$2';
+#endregion
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = false;
