@@ -229,28 +229,65 @@
                 </div>
             </div>
         </div> -->
-        <div class="col-md-6">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title"> Employees Approached </h4>
+					<h5 class="card-category">Employees List</h5>
+				</div>
+				<div class="card-body">
+				<div class="page-loader" style="display: none;">
+					<div class="loader" style="display: none;">Loading...</div>
+				</div>
+					<div class="table-responsive">
+						<table class="table">
+							<thead class="text-primary">
+								<th>Name</th>
+								<th>Job title</th>
+								<th>Job description</th>
+								<th>Action</th>
+							</thead>
+							<tbody class="employeeApproached">
+								<!-- <tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+										<a href="#" data-toggle="modal" data-target="#myModal">View More</a>
+									</td>
+								</tr> -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="card-footer">
+					<hr>
+					<div class="stats">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-category">All Employees List</h5>
-                    <h4 class="card-title"> Company Approached </h4>
+					<h4 class="card-title"> Company Approached </h4>
+                    <h5 class="card-category">Employees List</h5>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="text-primary">
-                                <th>S.No</th>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Total Exp</th>
-                                <th>Action</th>
+								<th>Name</th>
+								<th>Job title</th>
+								<th>Job Description</th>
+								<th>Action</th>
                             </thead>
-                            <tbody>
+                            <tbody class="employerApproached">
                                 <tr>
-                                    <td align="center">1</td>
                                     <td>Boppana Sandeep</td>
                                     <td>Developer</td>
-                                    <td align="center">2</td>
+                                    <td>2</td>
                                     <td>
                                         <a href="#" data-toggle="modal" data-target="#myModal">View More</a>
                                     </td>
@@ -262,45 +299,7 @@
                 <div class="card-footer">
                     <hr>
                     <div class="stats">
-                        <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-category">All Employees List</h5>
-                    <h4 class="card-title"> Employees Approached </h4>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="text-primary">
-                                <th>S.No</th>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Total Exp</th>
-                                <th>Action</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td align="center">1</td>
-                                    <td>Boppana Sandeep</td>
-                                    <td>Developer</td>
-                                    <td align="center">2</td>
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target="#myModal">View More</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <hr>
-                    <div class="stats">
-                        <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
+                        
                     </div>
                 </div>
             </div>
@@ -320,7 +319,18 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                Modal body..
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee details</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Job details</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+				</div>
             </div>
 
             <!-- Modal footer -->
@@ -332,9 +342,5 @@
     </div>
 </div>
 <?php $this->load->view("footer");?>
-<script>
-    $(document).ready(function () {
-        // Javascript method's body can be found in assets/js/demos.js
-        //demo.initDashboardPageCharts();
-    });
-</script>
+
+<script src="<?php echo base_url(); ?>assets/js/employer/dashboard.js"></script>

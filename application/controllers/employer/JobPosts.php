@@ -146,4 +146,28 @@ class JobPosts extends CI_Controller
         }
     }
 
+    public function FetchAppliedJobsOfEmployerPosts()
+    {
+        if ($this->session->userdata('emp_rb_id')) {
+            $where_cond = array(
+                "jp.post_emp_id" => (int) $this->session->userdata('employer_id'),
+            );
+            // $search_conditions = array(
+            //     "job_title" => !empty($this->input->get('job_title', true)) ? $this->input->get('job_title', true) : '',
+            //     "job_position" => !empty($this->input->get('job_position', true)) ? $this->input->get('job_position', true) : '',
+            //     "location" => !empty($this->input->get('location', true)) ? $this->input->get('location', true) : '',
+            //     "fromdate" => !empty($this->input->get('fromdate', true)) ? date('Y-m-d H:i:s', strtotime($this->input->get('fromdate', true))) : '',
+            //     "todate" => !empty($this->input->get('todate', true)) ? date('Y-m-d H:i:s', strtotime($this->input->get('todate', true))) : '',
+            // );
+            $resAppliedJobPosts = $this->JobPosts_model->appliedJobsOfEmployerPosts($where_cond, /* $search_conditions */"", $this->input->get('page_number', true), $this->input->get('page_limit', true));
+            if ($resAppliedJobPosts['status'] == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK', 'total_count' => $resAppliedJobPosts['count'], 'info' => $resAppliedJobPosts['data']));
+            } else {
+                echo json_encode(array('status' => 200, 'message' => 'BAD', 'info' => ''));
+            }
+        } else {
+            echo json_encode(array('status' => 200, 'message' => 'BAD'));
+        }
+    }
+
 }

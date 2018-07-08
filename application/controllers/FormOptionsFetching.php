@@ -55,14 +55,14 @@ class FormOptionsFetching extends CI_Controller
         }
     }
 
-    public function FetchingSearchJobPosts($search_value = '')
+    public function FetchingSearchJobPosts($search_value = '', $rb_id = '')
     {
         $method = $_SERVER['REQUEST_METHOD'];
         if ($method != 'GET') {
             echo json_encode(array('status' => 400, 'message' => 'Bad Request'));
         } else {
             if ($search_value != '') {
-                $data = $this->formOptionsFetching_model->fetchsearchjobposts($search_value);
+                $data = $this->formOptionsFetching_model->fetchsearchjobposts($search_value, $rb_id);
                 if ($data['status'] == 'OK') {
                     echo json_encode(array('status' => 200, 'message' => 'OK', 'posts' => $data['data']));
                 } else {

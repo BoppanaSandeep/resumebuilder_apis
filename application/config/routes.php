@@ -103,7 +103,7 @@ $route['rb/fetching_job_posts/(:any)'] = 'formOptionsFetching/FetchingJobPosts/$
 
 #region Fetch Job Posts
 //Fetch Job Posts from companies through searching
-$route['rb/fetching_search_job_posts/(:any)'] = 'formOptionsFetching/FetchingSearchJobPosts/$1';
+$route['rb/fetching_search_job_posts/(:any)/(:any)'] = 'formOptionsFetching/FetchingSearchJobPosts/$1/$2';
 #endregion
 
 #region Apply for job post

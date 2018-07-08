@@ -38,6 +38,13 @@ class FormOptionsFetching_model extends CI_Model
 
     public function fetchjobposts($rb_id)
     {
+        // Fetching the applied jobs of the employee
+        $appliedJobs = $this->db->select("appliedJobPostId")->from("appliedjobs")->where("appliedBy", $rb_id)->get();
+        $arrayAppliedJobs = array();
+        foreach ($appliedJobs->result_array() as $appliedJob) {
+            $arrayAppliedJobs[] = $appliedJob['appliedJobPostId'];
+        }
+
         $this->db->distinct('jb.post_id');
         $this->db->select("jb.*, emp.employer_id, emp.emp_rb_id, emp.emp_company, emp.emp_email, emp.emp_address, emp.emp_picture");
         $this->db->from("jobposts jb");
@@ -45,6 +52,8 @@ class FormOptionsFetching_model extends CI_Model
         $this->db->join("registration r", "r.rb_id = '" . $rb_id . "'", 'left');
         $this->db->join("skills sk", "sk.reg_id = r.reg_id", 'left');
         $this->db->where("Find_in_set(sk.skill_name, jb.skills_req)");
+        $this->db->where("Find_in_set(sk.skill_name, jb.skills_req)");
+        $this->db->where_not_in("post_id", $arrayAppliedJobs);
         $this->db->order_by('jb.job_closing_date', 'ASC');
         $posts = $this->db->get();
         //echo $this->db->last_query();
@@ -74,20 +83,30 @@ class FormOptionsFetching_model extends CI_Model
         }
     }
 
-    public function fetchsearchjobposts($search_value)
+    public function fetchsearchjobposts($search_value, $rb_id)
     {
+		// Fetching the applied jobs of the employee
+        $appliedJobs = $this->db->select("appliedJobPostId")->from("appliedjobs")->where("appliedBy", $rb_id)->get();
+        $arrayAppliedJobs = array();
+        foreach ($appliedJobs->result_array() as $appliedJob) {
+            $arrayAppliedJobs[] = $appliedJob['appliedJobPostId'];
+		}
+		
         $this->db->distinct('jb.post_id');
         $this->db->select("jb.*, emp.employer_id, emp.emp_rb_id, emp.emp_company, emp.emp_email, emp.emp_address, emp.emp_picture");
         $this->db->from("jobposts jb");
-        $this->db->join("employer_registration emp", "emp.employer_id = jb.post_emp_id", 'left');
+		$this->db->join("employer_registration emp", "emp.employer_id = jb.post_emp_id", 'left');
+		$this->db->where_not_in("post_id", $arrayAppliedJobs);
+		$this->db->group_start();
         $this->db->like("jb.job_title", $search_value);
         $this->db->or_like("jb.job_position", $search_value);
         $this->db->or_like("jb.job_description", $search_value);
         $this->db->or_like("jb.skills_req", $search_value);
-        $this->db->or_like("emp.emp_company", $search_value);
+		$this->db->or_like("emp.emp_company", $search_value);
+		$this->db->group_end();
         $this->db->order_by('jb.job_closing_date', 'ASC');
         $posts = $this->db->get();
-        //echo $this->db->last_query();
+        // echo $this->db->last_query();
 
         if (sizeof($posts->result_array()) > 0) {
             $result = array();

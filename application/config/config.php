@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost:8081/resumebuilder';
+// $config['base_url'] = 'https://f424b2b8.ngrok.io/resumebuilder';
+// $config['base_url'] = 'http://192.168.43.54:8081/resumebuilder';
 
 /*
 |--------------------------------------------------------------------------
