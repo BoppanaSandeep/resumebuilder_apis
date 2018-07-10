@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2018 at 03:42 PM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Generation Time: Jul 10, 2018 at 07:34 PM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `resumebuilder`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rb_appliedjobs`
+--
+
+CREATE TABLE `rb_appliedjobs` (
+  `appliedIds` int(11) NOT NULL,
+  `appliedJobPostId` int(11) NOT NULL,
+  `appliedBy` varchar(100) NOT NULL,
+  `appliedStatus` int(11) NOT NULL COMMENT '1 Applied 2 Rejected 3 Hold 4 Contacted 5 Viewed 6 Selected 7 Cancelled',
+  `addedDate` datetime NOT NULL,
+  `updatedDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rb_appliedjobs`
+--
+
+INSERT INTO `rb_appliedjobs` (`appliedIds`, `appliedJobPostId`, `appliedBy`, `appliedStatus`, `addedDate`, `updatedDate`) VALUES
+(1, 666, 'RBFIR000001', 1, '2018-07-03 09:02:30', '0000-00-00 00:00:00'),
+(2, 3, 'RBFIR000001', 1, '2018-07-03 09:06:16', '0000-00-00 00:00:00'),
+(3, 4, 'RBFIR000001', 1, '2018-07-03 09:07:04', '0000-00-00 00:00:00'),
+(4, 1, 'RBFIR000001', 1, '2018-07-03 09:09:28', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -95,7 +122,7 @@ CREATE TABLE `rb_employer_registration` (
 --
 
 INSERT INTO `rb_employer_registration` (`employer_id`, `emp_rb_id`, `emp_company`, `emp_email`, `emp_name`, `emp_first_name`, `emp_last_name`, `emp_contact_num`, `emp_address`, `emp_city`, `emp_country`, `emp_postal`, `emp_about`, `emp_pwd`, `emp_picture`, `emp_joined_date`, `emp_updated_date`, `emp_status`) VALUES
-(1, 'RBFIREMP000001', 'Sandeep Inc.', 'boppanasandeep57@gmail.com', 'Sandeep', 'Boppana', 'Sandeep', '9573879057', 'Nizampet, Hyderabad, Telangana.', 'Hyderabad', 'India', 500090, 'Lamborghini Mercy \r\nYour chick she so thirsty \r\nI''m in that two seat Lambo', 'sandeep57', 'company_logos/20180323182638_Desert.jpg', NULL, '2018-03-23 18:26:38', 1),
+(1, 'RBFIREMP000001', 'Sandeep Inc.', 'boppanasandeep57@gmail.com', 'Sandeep', 'Boppana', 'Sandeep', '9573879057', 'Nizampet, Hyderabad, Telangana.', 'Hyderabad', 'India', 500090, 'Lamborghini Mercy \r\nYour chick she so thirsty \r\nI\'m in that two seat Lambo', 'sandeep57', 'company_logos/20180323182638_Desert.jpg', NULL, '2018-07-07 23:12:02', 1),
 (4, 'RBFIREMP000002', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
 (5, 'RBFIREMP000003', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
 (6, 'RBFIREMP000004', 'ABC2', 'abc2@abc.com', 'ABC2', '', '', '9874563210', '4309 N Whipple', '', '', 0, '', '123456', '', NULL, NULL, 1),
@@ -105,7 +132,7 @@ INSERT INTO `rb_employer_registration` (`employer_id`, `emp_rb_id`, `emp_company
 (10, 'RBFIREMP000008', 'sdfkjs', '2@2.cm', 'ffksdff', '', '', 'jdfjkdfk', 'kjdfsdr435 ', '', '', 0, '', '12345', '', NULL, NULL, 1),
 (11, 'RBFIREMP000009', 'sdfsdf', '2@2.cm', 'sdfsdf', '', '', 'sdfsfsdf', ' fsdfsdfsdf', '', '', 0, '', '1234', '', NULL, NULL, 1),
 (12, 'RBFIREMP0000010', 'asdadsasdad', 'sandeep@gmil.com', 'asdasd', '', '', '324', ' asdasd', '', '', 0, '', '123', 'company_logos/20180415190536_error.png', NULL, '2018-04-15 19:05:36', 1),
-(13, 'RBFIREMP0000011', 'google', 'hr@google.com', 'Google', '', '', '9874563210', 'dfsdfd ', '', '', 0, '', 'google@123', 'company_logos/20180415190536_error.png', '2018-04-15 19:03:30', '2018-04-15 19:05:36', 1),
+(13, 'RBFIREMP0000011', 'google', 'hr@google.com', 'Google', 'Sundhar', 'Pichai', '9874563210', 'Hitech City', 'Hyderabad', 'India', 500090, 'Google Search, commonly referred to as Google Web Search or simply Google, is a web search engine developed by Google. It is the most-used search engine on the World Wide Web, handling more than three billion searches each day.', 'google@123', 'company_logos/20180415190536_error.png', '2018-04-15 19:03:30', '2018-04-19 18:49:29', 1),
 (14, 'RBFIREMP0000012', 'Github', 'hr@github.com', 'Github', '', '', '9856741230', ' sdfsdf', '', '', 0, '', 'github@123', '', '2018-04-15 19:09:43', NULL, 1);
 
 -- --------------------------------------------------------
@@ -184,9 +211,10 @@ CREATE TABLE `rb_jobposts` (
 INSERT INTO `rb_jobposts` (`post_id`, `post_emp_id`, `job_title`, `job_position`, `job_description`, `skills_req`, `job_opening_date`, `job_closing_date`, `contact_email`, `contact_number`, `address`, `city`, `state`, `country`, `added_date`, `update_date`, `post_status`) VALUES
 (1, 1, 'Developer', 'Jr. Software Engineer', 'Jr. Software Engineer all capabilities of doing work.', 'PHP, Codeigniter,HTML5, JS, CSS, Angular 2', '2018-03-17', '2018-03-20', 'hr@abc.com', '9874563210', 'Hitech city, hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 16:41:00', '2018-03-16 16:41:00', 1),
 (2, 1, 'Designer', 'Software Engineer', 'Good in UI/ UX related designs.', 'All design Technologies', '2018-03-19', '2018-03-21', 'hr@abc.com', '9632587410', 'Hyderabad', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 16:44:25', '2018-03-16 16:44:25', 1),
-(3, 1, 'job_title', 'job_position', '`job_description`', '`skills_req`', '2018-03-19', '2018-03-23', '`contact_email`', '9632587415', '`address`', '`city`', '`state`', '`country`', '2018-03-16 16:48:10', '0000-00-00 00:00:00', 1),
-(4, 1, 'Database', 'Back End Engineer', 'Back End Engineer', 'My SQL, Oracle, Maria DB', '2018-03-17', '2018-03-27', 'hr@abc.com', '9874563210', 'Mindspace, Hitech City, Hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 18:25:56', '2018-03-16 18:25:56', 1),
-(666, 1, '.NET Developer', 'DEveloper', 'Developer', 'C#.Net', '2018-04-14', '2018-04-25', 'hr@rb.com', '9632587410', 'Hyd, Telanaga', 'Hyderabad', 'Telanagana', 'India', '2018-04-14 15:16:36', '0000-00-00 00:00:00', 1);
+(3, 1, 'Developer', 'Sr. Developer', 'Sr. Developer', 'PHP', '2018-03-19', '2018-03-23', 'hr@comp.com', '9632587415', 'Hyd', 'Hyderabad', 'TS', 'India', '2018-03-16 16:48:10', '2018-04-19 14:56:41', 1),
+(4, 1, 'Database', 'Back End Engineer', 'Back End Engineer', 'MySQL, Oracle, Maria DB', '2018-03-17', '2018-03-27', 'hr@abc.com', '9874563210', 'Mindspace, Hitech City, Hyderabad.', 'Hyderabad', 'Telanaga', 'India', '2018-03-16 18:25:56', '2018-04-19 14:54:00', 1),
+(666, 1, '.NET Developer', 'DEveloper', '<p><br></p><ul><li>dfgdfgdfg</li><li>fgdfgfg</li><li>fgdgfdfg</li><li>fgdfg</li></ul><p><br></p>', 'C#.Net', '2018-04-14', '2018-04-25', 'hr@rb.com', '9632587410', 'Hyd, Telanaga', 'Hyderabad', 'Telanagana', 'India', '2018-04-14 15:16:36', '2018-07-07 09:11:56', 1),
+(667, 13, 'Software Engineer', 'Software Engineer', '<p><span xss=removed>Google Search, commonly referred to as Google Web Search or simply Google, is a web search engine developed by Google. It is the most-used search engine on the World Wide Web, handling more than three billion searches each day.</span><br></p>', 'Python,PHP,Oracle.', '2018-04-19', '2018-04-27', 'hr@google.com', '9874563210', 'Block A, Hitech city, Hyderabad.', 'Hyderabad', 'Telanagana', 'India', '2018-04-19 18:52:31', '2018-04-19 18:55:27', 1);
 
 -- --------------------------------------------------------
 
@@ -295,7 +323,9 @@ INSERT INTO `rb_skills` (`skill_id`, `reg_id`, `skill_name`, `skill_priority`, `
 (43, 19, 'Android', 0, 3, '2018-04-14 09:39:18', '0000-00-00 00:00:00', 1),
 (44, 19, 'C#.Net', 0, 3, '2018-04-14 09:39:39', '0000-00-00 00:00:00', 1),
 (45, 20, 'Oracle', 0, 3, '2018-04-14 09:41:39', '0000-00-00 00:00:00', 1),
-(46, 21, 'PHP', 0, 3, '2018-04-14 09:43:31', '0000-00-00 00:00:00', 1);
+(46, 21, 'PHP', 0, 3, '2018-04-14 09:43:31', '0000-00-00 00:00:00', 1),
+(47, 1, 'C#.Net', 0, 3, '2018-04-19 09:22:56', '0000-00-00 00:00:00', 1),
+(48, 1, 'Apache Administrator', 0, 4, '2018-07-07 07:49:57', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -416,6 +446,12 @@ INSERT INTO `rb_technologies` (`tech_id`, `tech_name`, `tech_group_name`, `tech_
 --
 
 --
+-- Indexes for table `rb_appliedjobs`
+--
+ALTER TABLE `rb_appliedjobs`
+  ADD PRIMARY KEY (`appliedIds`);
+
+--
 -- Indexes for table `rb_education`
 --
 ALTER TABLE `rb_education`
@@ -462,40 +498,54 @@ ALTER TABLE `rb_technologies`
 --
 
 --
+-- AUTO_INCREMENT for table `rb_appliedjobs`
+--
+ALTER TABLE `rb_appliedjobs`
+  MODIFY `appliedIds` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `rb_education`
 --
 ALTER TABLE `rb_education`
   MODIFY `edu_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT for table `rb_employer_registration`
 --
 ALTER TABLE `rb_employer_registration`
   MODIFY `employer_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT for table `rb_experience`
 --
 ALTER TABLE `rb_experience`
   MODIFY `exp_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `rb_jobposts`
 --
 ALTER TABLE `rb_jobposts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=667;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=668;
+
 --
 -- AUTO_INCREMENT for table `rb_registration`
 --
 ALTER TABLE `rb_registration`
   MODIFY `reg_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `rb_skills`
 --
 ALTER TABLE `rb_skills`
-  MODIFY `skill_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `skill_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
 --
 -- AUTO_INCREMENT for table `rb_technologies`
 --
 ALTER TABLE `rb_technologies`
   MODIFY `tech_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
