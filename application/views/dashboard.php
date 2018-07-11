@@ -1,5 +1,5 @@
 <?php $this->load->view("header");?>
-<div class="panel-header panel-header-sm">
+<div class="panel-header panel-header-sm" id="top">
     <!-- <canvas id="bigDashboardChart"></canvas> -->
 </div>
 <div class="content">
@@ -245,10 +245,12 @@
 								<th>Name</th>
 								<th>Job title</th>
 								<th>Job description</th>
+								<th>Applied on</th>
 								<th>Action</th>
 							</thead>
 							<tbody class="employeeApproached">
 								<!-- <tr>
+									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
@@ -260,12 +262,25 @@
 						</table>
 					</div>
 				</div>
-				<div class="card-footer">
-					<hr>
-					<div class="stats">
-						
-					</div>
-				</div>
+				<hr/>
+				<div class="card-footer row">
+					<div class="input-group col-12 col-sm-12 col-md-12 col-lg-5">
+                        <!-- <div class="input-group-prepend">
+                            <label class="input-group-text" for="limit">Limit</label>
+                        </div> -->
+                        <select class="custom-select" id="limit" data-toggle="tooltip" data-trigger="hover" title="Page Limit" onchange="fetchAppliedJobsOfEmployerPosts(1, this.value)">
+							<option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <ul class="pagination col-12 col-sm-12 col-md-12 col-lg-5">
+
+                    </ul>
+                </div>
 			</div>
 		</div>
         <div class="col-md-12">
@@ -299,7 +314,7 @@
                 <div class="card-footer">
                     <hr>
                     <div class="stats">
-                        
+
                     </div>
                 </div>
             </div>
@@ -319,7 +334,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-				<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
 					<li class="nav-item">
 						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Employee details</a>
 					</li>
@@ -328,9 +343,15 @@
 					</li>
 				</ul>
 				<div class="tab-content" id="myTabContent">
-					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+					<div class="tab-pane fade show p-2 active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						<div class="card p-3">Cras justo odio</div>
+						<div class="card p-3">Dapibus ac facilisis in</div>
+						<div class="card p-3">Morbi leo risus</div>
+						<div class="card p-3">Porta ac consectetur ac</div>
+						<div class="card p-3">Vestibulum at eros</div>
+					</div>
 					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-				</div>
+				</div> -->
             </div>
 
             <!-- Modal footer -->

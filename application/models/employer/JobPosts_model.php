@@ -118,14 +118,14 @@ class JobPosts_model extends CI_Model
         }
     }
 
-    public function appliedJobsOfEmployerPosts($where_cond, $search_conditions, $pagenumber, $page_limit)
+    public function AppliedJobsOfEmployerPosts($where_cond, $search_conditions, $pagenumber, $page_limit)
     {
         $limit = $page_limit;
         $from_limit = 0;
         if ($pagenumber > 0) {
             $from_limit = $limit * ($pagenumber - 1);
 		}
-		
+
 		$this->db->select("aj.*, jp.job_title,jp.job_position, jp.job_description, jp.skills_req, employee.reg_id, employee.name_first, employee.name_last");
         $this->db->from("appliedjobs aj");
         $this->db->join("jobposts jp", "jp.post_id = aj.appliedJobPostId", "left");
@@ -141,7 +141,7 @@ class JobPosts_model extends CI_Model
 		$this->db->order_by('addedDate', 'ASC');
         $this->db->limit($limit, $from_limit);
 		$appliedJobs = $this->db->get();
-		
+
 		// echo $this->db->last_query();
 
 		if (sizeof($appliedJobs->result_array()) > 0) {
@@ -153,6 +153,18 @@ class JobPosts_model extends CI_Model
             $result_array['status'] = 'BAD';
             return $result_array;
         }
-    }
+	}
+
+	public function JobPostDetailsAndEmployeeDetails($appliedJobPostId, $appliedBy){
+		$resJpdAndEd = $this->db->query("SELECT aj.appliedIds, aj.appliedJobPostId, aj.appliedBy, r.name_first, r.name_last, r.email, r.phonenumber, r.dob, GROUP_CONCAT(DISTINCT CONCAT('<ul><li>',edu.edu_university_clg_sch, '</li><li>', edu.edu_specialization, '</li><li>', edu.edu_passoutyear, '</li><li>', edu.edu_percentage, '% </li></ul>') ORDER BY edu.edu_passoutyear DESC SEPARATOR '<br/>') AS Education, GROUP_CONCAT(DISTINCT CONCAT('<ul><li>', ex.exp_company, '</li><li>', ex.exp_working_from, '</li><li>', ex.exp_role, '</li><li>', ex.exp_job_desc, '</li></ul>') ORDER BY ex.exp_working_from DESC SEPARATOR '<br/>') AS Experince, jp.* FROM rb_appliedjobs aj LEFT JOIN rb_registration r ON r.rb_id = aj.appliedBy LEFT JOIN rb_experience ex ON ex.reg_id = r.reg_id LEFT JOIN rb_education edu ON edu.reg_id = r.reg_id LEFT JOIN rb_jobposts jp ON jp.post_id = aj.appliedJobPostId WHERE aj.appliedJobPostId = '".$appliedJobPostId."' AND aj.appliedBy = '".$appliedBy."' AND edu.edu_status = '1' AND ex.exp_status = '1' GROUP BY edu.reg_id, ex.reg_id");
+		if (sizeof($resJpdAndEd->result_array()) > 0) {
+            $result_array['status'] = 'OK';
+            $result_array['data'] = $resJpdAndEd->result_array();
+            return $result_array;
+        } else {
+            $result_array['status'] = 'BAD';
+            return $result_array;
+        }
+	}
 
 }

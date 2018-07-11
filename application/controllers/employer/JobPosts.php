@@ -159,7 +159,7 @@ class JobPosts extends CI_Controller
             //     "fromdate" => !empty($this->input->get('fromdate', true)) ? date('Y-m-d H:i:s', strtotime($this->input->get('fromdate', true))) : '',
             //     "todate" => !empty($this->input->get('todate', true)) ? date('Y-m-d H:i:s', strtotime($this->input->get('todate', true))) : '',
             // );
-            $resAppliedJobPosts = $this->JobPosts_model->appliedJobsOfEmployerPosts($where_cond, /* $search_conditions */"", $this->input->get('page_number', true), $this->input->get('page_limit', true));
+            $resAppliedJobPosts = $this->JobPosts_model->AppliedJobsOfEmployerPosts($where_cond, /* $search_conditions */"", $this->input->get('page_number', true), $this->input->get('page_limit', true));
             if ($resAppliedJobPosts['status'] == 'OK') {
                 echo json_encode(array('status' => 200, 'message' => 'OK', 'total_count' => $resAppliedJobPosts['count'], 'info' => $resAppliedJobPosts['data']));
             } else {
@@ -168,6 +168,19 @@ class JobPosts extends CI_Controller
         } else {
             echo json_encode(array('status' => 200, 'message' => 'BAD'));
         }
-    }
+	}
+
+	public function FetchJobPostDetailsAndEmployeeDetails(){
+		if ($this->session->userdata('emp_rb_id')) {
+            $resJobPostDetailsAndEmployeeDetails = $this->JobPosts_model->JobPostDetailsAndEmployeeDetails($this->input->get('appliedJobPostId', true), $this->input->get('appliedBy', true));
+            if ($resJobPostDetailsAndEmployeeDetails['status'] == 'OK') {
+                echo json_encode(array('status' => 200, 'message' => 'OK', 'info' => $resJobPostDetailsAndEmployeeDetails['data']));
+            } else {
+                echo json_encode(array('status' => 200, 'message' => 'BAD', 'info' => ''));
+            }
+        } else {
+            echo json_encode(array('status' => 200, 'message' => 'BAD'));
+        }
+	}
 
 }
