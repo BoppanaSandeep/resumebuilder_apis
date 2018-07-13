@@ -204,3 +204,23 @@ p {
     font-style: italic;
     margin: 2% 4%;
 }
+
+#open-chat {
+    position: fixed !important;
+    background: #2a323a !important;
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 15px !important;
+    right: 15px !important;
+    z-index: 999 !important;
+    border-radius: 50% !important;
+}
+
+#open-chat i.fa.fa-comment-alt {
+    position: fixed !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    bottom: 29px !important;
+    right: 30px !important;
+    z-index: 9999 !important;
+}

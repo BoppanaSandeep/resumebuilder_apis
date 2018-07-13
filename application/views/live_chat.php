@@ -107,3 +107,7 @@
 
 </div>
 <!-- end live-chat -->
+
+<div class="" id="open-chat">
+	<i class="fa fa-comment-alt"></i>
+</div>
